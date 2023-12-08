@@ -1,2 +1,2 @@
 Hello
-I'm testing Git
+Test git practicing
