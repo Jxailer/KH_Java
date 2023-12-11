@@ -19,6 +19,9 @@ public class typeCastingEx2 {
 		System.out.println(1/2); // 정수 / 정수 = 정수. 실제 계산값은 0.5지만 정수형이기에 0이 반환됨.
 		System.out.println((double)1/2); //0.5 출력.
 		
+		// 같은 타입의 변수를 여러개 선언하는 방법.
+		int num5, num6, num7 = 2;
+		
 	}
 
 }
