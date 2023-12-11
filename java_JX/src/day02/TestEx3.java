@@ -19,6 +19,7 @@ public class TestEx3 {
 		else
 			System.out.println("음수입니다.");
 		
+		scan.close();
 	}
 
 }
