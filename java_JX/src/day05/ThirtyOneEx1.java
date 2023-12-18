@@ -2,7 +2,7 @@ package day05;
 
 import java.util.Scanner;
 
-public class ThirstyOneEx1_1 {
+public class ThirtyOneEx1 {
 
 	public static void main(String[] args) {
 		// 베스킨라빈스 31 게임 만들기

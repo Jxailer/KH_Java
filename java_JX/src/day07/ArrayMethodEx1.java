@@ -79,7 +79,7 @@ public class ArrayMethodEx1 {
 	public static boolean contains(int num, int [] array, int count) {
 		int i;
 		
-		if(array == null || array.length == 0){ // 배열 생성이 안됐거나 크기가 영이면
+		if(array == null || array.length == 0){ // 배열 생성이 안됐거나 크기가 0이면
 			return false;
 		}
 		if(array.length<count) {
