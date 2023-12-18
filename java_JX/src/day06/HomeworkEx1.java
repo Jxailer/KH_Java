@@ -30,8 +30,9 @@ public class HomeworkEx1 {
 		Scanner scan = new Scanner(System.in);
 		
 		int min = 1, max = 9;
-		int r, i, count; 
+		int r, i, count, input, strike=0, ball=0; 
 		int [] enter = new int[3];
+		int [] com = new int [3];
 		
 		for(count = 0; count<3; ) {
 			r = (int)(Math.random()*(max-min+1)+min);
@@ -39,19 +40,71 @@ public class HomeworkEx1 {
 			// 중복 확인
 			
 			for(i=0; i<3;i++) {
-				if(enter[i] == r) {
+				if(com[i] == r) {
 					break;
 				}
 			}
 			if(i == 3) { // 중복되지 않음. 위의 for문이 정상 종료됨.
-				enter[count++]= r; // 후위연산자의 특징을 이용해 코드를 1줄 줄임.
+				com[count++]= r; // 후위연산자의 특징을 이용해 코드를 1줄 줄임.
 			}
 		}
 		
-		System.out.println("랜덤으로 생성된 숫자: ");
+		System.out.print("랜덤으로 생성된 숫자: ");
 		for(int j=0; j<3; j++) {
+			System.out.print(com[j] + " ");
+			
 		}
-
+		
+		count = 0;
+		//게임 시작
+		while(strike < enter.length) {
+			System.out.print("\n입력 : "); // 사용자 입력
+			for(int j = 0; j<3; j++) {
+				input = scan.nextInt();
+				
+				for(i=0; i<count; i++) {
+					if(enter[i] == input) {
+						break;
+					}
+				}
+				
+				//중복되지 않으면 저장 후 count 증가
+				if(i == count) {
+					enter[count++] = input;
+				}
+				
+			}
+				
+				strike = 0;
+				ball = 0;
+				for(i= 0; i<com.length; i++) {
+					for(int j = 0; j<enter.length; j++) {
+						if(com[i] == enter[j]) { //컴퓨터와 유저의 값이 같음.
+							if(i == j) {// 위치가 같음
+								strike++;
+							}
+							else {//위치가 다름
+								ball++;
+							}
+					}
+				}
+			}
+				if(strike !=0) {
+					System.out.print(strike+"S");
+				}
+				if(ball!=0) {
+					System.out.print(ball+"B");
+				}
+				if(strike==0 && ball == 0) {
+					System.out.println("O");
+				}
+			
+			
+		}
+		count =0;
+		System.out.println("\n정답입니다.");
+		scan.close();	
 	}
-
+		
 }
+
