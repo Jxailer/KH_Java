@@ -1,4 +1,6 @@
-package day11;
+package day11.homework;
+
+import java.util.Scanner;
 
 public class HomeworkEx1 {
 	/* 고등학생 성적을 관리하는 프로그램을 작성하세요.
@@ -21,6 +23,7 @@ public class HomeworkEx1 {
 	 *   - 어려운 버전: 과목명, 성적(중간, 기말, 수행평가, 총점)
 	 * */
 	
+	private static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 
