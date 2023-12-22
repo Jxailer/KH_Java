@@ -1,13 +1,12 @@
-package day10.word;
+package day10.Dictionary;
 
 import java.util.Scanner;
 
-public class WordMain1_1 {
+public class WordMain {
 	
 	private static Scanner scan = new Scanner(System.in);
 
-	private static Word[] list = new Word[10];//단어장
-	private static int count = 0;//저장된 단어 개수
+	private static Dictionary dic = new Dictionary(5);
 	
 	/* 영어 단어장 프로그램을 만드세요.
 	 * 1. 기능 정리
@@ -89,46 +88,20 @@ public class WordMain1_1 {
 		//단어와 뜻을 이용하여 Word의 인스턴스를 생성
 		Word tmp = new Word(word, meaning);
 		
-		//위에서 생성한 인스턴스를 단어장에 저장
-		list[count] = tmp;
-		//저장된 단어의 개수를 1증가
-		count++;
-		
-		//테스트용으로 단어장 목록 출력
-		for(int i = 0; i<count; i++) {
-//			list[i].print();
-		}
-		
-		//단어장이 꽉 차면 단어장 크기를 늘림
-		if(count == list.length) {
-			expandWordList();
+		if(dic.insertWord(tmp)) {
+			System.out.println("단어를 추가했습니다.");
+		}else {
+			System.out.println("단어를 추가하지 못했습니다.");
 		}
 	}
-	public static void expandWordList() {
-		//기존 단어장보다 큰 새 단어장 생성
-		Word[] tmpList = new Word[list.length + 10];
-		//새 단어장에 기존 단어들을 복붙
-		System.arraycopy(list, 0, tmpList, 0, count);
-		//새 단어장을 내 단어장이라고 선언
-		list = tmpList;
-	}
+	
 	public static void searchWord() {
 		//검색할 단어 입력
 		System.out.print("단어 : ");
 		String word = scan.next();
 		
 		//단어장에서 검색해서 결과를 출력
-		//반복문 : 저장된 개수만큼
-		for(int i = 0; i<count; i++) {
-			//단어장에 단어가 주어진 단어와 일치하면 
-			if(list[i].equals(word)) {
-				//출력 후 종료
-//				list[i].print();
-				return;
-			}
-		}
-		//단어가 없다고 출력
-		System.out.println("일치하는 단어가 없습니다.");
+		dic.searchWord(word);
 	}
 	public static void updateWord() {
 		//단어와 뜻을 입력
@@ -138,60 +111,23 @@ public class WordMain1_1 {
 		scan.nextLine();//엔터 처리
 		String meaning = scan.nextLine();
 		
-		//해당 단어의 뜻을 수정
-		//반복문 : 저장된 개수만큼
-		for(int i = 0; i<count; i++) {
-			//입력한 단어와 단어가 같으면
-			if(list[i].equals(word)) {
-				//뜻을 수정하고 종료
-				list[i].update(meaning);
-				System.out.println("단어가 수정되었습니다.");
-				return;
-			}
+		Word tmp = new Word(word, meaning);
+		if(dic.updateWord(tmp)) {
+			System.out.println("단어를 수정했습니다.");
+		}else {
+			System.out.println("단어를 수정하지 못했습니다.");
 		}
-		//일치하는 단어 없다고 출력
-		System.out.println("일치하는 단어가 없습니다.");
 	}
 	public static void deleteWord() {
 		//단어를 입력
 		System.out.print("단어 : ");
 		String word = scan.next();
 		//단어장에서 단어를 삭제
-		//삭제할 위치를 찾음
-		//반복문 : 저장된 개수만큼
-		int index = -1;//음수로 초기화. 배열의 번지는 0이상
-		for(int i = 0; i<count; i++) {
-			//입력한 단어와 같으면
-			if(list[i].equals(word)) {
-				//현재 위치를 index 저장
-				index = i;
-				break;
-			}
+		if(dic.deleteWord(word)) {
+			System.out.println("단어가 삭제됐습니다.");
+		}else {
+			System.out.println("단어를 삭제하지 못했습니다.");
 		}
-		//일치하는 단어가 없으면
-		if(index == -1) {
-			//안내문구 출력후 종료
-			System.out.println("일치하는 단어가 없습니다.");
-			return;
-		}
-		//저장된 단어의 개수를 1 줄임
-		count--;
-		System.out.println("삭제가 완료되었습니다.");
-		//일치하는 단어가 마지막 단어이면
-		if(index == count) {
-			return;
-			//종료
-		}
-		//한 칸씩 당겨오기
-		//현재 배열과 같은 크기의 새 배열을 생성
-		Word[] tmpList = new Word[list.length];
-		
-		//새 배열에 현재 배열을 복붙
-		System.arraycopy(list, 0, tmpList, 0, list.length);
-		
-		//현재 배열에서 index+1번지부터 단어가 있는 마지막 번지까지
-		//복사해서 새 배열에 index번지부터 복붙
-		System.arraycopy(tmpList, index+1, list, index, count-index);
 
 	}
 
