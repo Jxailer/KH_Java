@@ -26,3 +26,4 @@ replay_pid*
 .classpath
 .project
 java_JX/.gitignore
+/bin/
