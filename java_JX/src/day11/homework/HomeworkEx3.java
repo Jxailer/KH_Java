@@ -14,7 +14,7 @@ public class HomeworkEx3 {
 		 * 작성한 Member 클래스를 이용하여 인스턴스를 생성하고 구현한 메서드를 테스트 해보세요
 		 * */
 		
-		members[0] = new Member("김수한무", "거북이와 두루미", "주소2", 100);
+//		members[0] = new Member("김수한무", "거북이와 두루미", "주소2", "22@naver.com", 100);
 		count++;
 		members[0].printMemberInfo();
 
@@ -32,7 +32,8 @@ public class HomeworkEx3 {
 }
 /* 필요한 매개변수 및 메서드를 정리하고 구현하세요.
  * 추상화 하는 과정
- * */
+ * 
+ * 로그인 하는 기능 만들기*/
 
 
 
@@ -40,9 +41,27 @@ public class HomeworkEx3 {
 
 
 class Member{
-	private String name, nickname, address;
+	private String name, nickname, address, email, id, pw;
 	private int age;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getName() {
 		return name;
 	}
@@ -72,11 +91,14 @@ class Member{
 		
 	}
 	
-	public Member(String name, String nickname, String address, int age) {
+	public Member(String name, String nickname, String address, String email, String id, String pw, int age) {
 		this.name=name;
 		this.nickname=nickname;
 		this.address=address;
+		this.email=email;
 		this.age=age;
+		this.id=id;
+		this.pw=pw;
 	}
 	
 	public void printMemberInfo() {
@@ -85,6 +107,14 @@ class Member{
 		System.out.println("나이: "+age);
 		System.out.println("닉네임: "+nickname);
 		System.out.println("주소: "+address);
+		System.out.println("이메일: "+email);
+	}
+	
+	public void logIn(String id, String pw) {
+		if(this.id==null) {
+			System.out.println("해당 아이디가 없습니다.");
+		}
+//		if
 	}
 	
 

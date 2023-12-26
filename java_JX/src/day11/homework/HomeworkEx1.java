@@ -332,9 +332,7 @@ public class HomeworkEx1 {
 class Student{
 	private String name;
 	private int grade, classNum, stuNum;
-	private Subject kor = new Subject("kor");
-	private Subject math = new Subject("math");
-	private Subject eng = new Subject("eng");
+	private Subject [] subs;
 	
 	public Student() {
 		
@@ -364,24 +362,24 @@ class Student{
 	public void setStuNum(int stuNum) {
 		this.stuNum = stuNum;
 	}
-	public Subject getKor() {
-		return kor;
-	}
-	public void setKor(Subject kor) {
-		this.kor = kor;
-	}
-	public Subject getMath() {
-		return math;
-	}
-	public void setMath(Subject math) {
-		this.math = math;
-	}
-	public Subject getEng() {
-		return eng;
-	}
-	public void setEng(Subject eng) {
-		this.eng = eng;
-	}
+//	public Subject getKor() {
+//		return kor;
+//	}
+//	public void setKor(Subject kor) {
+//		this.kor = kor;
+//	}
+//	public Subject getMath() {
+//		return math;
+//	}
+//	public void setMath(Subject math) {
+//		this.math = math;
+//	}
+//	public Subject getEng() {
+//		return eng;
+//	}
+//	public void setEng(Subject eng) {
+//		this.eng = eng;
+//	}
 	public int getGrade() {
 		return grade;
 	}
