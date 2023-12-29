@@ -24,9 +24,9 @@ public class ListEx4 {
 		System.out.println();
 		System.out.println(list.indexOf(10));
 		
-		// contains(A): A와 일치하는 요소가 있는지 없는 지를 알려주는 메서드. 없으면 -1 반환.
+		// contains(A): A와 일치하는 요소가 있는지 없는 지를 알려주는 메서드. 없으면 false 반환.
 		System.out.println();
-		System.out.println(list.contains(2));
+		System.out.println(list.contains(5));
 		
 		// remove(A): A요소를 삭제하고 삭제 여부를 알려줌.
 		// remove(index) : index 번지 에있는 요소를 삭제후, index번지에 있는 요소를 반환함.

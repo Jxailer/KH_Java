@@ -1,4 +1,4 @@
-package day13;
+package day13.program;
 
 public interface Program {
 	int num1=10; // final static 생략.

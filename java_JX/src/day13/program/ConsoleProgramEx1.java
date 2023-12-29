@@ -1,4 +1,4 @@
-package day13;
+package day13.program;
 
 public class ConsoleProgramEx1 {
 
