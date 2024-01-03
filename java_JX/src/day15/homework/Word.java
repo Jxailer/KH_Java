@@ -3,7 +3,13 @@ package day15.homework;
 import java.util.HashSet;
 import java.util.Set;
 
-// @EqualsAndHashCode
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+ @EqualsAndHashCode
+ @Getter
+ @Setter
 public class Word {
 	private String word;
 	private char type;
@@ -34,38 +40,9 @@ public class Word {
 		this.type = type;
 	}
 
-	public String getWord() {
-		return word;
-	}
-
-
-	public void setWord(String word) {
-		this.word = word;
-	}
-
-
-	public char getType() {
-		return type;
-	}
-
-
-	public void setType(char type) {
-		this.type = type;
-	}
-
 
 	public Set<String> getMeaning() {
 		return meaning;
-	}
-
-
-	public int getSearchNum() {
-		return searchNum;
-	}
-
-
-	public void setSearchNum(int searchNum) {
-		this.searchNum = searchNum;
 	}
 
 

@@ -139,7 +139,20 @@ public class WordProgram implements Program{
 	}
 
 	private void searchWord() {
-		// TODO Auto-generated method stub
+		Word tmp;
+		
+		System.out.println("--단어 검색--");
+		System.out.print("단어 (스펠링): "); String word = scan.next();
+		System.out.print("품사 (ex. 형, 명, 동, 전, 관): "); char type = scan.next().charAt(0);
+
+		for(int i =0; i<list.size(); i++) {
+			tmp = list.get(i);
+			if(tmp.getWord().equals(word)&&tmp.getType()==type) {
+				tmp.searchWord();
+				return;
+			}
+		}
+		System.out.println("등록되지 않은 단어입니다.");
 		
 	}
 
