@@ -34,11 +34,11 @@ public class Vocabulary {
 		}
 		
 		Word selectWord = list.get(index);
-		// 이미 등록된 단어이고, 뜻도 등록 되었으면
-		if(!selectWord.getMeanList().containsAll(newMeanList)) {
-			 selectWord.addMean(newMeanList);
-			return true;
-		}
+		// // 이미 등록된 단어이고, 뜻도 등록 되었으면
+		// if(!selectWord.getMeanList().containsAll(newMeanList)) {
+		// 	 selectWord.addMean(newMeanList);
+		// 	return true;
+		// }
 		
 		// 중복된 뜻이 있으면 중복 안된 뜻들을 확인함
 		 List<Mean> selectedMeans = selectWord.getMeanList(); // 등록된 단어의 뜻을 가져옴.
@@ -135,7 +135,8 @@ public class Vocabulary {
 			System.out.println("일치하는 단어가 없습니다.");
 			return;
 		}
-		list.sort((w1, w2)->w1.getWord().compareTo(w2.getWord())); // 단어끼리 비교하여 정렬함
+		// list.sort((w1, w2)->w1.getWord().compareTo(w2.getWord())); // 단어끼리 비교하여 정렬함
+		list.sort(c);
 		list.stream().filter(w-> w.getWord().contains(word)) // word가 포함된 객체들만 필터링함.
 				.forEach(w->{
 					w.printWord();
