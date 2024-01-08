@@ -109,10 +109,10 @@ public class WordProgram implements Program {
 			searchAll();
 			break;
 		case 2:
-			searchWord();
+			printAllByViews();
 			break;
 		case 3:
-			printAllByViews();
+			searchWord();
 			break;
 		default:
 			throw new InputMismatchException();
