@@ -39,7 +39,7 @@ public class Word implements Serializable{
 	// 단어와 뜻 리스트를 출력하는 메서드
 	public void printWord() {
 		System.out.println("단어: "+word);
-		if(meanList==null) {
+		if(meanList==null || meanList.size() == 0) {
 			System.out.println("등록된 뜻이 없습니다.");
 			return;
 		}
