@@ -9,8 +9,7 @@ public class PrintServiceImp implements PrintService {
 		System.out.println("2. 뜻 관리");
 		System.out.println("3. 게임");
 		System.out.println("4. 조회");
-		System.out.println("5. 조회수");
-		System.out.println("6. 종료");
+		System.out.println("5. 종료");
 		System.out.println("----------------");
 		System.out.print("메뉴 선택: ");
 		

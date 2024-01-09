@@ -18,7 +18,7 @@ public class WordProgram implements Program {
 	private final int WORD_EXIT = 4;
 	private final int MEAN_EXIT = 4;
 	private final int GAME_EXIT = 4;
-	private final int SEARCH_EXIT = 3;
+	private final int SEARCH_EXIT = 4;
 	
 	
 	Scanner scan = new Scanner(System.in);
@@ -77,9 +77,7 @@ public class WordProgram implements Program {
 			searchManage();
 			break;
 		case 5:
-			printAllByViews();
-			break;
-		case 6:
+			System.out.println("프로그램을 종료합니다.");
 			break;
 		default:
 			throw new InputMismatchException();
@@ -87,7 +85,7 @@ public class WordProgram implements Program {
 	}
 
 	private void printAllByViews() {
-		// TODO Auto-generated method stub
+		vocabulary.printByViews();
 		
 	}
 
@@ -111,9 +109,10 @@ public class WordProgram implements Program {
 			searchAll();
 			break;
 		case 2:
-			searchWord();
+			printAllByViews();
 			break;
 		case 3:
+			searchWord();
 			break;
 		default:
 			throw new InputMismatchException();
@@ -179,6 +178,7 @@ public class WordProgram implements Program {
 	private void printWrongList() {
 		if(wrongList.size() == 0) {
 			System.out.println("오답이 없습니다.");
+			return;
 		}
 		wrongList.stream().forEach(w->w.printWord());
 		
@@ -194,8 +194,7 @@ public class WordProgram implements Program {
 		
 		Collections.shuffle(gameList); // 랜덤으로 섞어줌.
 		// 반복문(최대 리스트 크기만큼)
-		int win = 0;
-		int lose = 0;
+		int win = 0, lose = 0;
 		while(gameList.size() !=0) {
 			// 0번지에 있는 단어를 꺼냄.
 			Word word = gameList.remove(0);
