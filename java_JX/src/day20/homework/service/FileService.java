@@ -2,9 +2,11 @@ package day20.homework.service;
 
 import java.util.List;
 
-import day10.word.Word;
+import day20.homework.Word;
+
+
 
 public interface FileService {
-public List<day20.homework.Word> load(String fileName);
-public boolean save(String fileName, List<Word> list);
+public List<Word> load(String fileName);
+public boolean save(String fileName, List<day20.homework.Word> list);
 }

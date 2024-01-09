@@ -49,7 +49,7 @@ public class WordProgram implements Program {
 				scan.nextLine();
 			}
 		}while(menu != EXIT);
-		if(fileService.save("fileName", vocabulary.getList())) {
+		if(fileService.save(fileName, vocabulary.getList())) {
 			System.out.println("저장이 완료됐습니다.");
 		}else {
 			System.out.println("저장에 실패했습니다.");
@@ -185,7 +185,7 @@ public class WordProgram implements Program {
 	}
 
 	private void playGame() {
-		List<Word> gameList = new ArrayList<Word>(Vocabulary.getList());
+		List<Word> gameList = new ArrayList<Word>(vocabulary.getList());
 		
 		if(gameList.size()==0) {
 			System.out.println("등록된 단어가 없습니다.");
@@ -447,7 +447,7 @@ public class WordProgram implements Program {
 		}
 		
 		// 단어장에 추가
-		if(vocabulary.addWord(word, partOfSpeech, mean)) {
+		if(vocabulary.addWord(word, meanList)) {
 			System.out.println("단어를 추가했습니다.");
 		}else {
 			System.out.println("뜻과 단어가 이미 등록된 상태입니다.");

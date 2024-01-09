@@ -116,10 +116,6 @@ public class Vocabulary {
 		print(word, (w1, w2)->w1.getWord().compareTo(w2.getWord()));
 	}
 	
-	public List getList() {
-		return this.list;
-	}
-
 	public void print() {
 		print(""); // 빈 문자열. 모두 포함되도록함.
 		// 메서드 오버로딩을 통해 매개변수가 없는 동명의 메서드를 정의할 수 있음.
@@ -144,8 +140,7 @@ public class Vocabulary {
 
 		
 	}
-	
-	
+
 	
 	
 	
