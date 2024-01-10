@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        table 태그: 테이블을 만들기 위해 필요한 태그
+
+        ==================반드시 필요====================
+
+        tr 태그: 한 행을 나타내는 태그
+        td 태그: 한 행 안의 한 열(칸)을 나타내는 태그
+        th 태그: 테이블 첫 행에 제목을 나타낼 때 사용하는 태그
+        - 가운데 정렬, 굵은 글씨
+
+        colspan 속성: 열을 병합함
+        - td/th태그에 사용
+        rowspan 속성: 행을 병합함
+        - td/th 태그에 사용
+
+
+
+        ================================================
+
+        thead 태그: 테이블 제목에 해당
+        tbody 태그: 테이블 내용
+        tfoot 태그: 테이블 끝으로, (평균 계산값 등) 내용을 종합할 때 사용
+        - tbody보다 위에 정의 되어 있어도 테이블 최하단에 표시됨.
+
+        figure 태그: 요소를 설명하기 위한 태그로, figcaption 태그와 함께 사용됨
+        figcaption 태그
+        - 요소 앞에 있으면 요소 위에 설명을 표시
+        - 요소 뒤에 있으면 요소 밑에 설명을 표시
+
+        caption 태그: 표를 설명하는 태그
+        - 상단 가운데 정렬
+
+        colgroup 태그: 열의 스타일을 적용하기 위해 col 태그를 그룹짓는 태그
+        col 태그: 열의 스타일을 적용하는 태그
+        - 열을 적용하지 않아도 열 개수만큼 작성해야함.
+    -->
+
+
+
+    <table border>
+        <caption>성적표</caption>
+
+        <colgroup>
+            <col style="background-color: yellow;">
+            <col style="background-color: aliceblue;">
+            <col style="background-color: gray;">
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th>과목</th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>성적</th>
+             </tr>
+        </thead>
+       <tbody>
+            <tr>
+                <td rowspan="2">HTML</td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <!-- <td>HTML</td> -->
+                <td>2</td>
+                <td>임꺽정</td>
+                <td>90</td>
+            </tr>
+            
+       </tbody>
+       <tfoot>
+            <tr>
+                <td colspan="3">평균</td>
+                <!-- <td></td>
+                <td></td> -->
+                <td>95</td>
+            </tr>
+       </tfoot>
+    </table>
+
+    <figcaption>학생 이름과 성적을 보여줌.</figcaption>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀티미디어 관련 태그</title>
+</head>
+<body>
+    <!-- 이미지 태그: 이미지를 추가하는 태그
+        - inline-block 태그 (현재 위치에 추가되고, 크기 조절이 가능함)
+        - 속성:
+            - src: 이미지 경로 
+            - alt: 이미지를 불러오지 못했을 때 보여줄 문자열. (없으면 웹 표준 검사에 걸림)
+            - width: 너비
+            - height: 높이
+            (단위를 쓰지 않으면 px로 적용. auto로 설정하면 비율이 유지됨.)
+-->
+    <img 
+        src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" 
+        alt="고양이"
+        width="500"
+        >
+    <br>
+
+<!-- 오디오 태그: 음원을 재생하는 태그
+    - 속성
+        - controls: 컨트롤러를 보여줌
+        - autoplay: 자동 재생 (브라우저에 따라 안될 수도 있음)
+        - loop: 자동 재생 여부 결정
+        - preload: 음원이 재생되기 전 미리 다운로드 받아놓을 지를 결정함.
+        (none: 안받음 / metadata: 메타데이터만 받아옴 / auto: 받음)
+    
+-->
+    <audio src=""
+    controls
+    autoplay
+    loop
+    preload="none" 
+    ></audio>
+    <!--
+        video 태그
+        - 비디오 재생을 위한 태그
+        - audio 태그 속성을 그대로 사용할 수 있음
+        - 추가적인 속성
+            - poster: 재생 시작 전 보여 줄 이미지 (썸네일)
+    -->
+
+    <video
+        src="https://player.vimeo.com/external/371589800.sd.mp4?s=c67aa04c85839e76d473e9e73f8488ffab8fb791&amp;profile_id=164&amp;oauth2_token_id=57447761"
+        controls
+        autoplay
+        loop
+        preload="auto"
+        poster="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" 
+        
+    ></video>
+
+    <!--map 태그: 요소의 영역을 분할하여 링크를 걸 때 사용
+        - 영역을 분할할 요소에 usemap을 지정, 값으로 #map의 name 속성값
+
+        area태그: 영역을 지정함
+        - 속성
+            - shape: rect, circle, poly를 이용하여 도혀으이 종류를 선택
+            - coords: 좌표. 도형의 종류에 맞기 좌표를 입력함. (x,y 순으로)
+            - href: 이동할 문서의 주소
+            - alt: 대체 문자
+    
+    -->
+
+
+    <img 
+    src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" 
+    alt="고양이"
+    width="500"
+    usemap="#testmap">
+
+    <map name="testmap">
+        <area shape="rect" coords="0,0,250, 250" href="http://naver.com" alt="네이버">
+        <area shape="circle" coords="375, 125, 125" href="http://google.com" alt="네이버">
+        <area shape="poly" coords="0,250,500,250,500,500,0,500" href="http://daum.net" alt="다음">
+    </map>
+
+    
+</body>
+</html>
