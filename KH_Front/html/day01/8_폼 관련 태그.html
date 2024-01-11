@@ -139,7 +139,19 @@
         </select>
 
         <!--
-            datalist 태그:
+            datalist 태그: 지정된 값들 중 하나를 입력받을 때 쓰는 태그
+            - option 태그, input 태그와 함께 사용함.
+            - datalist 태그에 id를 지정하고, input 태그에서 list 속성의 값으로 datalist 태그의 id값을 입력함.
+        -->
+
+        <!--
+            textarea 태그: 여러 줄을 입력 받을 때 사용하는 태그
+            - col과 row를 이용하여 입력받는 행과 열을 지정함
+        -->
+
+        <!--
+            button 태그: 버튼을 만드는 태그
+            - type을 통해 button, submit, reset 버튼을 지정함 (기본값 submit)
         -->
         도시를 입력하세요.
         <input type="text" list="cities" name="city">
