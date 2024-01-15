@@ -18,12 +18,17 @@
             /* .a{color: red;} */
         
         /* 속성 선택자: [속성명=값] 
-        - [속성명~=값] : 값을 포함시키는 단어를 가진 요소를 선택함.
+        - [속성명~=값] : 값을 포함시키는, 띄어쓰기로 구분된 단어를 가진 요소를 선택함.
         - [속성명|=값] : 값-형태로 된 요소를 선택함*/
             /* [type=text]{color: red;} */
             /* [class~=input]{color: red;} */
             /* [class|=input]{color: red;} */
 
+        /*
+        - [속성명^=값] : 값으로 시작하는 것을 가진 요소를 선택함. 
+        - [속성명$=값] : 값으로 끝나는 것을 가진 요소를 선택함.
+        - [속성명*=값] : 값을 포함시키는 단어를 가진 요소를 선택함.
+        */
             /* [class^=input]{color: red;} */
             /* [class$=a]{color: red;} */
             /* [class*=a]{color:red;} */
@@ -44,7 +49,7 @@
             /* .first-item~.item{color: red;} */
 
         /* 반응 선택자
-        - active: 클릭한 요소
+        - :active: 클릭한 요소
         - hover: 마우스가 올려진 요소 */
             a:active{color:blue;}
             /* a:hover{color:aqua;} */
