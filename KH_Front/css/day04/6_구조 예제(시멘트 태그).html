@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조 예제</title>
+    <style>
+        header{background: gray; height: 50px;}
+        /* 시멘트 태그들은 block 태그이기 때문에 float을 이용해 양옆에 배치함 */
+        aside{background: red; height: 500px; width: 30%; float:left}
+        section{background: yellow; height: 500px; width: 70%; float: right;}
+        footer{background: blue; height: 200px;}
+        main::after{clear: both; content: ''; display: block;}
+    </style>
+</head>
+<body>
+    <header>헤더</header>
+    <main>
+        <aside>어사이드</aside>
+        <section>섹션</section>
+    </main>
+    <footer>푸터</footer>
+</body>
+</html>

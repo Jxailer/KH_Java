@@ -8,6 +8,7 @@
         .table{
             width: 100%; border-collapse: collapse;
         }
+        tr{text-align: center;}
 
         /* 혹은(,) */
         .table>td,
@@ -22,7 +23,7 @@
         }
 
         /* 예제: 제목을 제외한 칸에 호버하면 배경색이 노랑으로 바뀌게 하기 */
-        /* .table .tr~.tr:hover{ background-color: yello;} 왜 안되지??*/
+        .table tr~tr:hover{ background-color: yello;} 
         .table tbody tr:hover{background-color: yellow;}
     </style>
 </head>
@@ -30,9 +31,9 @@
     <table class="table">
         <thead>
             <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>조회수</th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>조회수</th>
             </tr>
         </thead>
         <tbody>

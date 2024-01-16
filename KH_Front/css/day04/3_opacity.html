@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opacity 예제</title>
+    <style>
+        /* 
+        opacity: 투명도를 조절하는 속성 
+        - 0은 투명, 1은 불투명(기본값) 
+        */
+        .box{height: 50px; background-color: yellow; margin-bottom: 10px;}
+        .box1{opacity: 0.5;}
+
+        /* 부모의 opacity보다 자식의 opacity보다 높아도 진하게 표시되지 않음. */
+        .box1 .inner-box{opacity: 1;}
+        /* 이를 방지하려면 opacity가 아니라 background-color에서 배경의 알파값을 조정함. */
+        .box2{background-color: rgba(255, 0, 0, .5);}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box1">
+            <div class="inner-box">안녕하세요</div>
+        </div>
+        <div class="box box2">꽝</div>
+    </div>
+</body>
+</html>
