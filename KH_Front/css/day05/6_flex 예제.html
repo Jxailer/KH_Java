@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex 예제</title>
+    <style>
+        /* 
+        flex 속성을 사용하려면 display:flex로 해야함.
+        
+        - 용어 정리:
+            1. flex 컨테이너: flex 요소를 담고있는 항목
+            2. flex 아이템: flex 컨테이너 속에 담겨져 있는 항목
+            3. 주축: 플렉스 항목을 배치하는 기본 방향
+            4. 교차축: 주축과 교차(수직으로)하는 방향
+        
+        - flex 속성
+            1. flex-direction: 플렉스 컨테이너 안에서 플렉스항목을 배치하는 
+                주축과 방향을 지정하는 속성
+                - row(기본값), row-reverse, column, column-reverse
+
+            2. flex-wrap: 컨테이너 너비보다 많은 아이템이 있을 경우, 줄을 바꿀 지 여부를 지정
+                - nowrap(기본값, 아이템 크기가 줄어들 수 있음.)
+                - wrap(여러 줄 표시)
+                - wrap-reverse(여러 줄 표시, 새 라인은 위로 표시함)
+
+            3. flex-flow: direction과 wrap을 한 번에 적용하는 속성
+
+            4. justify-content: 주축에서 플렉스 항목 간의 정렬 방법
+                - flex-start (기본값, 주축의 시작점에 맞춰 배치)
+                - flex-end (주축의 끝점에 맞춰 배치)
+                - center (주축의 중앙에 맞춰 배치 / block 요소도 가운데 정렬 가능함)
+                - space-between (첫 번째 항목과 끝 항목을 시작점과 끝점에 배치한 후, 
+                    나머지 항목은 그 사이에 같은 간격으로 배치함)
+                - space-around (모든 항목을 주축에 같은 간격으로 배치함)
+
+            5. align-items: 교차축 방향으로 아이템 배치 방법을 설정하는 속성
+                - stretch (기본값, 교차축을 채우기 위해 아이템을 늘림)
+                - flex-start (아이템을 각 줄의 시작점에서 정렬)
+                - flex-end (아이템을 각 줄의 끝점에서 정렬)
+                - center (각 줄의 가운데에서 정렬)
+                - baseline (아이템을 문자 기준선에 정렬)
+            5-1. align-self (특정 아이템의 교차축 정렬 방법을 바꿀 때 사용하는 속성.)
+
+            6. align-content: 교차축에서 플렉스 항목 간의 간격을 지정함
+                - stretch (기본값, 교차축을 채우기 위해 아이템을 늘림)
+                - flex-start (아이템을 각 줄의 시작점에서 정렬)
+                - flex-end (아이템을 각 줄의 끝점에서 정렬)
+                - center (각 줄의 가운데에서 정렬)
+                - space-between (첫 아이템은 시작점, 끝 아이템은 끝점에 배치하고
+                    나머지는 여백이 일정하게 배치됨.)
+                - space-around (모든 항목을 주축에 같은 간격으로 배치함)
+                - space-evenly (모든 여백을 고르게 배치함)
+
+        */
+
+        /* flex 컨테이너 */
+        .container{display: flex; height: 400px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* flex-flow: row nowrap; */
+            justify-content: space-between;
+            align-items: center;
+            align-content: space-evenly;
+            } 
+
+        /* flex 아이템 */
+        .box{width: 30%; height: auto; background-color: yellow; margin-bottom: 10px;} 
+        .box:nth-of-type(2){background-color: green;}
+        .box:nth-of-type(3){background-color: blue;}
+        /* .box:first-of-type{align-self: stretch;} */
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+</body>
+</html>

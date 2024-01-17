@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 예제 2</title>
+    <style>
+        .container{border: 5px solid red; padding: 0 10px; width: 100%;}
+        .container::after{content: ''; display: block; clear: both;}
+
+        .box{width: calc(50% - 20px); height: 350px; border: 3px solid black;
+        margin: 8px ; box-sizing: border-box;
+        float: left;
+        }
+        .box:nth-of-type(2n){ margin-left: 10px;}
+
+        /* 화면 크기가 900px 이상일 때 */
+        @media screen and (max-width: 900px) {
+            .box{width: calc(33% - 20px);}
+            .box:nth-of-type(2n){margin-left: 8px;}
+            .box:nth-of-type(3n){margin-left: 10px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- 화면크기 900px 기준으로 2*3 형태에서 3*2 형태가 되도록 반응형 예제 만들기 -->
+    <div class="container">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+    </div>
+</body>
+</html>

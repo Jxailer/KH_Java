@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 예제3</title>
+    <style>
+        /* 문자열로 grid 지정하기 */
+        .container{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 200px);
+            grid-template-areas:
+            "box1 box1 box1 box2"
+            "box3 box3 box4 box2"
+            "box3 box3 box4 box2"
+            "box3 box3 box5 box5";
+        }
+        .box:nth-of-type(1){grid-area: box1; background-color: red;}
+        .box:nth-of-type(2){grid-area: box2; background-color: orange;}
+        .box:nth-of-type(3){grid-area: box3; background-color: yellow;}
+        .box:nth-of-type(4){grid-area: box4; background-color: green;}
+        .box:nth-of-type(5){grid-area: box5; background-color: blue;}
+    </style>
+</head>
+<body>
+    <div class="container">.
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+</body>
+</html>
