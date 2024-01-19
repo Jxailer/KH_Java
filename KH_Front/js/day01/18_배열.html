@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <script>
+        /*
+        JS 배열: 자료형에 상관 없이 여러 개의 데이터를 관리함
+        - 배열 관련 함수를 제공함
+
+        배열의 선언
+        - var 배열명 = [];
+        - var 배열명 = new Array(크기);
+        - var 배열명 = new Array(값1, 값2, ..., 값n)
+
+        배열의 함수들
+            1. 배열에 값을 추가하는 함수
+            - push(): 값을 배열 뒤에 추가함
+            - unshift(): 값을 배열 맨 앞에 추가
+            
+            2. 배열의 값을 제거하는 함수
+            - pop(): 배열의 맨 뒤 값을 제거한 후 리턴
+            - shift(): 배열의 맨 앞 값을 제거한 후 리턴
+
+            3. 요소를 탐색하는 함수
+            - indexOf(요소): 요소와 일치하는 값이 몇 번지에 있는 지 리턴함.
+            - lastIndexOf(요소): 요소를 뒤에서부터 탐색해서 일치하는 값이 몇 번지에 있는 지 리턴함
+            - includes(요소):
+
+        기타 함수
+            - join(구분): 배열 값들을 구분자로 구분이 된 하나의 문자열로 리턴함
+            - slice(시작번호, 끝번호, 종류): 배열을 잘라냄 (부분배열 생성 후 리턴 / 원본엔 영향 x)
+            - splice(): 배열을 삭제하거나 추가함. (원본이 바뀜)
+
+        JAVA에서 제공하는 stream 메서드와 이름이 같은 함수들
+            - map(callback): 각 요소에 주어진 함수를 호출하고, 결과로 새로 만들어진 배열을 반환함
+                (원본은 안바뀜)
+            - filter: callback이 true인 요소들만 필터링함
+            - reduce(callback, initValue): callback 함수를 이용하여 하나의 값을 도출함. (initValue는 초기값)
+            - find(callback): callback이 true가 되는 첫 요소를 반환함.
+                (각 요소에 callback을 실행함)
+            - forEach
+        */
+
+        var arr = [1, '안녕', true, {}];
+
+        document.write('-----요소 추가-----<br>')
+        arr.push(1, 2, 3)
+        arr.unshift('a', 'b', 'c')
+        document.write(arr+'<br><br>')
+        
+        document.write('-----요소 삭제-----<br>')
+        document.write(arr.pop()+'<br>')
+        document.write(arr.shift()+'<br>')
+        document.write(arr+'<br><br>')
+
+        document.write('-----index of-----<br>')
+        document.write(arr.indexOf(1)+'<br>')
+        document.write(arr.lastIndexOf(1)+'<br>')
+        document.write(arr.includes(1)+'<br><br>')
+
+        document.write('-----기타 함수-----<br>')
+        document.write(arr.join("-")+'<br><br>')
+        document.write(arr.slice(3)+'<br>')
+        document.write(arr+'<br><br>')
+        document.write(arr.splice(0,2)+'<br>') // 0번지부터 2개를 삭제함
+        document.write(arr+'<br><br>')
+        // 0번지부터 0개를 삭제한 후 0번지부터 '100', 200, false 추가
+        document.write(arr.splice(0,0, '100', 200, false)+'<br>')
+        document.write(arr+'<br><br>')
+
+        document.write('-----JAVA의 것과 이름이 같은 함수-----<br>')
+        document.write(arr.map((item)=>{
+            return item+1
+        })+'<br>')
+        document.write(arr+'<br><br>')
+        document.write(arr.filter((item)=>{
+            return item > 100; // 100보다 큰 값만 출력함.
+
+        })+'<br>')
+        document.write(arr.reduce((acc, item)=>{
+            if(typeof item == 'number'){ // 정수인 것만
+                return acc + item;
+            }
+            return acc
+        }, 0)+'<br>')
+        document.write(arr.find((item)=>{
+            return item != 0;
+        })+'<br>'+'<br>')
+        arr.forEach((item)=>document.write(item)+" ")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    </script>
+</body>
+</html>

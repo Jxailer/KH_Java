@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 입출력</title>
+</head>
+<body>
+    <!-- JS에서는 ;이 필수가 아님! 그러나 써주도록 하자. -->
+    <!-- JS를 사용하는 방법에는
+        1. body 태그에 코딩 후 script 태그 안에 그 기능을 정의하거나
+        2. head 태그에서 외부 JS 파일을 불러오는 방법이 있음
+    
+        - JS는 처음 구동될 때 한 번 실행됨
+        - 재시작하면 처음부터 실행됨
+    -->
+    <script>
+        // alert(변수 또는 문자열 등); : 매개변수를 알림창에 띄움
+        // - 문자열: '', "", ``
+        // alert('안녕하세요');
+
+        // console.log(변수 또는 문자열 등);: 개발자 도구에서의 콘솔 창에 매개변수를 출력함
+        console.log('안녕하세요', '만나서 반갑습니다');
+        console.log(123); // 숫자는 약간 푸른색으로 출력됨.
+
+        // confirm(문자열): 문자열을 알림창으로 띄우고, 유저가 확인을 누르면 true, 취소를 누르면 false를 리턴.
+        console.log( confirm('안녕하세요'));
+
+        // prompt(문자열, 초기값(생략 가능)): 문자열을 알림창으로 띄우고, 유저에게 값을 입력받은 값을 리턴함.
+        console.log(prompt("당신의 나이는?", 0));
+
+        // document.write(): 문자열을 브라우저에 출력함. html 코드인 경우, 해당 태그에 맞게 적용됨. 
+        // - document라는 객체가 제공해주는 함수.
+        // - 이어쓰기가 됨.
+        document.write('안녕하세요<br>');
+        document.write('반갑습니다');
+        document.write('<h1>안녕하세요.</h1>')
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+</head>
+<body>
+    <script>
+        // 화살표 함수 사용법
+        // 함수 표현식 이용한 함수 선언
+        var sum = (num1, num2)=>num1 + num2;
+        /*
+        var sum = function(num1, num2){
+            return num1 + num2;
+        }
+        */
+
+        document.write(sum(1,2))
+
+        //setInterval(함수, 시간): 일정 시간마다 주어진 작업을 수행함
+        serInterval(()=>{
+            document.write(123)
+        }, 1000)
+        /*
+        serInterval(function(){
+            document.write(123)
+        }, 1000)
+        */
+    </script>
+</body>
+</html>

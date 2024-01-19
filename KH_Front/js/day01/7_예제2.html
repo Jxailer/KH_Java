@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제2</title>
+</head>
+<body>
+    <script>
+        /* 두 정수를 입력받아 두 정수의 합을 브라우저 화면에 출력하는 예제  */
+
+        var num1 = prompt('정수 1을 입력하세요', 0)
+        var num2 = prompt('정수 2을 입력하세요', 0)
+        // 문자열을 숫자로 바꾸는 연산이 필요함.
+        num1 = +num1
+        num2 = +num2
+
+        // nullish 처리하기
+        num1 = num1 ?? 0
+        num2 = num2 ?? 0
+        document.write(`${num1} + ${num2} = ${num1 + num2}`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>예제 5</title>
+</head>
+<body>
+	<div id="box">박스</div>
+	<button id="btn1" onclick="btn1()">1번</button>
+	<script>
+		/*
+		박스와 버튼을 만들고,
+		버튼을 한 번 클릭하면 노란색, 다시 클릭하면 흰색, 또 다시 클릭하면 노란색이 되도록 수정
+		*/
+
+		// 하나의 코드로만 하기
+		function btn1(){
+			let box = document.getElementById('box')
+			if(box.style.backgroundColor == 'yellow'){
+				box.style.backgroundColor = 'white'
+			}else{
+				box.style.backgroundColor = 'yellow'
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

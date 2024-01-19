@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체</title>
+</head>
+<body>
+    <button onclick="showDate()">현재 시간은?</button>
+    <script>
+        // 현재 시간을 기준으로 Date 객체를 생성함
+        // let date = new Date();
+        // document.write(date)
+
+        // Date 객체를 yyyy-MM-dd HH:mm:ss를 리턴함.
+        function getDate(date){
+            const year = date.getFullYear();
+            // 월을 1이 아닌 01로 표시하기 위해서 
+            // padStart(size, char) : 문자열이 size 길이보다 작은 경우, char 문자를 앞에 채워줌.
+            const month = String(date.getMonth() + 1).padStart(2,'0'); 
+            const day = String(date.getDate()).padStart(2,'0');
+            const hour = String(date.getHours()).padStart(2,'0');
+            const minute = String(date.getMinutes()).padStart(2,'0');
+            const sec = String(date.getSeconds()).padStart(2,'0');
+            const ms = String(date.getMilliseconds()).padStart(3,'0'); // ms는 3자리.
+
+            return `${year}-${month}-${day} ${hour}:${minute}:${sec}.${ms}`
+        }
+
+        function showDate(){
+            let date = new Date();
+            // date.setTime(0); //1970년 1월 1일 0시 0분 0초(표준시)
+            // date.setDate(1); // 날짜를 바꿀 수 있음.
+            alert(getDate(date))
+        }
+    </script>
+</body>
+</html>

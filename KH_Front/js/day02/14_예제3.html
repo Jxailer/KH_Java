@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>오늘의 할일 예제</title>
+</head>
+<body>
+	<div class="container">
+		<h1>오늘의 할일</h1>
+		<label for="input">할 일을 입력하세요:</label>
+		<!-- // onchange()를 추가하면 엔터로도 추가할 수 있음. -->
+		<input type="text" id="input" onchange="add()"> 
+		<button class="btn" onclick="add()">추가</button>
+		<ul id="to-do-list">
+			
+		</ul>
+	</div>
+	<script>
+		/*
+		input 태그를 이용하여 오늘의 할일을 입력받고,
+		추가 버튼을 클릭하면 오늘의 할일 화면에 추가되도록
+		코드를 작성하세요
+		*/
+		let number = 1
+		function add(){
+			let toDo = document.getElementById('input')
+			let list = document.getElementById('to-do-list')
+			text = toDo.value
+			list.innerHTML += "<li>"+number+". "+text+"</li>"
+			number++
+			toDo.value = ''
+			list.focus()
+		}
+
+	</script>
+</body>
+</html>

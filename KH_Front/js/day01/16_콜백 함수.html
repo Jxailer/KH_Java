@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백 함수</title>
+</head>
+<body>
+    <script>
+        /*
+        콜백 함수
+        - 함수의 매개변수로 들어가는 함수
+        */
+
+        var age = prompt('나이를 입력하세요')
+        checkAdult(age, adult, notAdult)
+        checkAdult(age,()=>{
+            document.write('성인입니다.<br>')
+        },()=>{
+            document.write('성인이 아닙니다.<br>')})
+
+        // 나이가 주어지면, 성인이면 a()함수를, 미성년자이면 b()함수를 실행하는 코드
+        function checkAdult(age, callbackA, callbackB){
+            if(age>19){
+                callbackA();
+            }else{
+                callbackB();
+            }
+        }
+        function adult(){
+            document.write('성인입니다. <br>')
+        }
+        function notAdult(){
+            document.write('성인이 아닙니다.<br>')
+        }
+    </script>
+</body>
+</html>

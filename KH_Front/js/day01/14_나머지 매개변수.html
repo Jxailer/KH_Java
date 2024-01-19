@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나머지 매개변수</title>
+</head>
+<body>
+    <script>
+        /*
+        나머지 매개변수: 
+        - 함수로 호출 시 넘겨준 인수들을 배열로 저장함.
+        */
+        function sum1(...args){
+            var sum = 0;
+            for(let i =0; i<args.length; i++){
+                sum += args[i]
+            }
+            return sum;
+        }
+        document.write(sum1(1, 2, 3)+'<br>')
+        
+        
+    </script>
+</body>
+</html>

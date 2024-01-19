@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+        대표적인 이벤트들(on으로 시작하는 속성들.)
+        1. click
+        2. (입력태그에서) change, input, keydown, keypress, keyup
+        3. (마우스) mouseover, mouseleave, mouseenter
+        4. (폼태그) submit
+
+     -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 핸들러</title>
+</head>
+<body>
+    <button onclick="alert('클릭 했습니다.');">버튼 클릭</button>
+    <!-- onchange: input 안의 내용이 변경된 후 blur(inactive) 상태가 되었을 때 반응함. -->
+    <input type="text" onchange="change(this)">
+
+    <script>
+        function change(obj){
+            var text = obj.value;
+            alert(text)
+        }
+    </script>
+</body>
+</html>

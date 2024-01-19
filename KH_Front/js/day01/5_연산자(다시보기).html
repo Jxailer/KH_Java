@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    
+    <script>
+        /* 산술 연산자
+        +: 문자열 앞에 쓰면 숫자로 변환함.
+        **: 제곱 연산자 (2**3 = 2^3)
+
+        - +를 제외한 나머지 산술 연산자는 숫자와 문자열을 연산할 때, 
+            문자열을 자동으로 숫자로 바꿔 연산함.
+        */
+
+        var str = "123";
+        var num = +123;
+        console.log(`${str}의 자료형은? ${typeof str}`)
+        console.log(`${num}의 자료형은? ${typeof num}`)
+
+        var str2 = "abc";
+        var num2 = +str2;
+        console.log(`${str2}의 자료형은? ${typeof str2}`)
+        console.log(`${num2}의 자료형은? ${typeof num2}`) 
+        // str에 저장되어있던 것이 숫자가 아니므로, num2에 NaN이 저장됨.
+
+        var num1 = 2;
+        var num2 = 3;
+        console.log(`${num1} / ${num2} = ${num1 / num2}`)
+        var num3 = 2;
+        var num4 = 3;
+        console.log(`${num3} ^ ${num4} = ${num3 ** num4}`)
+        var num5 = '123'
+        var num6 = '456'
+        console.log(`문자열 ${num5} / 문자열 ${num6} = ${num5 / num6}`)
+
+        /* 논리 연산자
+        - js에서 참 또는 거짓을 다음과 같이 판별한다
+        (false: 9, ""(빈 문자열), undefined, null, false / true: false가 아닌 모든 것)
+
+        ||: 첫 번째 truthy(참)를 찾음. 없으면 마지막 값을 선택함 (0||1||2 => 1)
+        &&: 첫 번째 falsy(거짓)를 찾음, 없으면 마지막 값을 선택. (1&&null&&0 => null)
+        */
+    </script>
+</body>
+</html>
