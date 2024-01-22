@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 이벤트 예제 5-1</title>
+	<style>
+		.box{width: 30%; height: 300px; border: 1px solid black; background-color: aquamarine;
+		margin: 10px; float: left; }
+	</style>
+</head>
+<body>
+	<div style="text-align: center;">
+		<button class="btn" data-target="#box1" >1</button>
+		<button class="btn" data-target="#box2" >2</button>
+		<button class="btn" data-target="#box3" >3</button>
+	</div>
+	
+	<div id="box1" class="box">1</div>
+	<div id="box2" class="box">2</div>
+	<div id="box3" class="box">3</div>
+	<script>
+	/*
+	- 버튼 3개를 만든 후 박스 3개를 만든 후 다음 기능이 동작되도록 구현:
+	버튼 1을 클릭하면 박스 1이 보이고, 나머지 박스2와 박스3이 감춰진다.
+	버튼 2를 클릭하면 박스 2가 보이고, 나머지 박스가 감춰진다.
+	*/
+	 
+	let btns = document.querySelectorAll('.btn')
+	btns.forEach(function(item){
+		item.onclick = function(){
+			// data-target 속성 값을 읽어와서 선택자로 활용함
+			let target = item.getAttribute("data-target")
+			displayNone('.box')
+			let targetElement = document.querySelector(target)
+			targetElement.style.display = 'block'
+		}
+		
+	})
+
+	// 선택자와 일치하는 요소들을 안보이게 해줌
+	function displayNone(selector){
+		let elements = document.querySelectorAll(selector)
+		elements.forEach(function(item){
+			item.style.display = 'none'
+		})
+	}
+	</script>
+	
+</body>
+</html>

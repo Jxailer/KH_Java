@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 이벤트 예제</title>
+</head>
+<body>
+	<div class="box box1" style="padding: 20px; border: 1px solid black; ">
+		<span id="text1">0</span>
+		<div class="inner-box" style="background-color: yellow; padding: 20px; border: 1px solid black; height: 100px;">
+		</div>
+	</div>
+	<div class="box box2" style="padding: 20px; border: 1px solid black; ">
+		<span id="text2">0</span>
+		<div class="inner-box" style="background-color: yellow; padding: 20px; border: 1px solid black; height: 100px;">
+		</div>
+	</div>
+	<script>
+		/*
+		요소의 hover를 인식하는 코드들 간의 차이
+		(마우스가 요소 안으로 들어갈 때/나갈 때 발생하는 이벤트)
+
+		onmouseover/onmouseout:
+		- 마우스가 자식 요소 안으로 들어가는 경우, 요소를 나간 것으로 판별함.
+
+		onmouseenter/onmouseleave:: 일반적으로 hover이벤트를 구현할 때 사용함.
+		- 마우스가 자식 요소 안으로 들어가도 유지됨.
+
+		*/
+
+
+		// 박스에 마우스가 들어가면 작동되는 코드
+		let box = document.getElementsByClassName('box1')[0]
+		let count1 = 0
+		let text1 = document.getElementById('text1')
+		box.onmouseover = function(){ 
+			this.style.background='gray'
+			text1.innerText = ++count1
+		}
+		// 박스에서 마우스가 벗어나면 작동되는 코드
+		box.onmouseout = function(){
+			this.style.background = 'white'
+			text1.innerText = ++count1
+		}
+
+		// ==========================================================================
+
+		// 박스에 마우스가 들어가면 작동되는 코드
+		let box2 = document.getElementsByClassName('box2')[0]
+		let count2 = 0
+		let text2 = document.getElementById('text2')
+		box2.onmouseenter = function(){ 
+			this.style.background='gray'
+			text2.innerText = ++count1
+		}
+		// 박스에서 마우스가 벗어나면 작동되는 코드
+		box2.onmouseleave = function(){
+			this.style.background = 'white'
+			text2.innerText = ++count1
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 이벤트 예제 5-1</title>
+	<style>
+		.box{width: 30%; height: 300px; border: 1px solid black; background-color: aquamarine;
+		margin: 10px; float: left; }
+	</style>
+</head>
+<body>
+	<div style="text-align: center;">
+		<button id="btn1" >1</button>
+		<button id="btn2" >2</button>
+		<button id="btn3" >3</button>
+	</div>
+	
+	<div id="box1" class="box">1</div>
+	<div id="box2" class="box">2</div>
+	<div id="box3" class="box">3</div>
+	<script>
+	/*
+	- 버튼 3개를 만든 후 박스 3개를 만든 후 다음 기능이 동작되도록 구현:
+	버튼 1을 클릭하면 박스 1이 보이고, 나머지 박스2와 박스3이 감춰진다.
+	버튼 2를 클릭하면 박스 2가 보이고, 나머지 박스가 감춰진다.
+	*/
+	 
+	let btns = document.querySelectorAll('.btn') // elementsBy는 forEach를 사용할 수 없음.
+	let boxes = document.querySelectorAll('box')
+	btns.forEach((item, index) =>{
+		item.onclick = function(){
+			invisible()
+			// 눌린 버튼의 순서와 같은 순서의 박스를 보여줌
+			boxes[index].style.visibility='visible'
+		}
+	});
+
+	function invisible(){ // 모든 박스를 안보이게하는 메서드를 먼저 작성해놓고 다른 메서드에서 호출하는 구조
+		let boxes2 = document.getElementsByClassName('box') // className은 .을 찍지 않음!
+		for(box of boxes2){
+			box.visibility = "hidden"
+		}
+	}
+	</script>
+	
+</body>
+</html>
