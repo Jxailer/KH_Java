@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css 속성에 접근하기</title>
+</head>
+<body>
+	<div class="box">안녕하세요. 홍길동입니다.</div>
+	<script>
+		/*
+		css 속성에 접근하기: 요소.style.속성명
+		- css 속성 명에 -가 들어간 속성은 -를 제거하고 카멜 표기법으로 표시
+		ex) background-color > backgroundColor
+		*/
+
+		let box = document.getElementsByClassName("box")[0]
+		box.style.color = "red"
+		box.style.fontSize = "30px"
+		box.style.backgroundColor = "yellow"
+		// 아래코드와 동일하게 적용됨.
+		box.style.cssText = "color: red; font-size: 30px; background-color: yellow"
+	</script>
+</body>
+</html>

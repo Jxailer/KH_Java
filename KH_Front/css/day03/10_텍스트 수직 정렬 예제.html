@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 수직 정렬 예제</title>
+    <style>
+        .box{border: 1px solid black;}
+
+        /* 이미지는 배치가 base-layout에 배치되므로 
+        vertical-align: top을 통해 base-layout이 아닌 center에 배치하도록 함 */
+        .box>img{vertical-align: top;}
+
+        .box2{border: 1px solid black;}
+
+        /* vertical-align은 수치로도 설정할 수 있음. */
+        .text{vertical-align: top;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img width="100px" src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg">
+    </div>
+    <div class="box2">
+        <img width="100px" src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg">
+        <span class="text">안녕하세요.</span>
+    </div>
+</body>
+</html>

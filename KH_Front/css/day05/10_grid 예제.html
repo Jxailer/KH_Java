@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 예제</title>
+    <style>
+        /* 
+            grid-template-columns: 각 컬럼의 크기를 지정하는 속성
+            - repeat(), minmax(), auto-fit, auto-fil을 이용해서 지정할 수 있음.
+            - reapet(개수, 크기)
+            - minmax(최소값, 최대값)
+         */
+
+        .container{
+            display: grid;
+            
+            /* 한 열의 너비를 200px 씩, 3열을 배치함 */
+            /* grid-template-columns: 200px 200px 200px; */
+
+            /* 요소들을 최소 200, 최대 1 프레임의 비율을 갖도록 알아서 배치함.
+                - auto-fit(반복 횟수) */
+            /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+            
+            grid-template-columns: repeat(3, 200px);
+            grid-template-rows: repeat(3, 200px);
+            /* 만들어진 grid는 9칸이나 콘텐츠는 6개 이므로, 아래에 3개 분량의 공백이 생김. */
+            
+            grid-column-gap: 30px;
+            grid-row-gap: 30px;
+        }
+        .box{border: 3px solid red;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+</body>
+</html>

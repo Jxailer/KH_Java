@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background 관련 속성</title>
+    <style>
+        [class^=box]{ width: 300px; height: 300px; padding: 50px;}
+        .box1{
+            border: 20px solid transparent;
+
+            /* background-color: 배경색을 지정하는 속성 */
+            background-color: yellow;
+            
+             /*  background-clip: 배경 범위 조절
+                - border-box 박스 모델의 가장 외곽인 테두리까지 적용
+                - padding-box 테두리 제외한 패딩 범위까지 적용
+                - content-box 내용 부분만 적용 */
+            background-clip: border-box;
+           
+        }
+        .box2{
+            border: 1px solid black;
+            width: 1000px; height: 1000px;
+            padding: 30px;
+
+            /* background-image : 배경 이미지 설정
+                - 선택자{background-image: url(경로)} */
+            background-image: url(http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg);
+            /* background-color: yellow; */
+
+            /* background-repeat : 배경 이미지 반복 출력 설정
+                - repeat 브라우저에 가득 찰 때 까지 가로/세로 반복
+                - repeat-x / repeat-y 넓이/높이 만큼 반복
+                - no-repeat 배경 이미지 한 번만 출력 */
+            background-repeat: no-repeat;
+
+             /* background-size : 배경 이미지 크기를 조절하는 속성
+                - auto 원래 배경 이미지 크기 만큼 표시
+                - contain 요소 안으로 이미지가 들어갈 수 있게 확대/축소 
+                - cover 요소 범위를 이미지가 덮을 수 있또록 확대/축소
+                - 크기 값(px) / 백분율 수치화된 값으로 표현(가로, 세로)*/
+            background-size: contain;
+
+            /* backgrount-position: 배경 이미지 위치를 조정하는 속성
+                - 수평 위치: left / center / right
+                - 수직 위치: top / center / bottom
+                - 크기 값(px) / 백분율: 수치화된 값으로 표현(가로, 세로)(왼쪽 모서리 좌표) */
+            background-position: 0px 0px;
+
+            /* (잘 되는 건가...?)
+                background-origin: 배경 이미지를 배치할 때 기준을 지정하는 속성
+                - border-box 테두리 기준
+                - padding-box 테두리를 뺀 패딩이 기준
+                - content-box 내용 부분이 기준 */
+            background-origin: border-box;
+
+            /* background-attachment: 웹 페이지가 위 아래로 움직여도 배경은 움직이지 않게 고정하는 속성
+                - scroll (기본값) 배경 이미지가 스크롤을 따라 움직이게 설정함
+                - fixed 배경 이미지가 움직이지 않게 설정함 */
+            background-attachment: fixed;
+
+            /* 모든 속성 한 번에 쓰기 */
+            /* background: url(http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg) */
+                /* no-repeat fixed 0 0 content-box contain; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">
+        <div>asd</div>
+    </div>
+</body>
+</html>

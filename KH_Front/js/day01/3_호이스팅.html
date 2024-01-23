@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호이스팅</title>
+</head>
+<body>
+    <!-- 호이스팅이란?: 페이지 로딩 시 변수 또는 함수가 코드 제일 상단으로 올라가는 동작. -->
+    <script>
+        // 변수 선언 보다 출력이 먼저임에도 동작함.
+        console.log(x);
+        var x = 10;
+        console.log(x);
+
+        /*
+        위 코드가 호이스팅이 발생하면, 다음과 같이 동작함: 
+        var x;
+        console.log(x);
+        x = 10;
+        console.log(x);
+        */
+
+        //let은 호이스팅이 이루어지지 않아 아래코드가 에러가 남
+        // console.log(y) // 에러 발생
+        // let y;
+        // console.log(y)
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 그라데이션 예제</title>
+    <style>
+        *{
+            border: 5px solid black;
+        }
+        
+        /* linear-gradient: 선형 그라데이션 */
+        .linear-gradient{
+            height: 50px; 
+            background: linear-gradient(45deg, #f00,  #0f0 50%, #00f);
+        }
+
+        /* radial-gradient: 원형 그라데이션 */
+        [class^=radial]{ margin-top: 30px; width: 100px; height: 100px;}
+        .radial-gradient1{
+            background: radial-gradient( #f00 , #00f);
+        }
+        .radial-gradient2{
+            background: radial-gradient( #f00 10%, #00f);
+        }
+        .radial-gradient3{
+            background: radial-gradient(circle, #f00, #00f);
+        }
+        .radial-gradient4{
+            background: radial-gradient(at 30% 20%, yellow, red);
+        }
+        .radial-gradient5{
+            background: radial-gradient(farthest-side at 30% 20%, yellow, red);
+        }
+        .radial-gradient6{
+            background: radial-gradient(closest-side at 30% 20%, yellow, red);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box linear-gradient"></div>
+    <div class="radial-gradient1 box "></div>
+    <div class="radial-gradient2 box "></div>
+    <div class="radial-gradient3 box "></div>
+    <div class="radial-gradient4 box "></div>
+    <div class="radial-gradient5 box "></div>
+    <div class="radial-gradient6 box "></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 등록</title>
+</head>
+<body>
+	<!-- 이벤트 등록방법
+	1. 태그에 직접 정의하기 -->
+	<div id="id1" onclick="alert('이벤트 등록1')">박스1</div>
+	<div id="id2">박스2</div>
+	<div id="id3">박스3</div>
+	<div id="id4">박스4</div>
+	<script>
+		// 2. 익명함수로 지정하기
+		let box2 = document.getElementById("id2")
+		box2.onclick = function(){
+			alert(this.innerText)
+		}
+		
+		// 3. 화살표 함수로 지정하기(this 사용 불가능)
+		let box3 = document.getElementById("id3")
+		box3.onclick = ()=>{
+			// 화살표 함수에는 this를 쓸 수 없음
+			alert("이벤트 등록3")
+		}
+
+		// addEventListener 이용하기
+		let box4 = document.getElementById("id4")
+		box4.addEventListener("click", ()=>{
+			alert("이벤트 등록4")
+		})
+	</script>
+</body>
+</html>

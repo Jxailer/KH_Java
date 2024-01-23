@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.container{border: 5px solid red; padding: 0 10px; width: 100%;}
+        .container::after{content: ''; display: block; clear: both;}
+
+        .box{width: calc(50% - 20px); height: 350px; border: 3px solid black;
+        margin: 8px ; box-sizing: border-box;
+        float: left;
+        }
+        .box:nth-of-type(2n){ margin-left: 10px;}

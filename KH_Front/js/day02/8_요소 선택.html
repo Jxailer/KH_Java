@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 선택</title>
+</head>
+<body>
+	<nav id="nav">
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴1</a>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴2</a>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+	<script>
+		/* 
+		getElementById: 요소 혹은 null 리턴
+		getElementsByClassName, getElementsByTagName: 배열 리턴
+		querySelector: NodeList 리턴
+		*/
+
+		let nav = document.getElementById('nav')
+		console.log(nav)
+		let nav1 = document.getElementById('nav1') // 일치하는 요소가 없어서 'null'을 리턴함
+		console.log(nav1)
+		// ==============================================================
+		let items = document.getElementsByClassName('menu-item')
+		console.log(items)
+		let h1 = document.getElementsByClassName('h1') // 일치하는 요소가 없어 '빈 배열'을 리턴함
+		console.log(h1)
+		let aTags = document.getElementsByTagName('a')
+		console.log(aTags)
+		// ==============================================================
+		let links = document.querySelectorAll('.menu-link') // class 이름이 menu-link인 요소들을 가져옴
+		console.log(links)
+		let links2 = document.querySelectorAll('.menu-link2') // class 이름이 menu-link인 요소들을 가져옴
+		console.log(links2)
+		// ==============================================================
+		console.log('=====================================')
+		// querySelector는 forEach를 바로 사용할 수 있음.
+		links.forEach(item=>{
+			console.log(item)
+		})
+		console.log('=====================================')
+		Array.from(items).forEach(item=>{
+			console.log(item)
+		})
+	</script>
+</body>
+</html>

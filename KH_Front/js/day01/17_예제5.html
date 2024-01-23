@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제5</title>
+</head>
+<body>
+    <script>
+        /* 
+        정수를 입력받아, 입력받은 정수가 양수이면 0부터 입력받은 정수까지 더하고,
+        음수이면 0부터 입력받은 정수까지 빼서
+        브라우저에 출력하는 예제
+        */
+
+        document.write(sum(prompt('정수를 입력하세요') ?? 0))
+        function sum(num){
+            if(num>0){
+                return sumPosivite(num)
+            }else{
+                return sumNegative(num)
+            }
+        }
+        function sumPosivite(num){
+            num = +num
+            var sum = 0;
+            for (let i = 0; i<=num; i++){
+                sum += i
+            }
+            return sum;
+        }
+        function sumNegative(num){
+            num = +num
+            var sum = 0;
+            for (let i = num; i<0; i++){
+                sum += i
+            }
+            return sum;
+        }
+    </script>
+    
+</body>
+</html>

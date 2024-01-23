@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제6</title>
+</head>
+<body>
+
+    <script>
+        /*
+        정수를 입력 받아, 입력받은 정수 만큼 오늘의 할 일을 입력해서, ol태그로 화면에 출력하시오
+        (배열 사용)
+        */
+        var num = prompt('할 일 개수를 입력하세요: ')
+        var list = new Array();
+
+        for(let i = 0; i<num; i++){
+            list.push(prompt(`할일 ${(i+1)}번 입력:`))
+        }
+
+        // document.write로 쓰는 태그들은 그대로 적용된다!!
+        document.write('<ol>')
+        // for(let i = 0; i<list.length; i++){
+        //     document.write('<li>'+list[i]+'</li>')
+        // }
+        list.forEach((item)=>document.write('<li>'+item+'</li>'))
+        document.write('</ol>')
+    </script>
+</body>
+</html>

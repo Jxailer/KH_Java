@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다단 속성 예제</title>
+    <style>
+        .container{
+            /* colum-count: 단의 개수를 지정하여 다단을 나눔 
+                (갯수를 지정하지 않으면 너비를 기준으로 단을 나눔) */
+            /* column-count: 2; */
+            column-width:  300px;
+
+            /* column-gap: 다단 사이의 여백 설정 */
+            column-gap: 100px;
+
+            /* 
+                column-rule: 다단 사이의 효과를 주는 속성(너비 스타일 색상)
+                - column-rule-style: 다단 사이의 선 효과 지정
+                    (none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset)
+                - column-rule-width: 너비를 지정하는 속성
+                    (숫자 (단위), thin, medium, thick)
+            */
+            column-rule-style: solid;
+            column-rule-color: red;
+            column-rule-width: 3px;
+        }
+        .column-span{
+            /* 단을 합치는 속성
+                - 1 (기본값), 합치지 않은 것과 동일
+                - all 전체를 합치는 것과 같음 */
+            column-span: all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            긴 글을 가져오면 됨. abc abc abc abc abc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abcabc abc abc abc
+        </div>
+        <div class="item">
+            긴 글을 가져오면 됨. def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def
+        </div>
+        <div class="item column-span">
+            <mark>!!! 가장 아래 div 태그입니다 (class="item column-span") !!! </mark>긴 글을 가져오면 됨. 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 123 
+        </div>
+    </div>
+</body>
+</html>

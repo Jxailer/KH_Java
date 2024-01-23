@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 이벤트 예제4</title>
+</head>
+<body>
+	<button id="btn">접기</button>
+	<h1></h1>
+	<div id="box" style="border: 1px solid black; background: dodgerblue; width: 300px; height: 300px;"></div>
+	<script>
+		/* 
+		접기 버튼을 클릭하면
+		박스가 감춰지고, 더 보기 버튼으로 바뀜.
+		더 보기 버튼을 클릭하면 
+		박스가 보여지고, 접기 버튼으로 바뀌도록 코드를 작성함
+		*/
+		let btn = document.getElementById('btn')
+		let box = document.getElementById('box')
+		// let toggle = 0
+		btn.onclick = function(){
+			let text = this.textContent
+
+			if(text == "더 보기"){
+				box.style.display = "block"
+				this.textContent = "접기"
+			}else{
+				box.style.display = "none"
+				this.textContent = "더 보기"
+			}
+		}
+	</script>
+	
+</body>
+</html>

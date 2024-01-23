@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 선언 예제</title>
+</head>
+<body>
+    <script>
+        // JS의 메소드는 function 키워드를 사용하거나 변수에 저장하는 방식으로 정의함.
+
+
+        /* 호이스팅에 의해 함수 정의 전에 함수를 호출하여도 작동이 됨.
+        function test1(){
+            document.write('테스트<br>')
+        }
+
+        test1()
+        */
+        test1()
+
+        function test1(){
+            document.write('테스트<br>')
+        }
+
+        // 함수 표현식: 변수에 함수를 저장하는 방식 (화살표 함수를 사용할 수 있음.)
+        // test2(); 
+        /*
+        아래 코드는 호이스팅에 의해 다음과 같이 동작됨.
+
+        var test2;
+        test2(); // 함수가 아니므로 에러가 발생함.
+        test2 = function(){
+            document.write('테스트<br>')
+        }
+
+        */
+
+        var test2 = function(){
+            document.write('테스트<br>')
+        }
+        test2();
+        
+        
+    </script>
+</body>
+</html>
