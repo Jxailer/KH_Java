@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+        1. direction (2가지 값)
+        2. text-align !!! (4가지 값)
+        3. text-indent
+        4. text-overflow !!  (2가지 값) / 추가 설정 요소 4가지
+
+     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문단 관련 속성</title>
@@ -22,7 +29,7 @@
         .indent2{text-indent: -30px; margin-left: 30px;}
 
         /* text-overflow: 글자가 영역을 넘어갔을 때 처리 할 방법을 지정함
-        - width설정, overflow: hidden 이어야함. white-space는 일반적으로 nowrap을 이용함.*/
+        - width 설정해야함, overflow: hidden 이어야함. white-space는 일반적으로 nowrap을 이용함.*/
         .overflow1{ text-overflow: clip; overflow: hidden; white-space: nowrap; width: 400px;}
         .overflow2{ text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 400px;}
 </style>

@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+        1. form 태그 / action, method, get, post, enctype
+        2. fieldset 태그 
+        3. legend 태그
+        4. input 태그 / value, name, readonly, disabled, required, placeholder, type
+            - type 속성값(9가지)
+            - type="file" 설정 후 올 수 있는 후속 속성 (2가지)
+        5. 라벨 태그
+        6. select 태그 + option 태그 + optgroup 태그
+        7. datalist 태그
+        8. button 태그 / type(3가지)
+
+        
+
+     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>폼 관련 태그</title>
@@ -50,23 +65,23 @@
             (값이 입력되어 있으면 문구가 사라짐)
 
             - type: input 태그의 종류를 지정함.
-            (text: 기본 입력창, 텍스트를 한 줄 입력할 수 있음 / 
-            - password: 비밀번호 입력창, 입력한 값이 검열됨 / 
-            - hidden: 사용자는 볼 필요가 없지만 서버에서는 필요한 정보를 감출 때 사용함.)
+                (text: 기본 입력창, 텍스트를 한 줄 입력할 수 있음 / 
+                - password: 비밀번호 입력창, 입력한 값이 검열됨 / 
+                - hidden: 사용자는 볼 필요가 없지만 서버에서는 필요한 정보를 감출 때 사용함.)
 
-            - button, reset, submit: 버튼 태그로 대체 가능함.
-            (value로 버튼 텍스트를 지정해줘야함.)
+                - button, reset, submit: 버튼 태그로, 대체 가능함.
+                (value로 버튼 텍스트를 지정해줘야함.)
 
-            - file: accept 속성과 multiple 속성을 사용할 수 있다.
-            (accept는 파일 종류를 지정, multiple은 다중선택 가능.)
-            (form 태그의 method를 post로 수정, enctype를 수정)
+                - file: 추가적으로 accept 속성과 multiple 속성을 사용할 수 있다.
+                (accept는 파일 종류를 지정, multiple은 다중선택 가능.)
+                (form 태그의 method를 post로 수정, enctype를 수정)
 
-            - checkbox: 다중 선택하는 항목에서 사용
-            - radio: 지정된 값 중에서 하나만 선택해야하는 경우 사용
-            (checkbox와 radio 모두,
+                - checkbox: 다중 선택하는 항목에서 사용
+                - radio: 지정된 값 중에서 하나만 선택해야하는 경우 사용
+                 (checkbox와 radio 모두,
                 - checked 속성을 통해 초기 선택 여부를 결정함
                 - value 값을 이용해 선택됐을 때 전송할 값을 지정함
-                - 같응ㄴ 항목인 경우 name을 공통으로 지정함.)
+                - 같은 항목인 경우 name을 공통으로 지정함.)
         -->
 
         <!--
@@ -113,7 +128,7 @@
         - value 속성이 없으면 option 태그 안에 있는 문자열이 value로 지정됨.
 
         optgroup태그: option 태그들을 묶을 때 사용함.
-        - label 속성을 이용해 목록 이름을 지정함.
+        - label 속성을 이용해 목록 이름을 지정함. (하위 선택 목록)
     -->
     <form action="">
         성별을 선택하세요

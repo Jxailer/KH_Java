@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+        1. margin과 padding의 차이 !!!
+        2. 부모 요소의 속성을 그대로 상속받은 자식 요소의 padding 설정 후, 크기가 부모 요소 보다 커지는 것에 대한 문제 해결법 !!
+        3. margin을 이용한 자식 요소의 가운데 정렬 방법 !
+     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여백 관련 속성</title>
@@ -13,11 +18,13 @@
         .box1{margin-left: 50px;}
         .box2{padding-left: 50px;}
         .box3{margin: 0 auto;} /* 위아래 마진은 0, 좌우 마진은 자동으로 절반으로 나누어 가운데 정렬함.*/
+
         .inner-box{
             /* 부모 컨텐츠의 크기에 padding과 border값이 포함된 상태이므로
             box-sizing을 기본값으로 하면 자식 콘텐츠가 부모 콘텐츠 보다 커짐. */
             width: 100%; height: 100%; border: 3px solid red;
             box-sizing: border-box;} /*따라서 border-box로 변경.*/
+
         .box4{padding: 10px}
     </style>
 </head>

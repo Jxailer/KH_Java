@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+    1. 전체 선택자
+    2. 태그 선택자
+    3. 아이디 선택자
+    4. 클래스 선택자
+    5. 속성 선택자
+        - 값을 포함시키는 단어를 가진 요소 선택
+        - 값-형태로 된 요소를 선택
+    6. 자손 선택자
+    7. 동위 선택자
+        = 바로 뒤 1개
+        - 뒤의 모든 요소
+    8. :active, :hover
+    9. :focus, :checked
+    10. :xxx-child
+    11. 선택자:xxx-of-type
+    12. ::before, ::after, :not
+
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>선택자</title>
@@ -33,35 +52,40 @@
         조상선택자 자손선택자{속성명 : 값;}
         */
             /* .box li{color: red;} */
-            /* .box>li{ box 클래스 바로 아래에 자식인 li가 없어서 적용이 안됨.
-                color: red;
-            } */
+            /* div>h1{ color: red;} */
 
         /* 동위 선택자: 형제들을 선택함
         선택자1+선택자2 : 선택자 1 바로 뒤에 선택자 2가 있는 경우, 요소로 선택함 (단 하나만)
         선택자1~선택자2 : 선택자 1 뒤에 있는 모든 선택자 2를 요소로 선택함.*/
-            /* .first-item+.item{color: red;} */
+            .first-item+.item{color: red;}
             /* .first-item~.item{color: red;} */
 
         /* 반응 선택자
-        - active: 클릭한 요소
-        - hover: 마우스가 올려진 요소 */
+        - :active: 클릭한 요소
+        - :hover: 마우스가 올려진 요소 */
             a:active{color:blue;}
             /* a:hover{color:aqua;} */
 
-        /* :focus 활성화 된 input 태그 요소
+        /* 
+        :focus 활성화 된 input 태그 요소
         :checked checked 상태인 input태그 요소 */
             [name=food]:checked{width: 100px}
             [name=age]:focus{background-color: yellow;}
         
-        /* :xxx-child: 요소 종류의 상관 없이 순서를 따져서 요소르 선택함.
+        /* 
+        :xxx-child: 요소 종류의 상관 없이 순서를 따져서 요소르 선택함.
         :xxx-of-type: 지정한 요소들 중에서 순서를 따져서 요소를 선택함. */
-            /* .container1>:first-child{color: red;} 태그 상관 없이 가장 첫번째 요소
-            .container2>h1:first-of-type{color: red;} 태그 별로 구분함 */
+            /* .container1>:first-child{color: red;} 태그 상관 없이 가장 첫번째 요소 */
+            /* .container1>h1:first-of-type{color: red;} 태그 별로 구분함 */
 
-            .container1>:nth-child(2n){color: red;} 
+            .container1>:nth-child(3n){color: red;} 
             .container2>div:nth-of-type(2n){color: red;} 
 
+        /* 
+        ::before    - 태그 앞에 위치하는 공간을 선택함 
+        ::after     - 태그 뒤에 위치하는 공간을 선택함
+        :not        - 선택자를 반대로 적용하여 선택함
+        */
             .container3 .btn::before{content:'앞'; display: inline;}
             .container3 .btn::after{content: '뒤'; display: inline;}
             .container4 li:not(.first){color: red;}
@@ -72,7 +96,10 @@
         div.abc{}
     </style>
 </head>
-<>
+<body>
+    <h1>ddd</h1>
+    <h1>ddd</h1>
+    <h1>ddd</h1>
     <form action="">
         <label for="id" class="label a">아이디</label>
         <input type="text" name="id" placeholder="아이디를 입력하세요." id="id" class="input-id a"><br>
@@ -80,14 +107,17 @@
         <input type="button" value="버튼"><br>
         <button type="submit" class="a">전송</button>
     </form>
+    <h1>ddd</h1>
     <div class="box">
         <h1>안녕하세요</h1>
         <ul>
+            <h1>오랜만이네요</h1>
             <li class="item first-item">1</li>
             <li class="item">2</li>
             <li class="item">3</li>
             <li class="item">4</li>
         </ul>
+        <h1>반갑습니다</h1>
     </div>
     <div class="box2">
         <h2>인사</h2>

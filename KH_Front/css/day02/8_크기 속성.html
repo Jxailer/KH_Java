@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>크기 속성</title>
     <style>
-        /* width, height: box-sizing에 따라 의미하는 바가 달라짐.
-        - box-size 속성값이 content-box(기본값)인 경우, 
+        /* 
+        width, height: box-sizing에 따라 의미하는 바가 달라짐 !!
+
+        - box-sizing 속성값이 content-box(기본값)인 경우, 
             컨텐츠의 너비와 높이를 의미함.
-        - box-size 속성 값이 border-box인 경우, 
+
+        - box-sizing 속성 값이 border-box인 경우, 
             컨텐츠 + 패딩 + 테두리의 너비와 높이를 의미함.
+
         - px은 고정 크기, %는 부모 요소 크기의 %, 
+
         */
         [class^=box]{ width: 200px; height: 200px; background-color: yellow; 
             border: 50px solid black; padding: 20px;}

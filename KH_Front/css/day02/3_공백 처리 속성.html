@@ -6,11 +6,27 @@
     <title>공백 처리 속성</title>
     <style>
         [class^=box]{ width: 200px; border: 1px solid black; font-size: 20px;}
-        .box1{white-space: normal;}
-        .box2{white-space: nowrap;}
-        .box3{white-space: pre;}
-        .box4{white-space: pre-line;}
-        .box5{white-space: pre-wrap;}
+        .box1{white-space: normal;} /* 기본값 */
+        .box2{white-space: nowrap;} /* 표시 영역을 벗어나도 뒤로 계속 이어짐(잘림) */
+        .box3{white-space: pre;} /* 작성된 코드 그대로 표시(들여쓰기, 여러 개의 스페이스 까지 반영됨) 표시 영역을 벗어나도 뒤로 계속 이어짐(잘림) */
+        .box4{white-space: pre-line;} /* 작성된 코드 그대로 표시하되, 표시 영역에서 벗어나면 자동 줄바꿈 */
+        .box5{white-space: pre-wrap;} /* 작성된 코드 그대로 표시하되, 표시 영역에서 벗어나면 자동 줄바꿈 (들여쓰기, 여러 개의 스페이스 까지 반영됨)*/
+
+
+        /* 
+                    잘림 여부         그대로 표시       자동 줄바꿈
+                                    (공백 여러개)
+
+        nowrap          O               X                  X
+
+        pre             O               O                  x
+
+        pre-line        X               X                  o
+
+        pre-wrap        X               O                  o
+        
+        */
+        
     </style>
 </head>
 <body>
