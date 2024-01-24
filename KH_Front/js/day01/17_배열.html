@@ -46,22 +46,30 @@
         */
 
         var arr = [1, '안녕', true, {}];
+        document.write('<h1>arr의 내용</h1>')
+        for(item of arr){
+            document.write(item+', ')
+        }
 
-        document.write('-----요소 추가-----<br>')
+        // 요소 추가================================================
+        document.write('<br><br>-----요소 추가-----<br>')
         arr.push(1, 2, 3)
         arr.unshift('a', 'b', 'c')
         document.write(arr+'<br><br>')
         
+        // 요소 삭제====================================================
         document.write('-----요소 삭제-----<br>')
         document.write(arr.pop()+'<br>')
         document.write(arr.shift()+'<br>')
         document.write(arr+'<br><br>')
 
+        // 요소 탐색=================================================
         document.write('-----index of-----<br>')
         document.write(arr.indexOf(1)+'<br>')
         document.write(arr.lastIndexOf(1)+'<br>')
         document.write(arr.includes(1)+'<br><br>')
 
+        // 기타 함수===========================================================
         document.write('-----기타 함수-----<br>')
         document.write(arr.join("-")+'<br><br>')
         document.write(arr.slice(3)+'<br>')
@@ -72,6 +80,7 @@
         document.write(arr.splice(0,0, '100', 200, false)+'<br>')
         document.write(arr+'<br><br>')
 
+        // JAVA와 이름이 같은 함수======================================================
         document.write('-----JAVA의 것과 이름이 같은 함수-----<br>')
         document.write(arr.map((item)=>{
             return item+1

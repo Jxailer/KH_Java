@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애니메이션 속성</title>
     <style>
+        /* 
+        1. animation-name
+        2. animation-iteration-count
+        3. animation-duration
+        4. animation-direction: 애니메이션 진행 방향을 설정함.
+         - alternate, alternate-reverse, normal
+        5. animation-timing-fuction
+
+        6. 애니메이션 정의 방법 (@keyframes, from, to)
+
+
+        */
         .box{background: yellow; font-size: 20px; font-weight: bold; 
             width: 100px; height: 100px; border: 1px solid black; 
             text-align: center; line-height: 100px;
@@ -14,7 +26,21 @@
             animation-iteration-count: infinite;
             animation-name: scale; 
             animation-duration: 1s;
-            animation-direction: alternate;
+
+            /* 
+            animation-direction:애니메이션의 진행 방향을 설정함.
+            - normal from~to
+            - alternate from~to(반복시, 그리고 to~from)
+            - alternate-reverse to~from(반복시, 그리고 from~to)
+            */
+            animation-direction: alternate-reverse;
+            
+            /* 
+            animation-timing-function: 애니메이션 진행의 속도를 설정함.
+            - linear(기본) 선형적으로(등속으로) 진행됨
+            - ease-in-out 처음과 끝의 진행 속도가 조금 느림.
+            - 
+             */
             animation-timing-function: linear;
 
             /* 모든 속성값을 한 번에 지정할 수 있음 */

@@ -29,6 +29,7 @@
         .indent2{text-indent: -30px; margin-left: 30px;}
 
         /* text-overflow: 글자가 영역을 넘어갔을 때 처리 할 방법을 지정함
+        -clip 지정한 길이만큼의 텍스트만 표시됨. 글자의 일부분만 표시될 수 있음.
         - width 설정해야함, overflow: hidden 이어야함. white-space는 일반적으로 nowrap을 이용함.*/
         .overflow1{ text-overflow: clip; overflow: hidden; white-space: nowrap; width: 400px;}
         .overflow2{ text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 400px;}
@@ -52,7 +53,7 @@
     <div class="indent1">안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</div>
     <div class="indent2">안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</div>
     <br><hr><br>
-    <div class="overflow1">안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</div>
+    <div class="overflow1">안녕하세요123안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</div>
     <div class="overflow2">안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</div>
 
 </body>

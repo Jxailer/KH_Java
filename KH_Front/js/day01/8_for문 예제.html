@@ -7,26 +7,31 @@
 </head>
 <body>
     <script>
-        /*  */
+        /* 
+        1. for-of 문
+        2. for-in 문
+        3. 일반 반복문도 사용 가능함.
+        */
         var arr = [1, 2, 3, 6, 8, '안녕'] // 다른 자료형도 같은 배열에 저장 가능함.
 
         // for of는 값을 가져옴
         for(let item of arr){
             document.write(item +'<br>');
         }
-
+        document.write('<hr>')
         
         // for in은 key값/번지를 가져옴
         for(let index in arr){
-            document.write(`${index}: ${arr[index]} <br>`)
+            document.write(`${(+index)+1}: ${arr[index]} <br>`)
         }
+        document.write('<hr>')
 
         //객체
         var obj = {
             name : '홍길동', age : 21
         }
         for(let key in obj){
-            document.write(`${key}: + ${obj[key]}<br>`);
+            document.write(`${key}: ${obj[key]}<br>`);
         }
 
         

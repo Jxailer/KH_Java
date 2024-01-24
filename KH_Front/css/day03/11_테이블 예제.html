@@ -23,20 +23,21 @@
         }
 
         /* 예제: 제목을 제외한 칸에 호버하면 배경색이 노랑으로 바뀌게 하기 */
-        .table tr~tr:hover{ background-color: yello;} 
-        .table tbody tr:hover{background-color: yellow;}
+        /* tbody, thead를 적용하지 않았을 때 유요한 코드. */
+        .table tr~tr:hover{ background-color: yellow;} 
+        /* .table tbody tr:hover{background-color: yellow;} */
     </style>
 </head>
 <body>
     <table class="table">
-        <thead>
+        <!-- <thead> -->
             <tr>
                 <th>번호</th>
                 <th>제목</th>
                 <th>조회수</th>
             </tr>
-        </thead>
-        <tbody>
+        <!-- </thead>
+        <tbody> -->
             <tr>
                 <td>2</td>
                 <td>가입 인사</td>
@@ -47,7 +48,7 @@
                 <td>공지사항</td>
                 <td>10</td>
             </tr>
-        </tbody>
+        <!-- </tbody> -->
         
     </table>
 </body>

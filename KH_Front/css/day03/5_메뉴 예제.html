@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메뉴 예제</title>
     <style>
+        /* body안의 요소에 대해 기본적으로 생성되는 margin 값과 body의 padding을 지우기 위함 */
         *{margin: 0; padding: 0;}
         .menu{ border: 2px solid red; list-style: none;}
         .menu::after{ clear: both; content: ''; display: block;}
-        .menu-item{ float: left; height: 50px; width: 33.33%; box-sizing: border-box;}
+        .menu-item{ float: left; height: 50px; width: 33%; 
+            box-sizing: border-box;
+        }
         .menu-item~.menu-item{ border-left: 2px solid red;}
         .menu-link{ 
             display: block; height: 100%; font-size: 20px; text-align: center; 

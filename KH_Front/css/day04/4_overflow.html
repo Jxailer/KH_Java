@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+        1. overflow (4가지 속성값, 각각의 특징)
+
+        2. 스크롤바 안보이게 하는 방법(브라우저 별로 다르다!)
+     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>overflow</title>
@@ -18,10 +23,11 @@
             scroll 스크롤을 추가해서 범위를 넘어가면 스크롤로 확인함
         */
         .c1{overflow: hidden;}
-        /* 스크롤은 범위를 넘어가지 않아도 스크롤 바가 무조건 생김 */
+        /* scroll은 범위를 넘어가지 않아도 스크롤 바가 무조건 생김 */
         .c2{overflow: scroll;} 
         .c3{overflow: auto;}
-        /* 스크롤 바 안보이게 하기 */
+
+        /* 스크롤 바가 생기더라도 안보이게 하기 */
         /* 크롬, 사파리, 오페라, 엣지에서 동작함 */
         .c3::-webkit-scrollbar{display: none;}
         /* 파이어 폭스에서 동작함 */

@@ -6,21 +6,24 @@
     <title>arguments</title>
 </head>
 <body>
-    /* 
+    <!-- 
         arguments 객체: 함수에서 넘겨준 인수들을 관리하는 객체
         - 배열처럼 사용하지만 배열은 아님
         - 권장하지 않음.
         - 화살표 함수에서는 사용할 수 없음.
-        */
+        -->
 
-        function sum2(){
+        <script>
+             function sum2(){
             var sum =0;
             for(let i = 0; i<arguments.length; i++){
                 sum +=arguments[i]
             }
             return sum;
-        }
+            }
         document.write(sum2(1, 2, 3, 4, 5))
+        </script>
+       
 
 </body>
 </html>

@@ -11,8 +11,10 @@
             line-height: 100px;
         }
         .box:hover{
-            transition: font-size 2s, transform 2s;
-            font-weight: bold; font-size: 50px; 
+            font-weight: bold; 
+            /* 여러 속성의 변화를 한 번에 설정할 수 있음. */
+            transition: font-size .5s, transform 2s;
+            font-size: 50px; 
             transform: rotateY(45deg); 
             background-color: red;
         }

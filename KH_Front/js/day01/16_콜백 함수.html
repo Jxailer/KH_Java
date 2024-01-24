@@ -13,11 +13,30 @@
         */
 
         var age = prompt('나이를 입력하세요')
+        
+        
+
+        // callbackA와 callbackB를 function이 아닌 화살표 함수로 입력해도 이용할 수 있음.
+        // 31~37번 코드들을 주석처리해도 이 코드로 작동됨.
+        // checkAdult(age,()=>{
+        //     document.write('성인입니다.<br>')
+        // },()=>{
+        //     document.write('성인이 아닙니다.<br>')})
+        
+        // checkAdult 함수에 age, adult, notAdult를 매개변수로 넘겨줌.
+        // adult, notAdult는 ()를 붙이지 않아도 function에 콜백함수로 정의되어 있어 자동으로 함수로 인식함.
         checkAdult(age, adult, notAdult)
-        checkAdult(age,()=>{
-            document.write('성인입니다.<br>')
-        },()=>{
-            document.write('성인이 아닙니다.<br>')})
+
+        // ===================================================
+
+        function adult(){
+            document.write('성인입니다. <br>')
+        }
+        function notAdult(){
+            document.write('성인이 아닙니다.<br>')
+        }
+
+        // ===================================================
 
         // 나이가 주어지면, 성인이면 a()함수를, 미성년자이면 b()함수를 실행하는 코드
         function checkAdult(age, callbackA, callbackB){
@@ -26,12 +45,6 @@
             }else{
                 callbackB();
             }
-        }
-        function adult(){
-            document.write('성인입니다. <br>')
-        }
-        function notAdult(){
-            document.write('성인이 아닙니다.<br>')
         }
     </script>
 </body>
