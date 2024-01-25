@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JQuery 예제 1</title>
+	<script src="../../../static/jquery.js"></script>
+	<style>
+		body{position: relative;}
+		.box{
+			height: 300px; width: 300px; background-color: blueviolet; display: none; 
+			position: absolute;
+		}
+		.close{
+			float: right;
+			width: 20px; height: 20px;
+			padding: 0; margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<button class="close">X</button>
+	</div>
+	<button class="display">표시하기</button>
+	<h1></h1>
+	
+	<script>
+		/*
+		버튼 1개와 박스를 만들어서 버튼을 클릭하면 박스가 '왼쪽에서 오른쪽으로' 나타나도록 코드를 작성.
+		- 박스에 x버튼을 추가해서 그것을 클릭하면 박스가 사라지도록 코드를 작성함
+		
+		*/
+		$(".display").click(function(){
+			
+			$(".box").show()
+		})
+		$(".close").click(function(){
+			$(".box").hide()
+		})
+
+	</script>
+</body>
+</html>

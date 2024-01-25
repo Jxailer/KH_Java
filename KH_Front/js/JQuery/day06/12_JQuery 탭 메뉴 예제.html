@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭 메뉴 예제 1</title>
+	<script src="../../../static/jquery.js"></script>
+	<style>
+		.menu-list{display: flex;  flex-direction: row; flex-wrap: wrap; 
+			justify-content: center; 
+			margin: 0; padding: 0;
+			list-style: none;
+			}
+		.container{display: flex; margin-top: 30px; justify-content: center;}
+
+		.menu{width: 30%; margin-left: -2px; 
+		border: 2px solid black; text-align: center; line-height: 30px;}
+
+		.box{width: 90%; height: 300px; display: none;
+			border: 2px solid black; margin-top: 30px;}
+
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu-list">
+			<li class="menu menu1">
+				<a href="" class="menu-link">메뉴1</a>
+			</li>
+			<li class="menu menu2">
+				<a href="" class="menu-link">메뉴2</a>
+			</li>
+			<li class="menu menu3">
+				<a href="" class="menu-link">메뉴3</a>
+			</li>
+		</ul>
+		<div class="container">
+			<div class="box box1" style="background: red;">내용1</div>
+			<div class="box box2" style="background: navy;">내용2</div>
+			<div class="box box3" style="background: green;">내용3</div>
+		</div>
+
+		<!-- <div class="menu menu1">
+			<a href="" class="menu-list1">메뉴1</a>
+		</div>
+		<div class="menu menu2">
+			<a href="" class="menu-list2">메뉴2</a>
+		</div>
+		<div class="menu menu3">
+			<a href="" class="menu-list3">메뉴3</a>
+		</div> -->
+
+		
+		
+	</nav>
+	
+	
+	<script>
+		$(".menu1").click(function(){
+			$(".box").hide()
+			$(".box1").show()
+		})
+		$(".menu2").click(function(){
+			$(".box").hide()
+			$(".box2").show()
+		})
+		$(".menu3").click(function(){
+			$(".box").hide()
+			$(".box3").show()
+		})
+
+		// JS로도 구현해보는 연습 
+		// function display(){
+		// 	this.style.display = "block"
+			
+		// }
+	</script>
+</body>
+</html>

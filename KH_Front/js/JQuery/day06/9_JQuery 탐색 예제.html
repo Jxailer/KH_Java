@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탐색 예제</title>
+	<script src="../../../static/jquery.js"></script>
+	<style>
+		body *{padding: 10px}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="container">
+			<ul class="menu-list">
+				<li class="menu-item first">
+					<a href="javascript:void(0)" class="menu-link">메뉴1</a>
+				</li>
+				<li class="menu-item">
+					<a href="javascript:void(0)" class="menu-link">메뉴2</a>
+				</li>
+				<li class="menu-item">
+					<a href="javascript:void(0)" class="menu-link">메뉴3</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<script>
+		/*
+		여러 요소를 한 번에 선택해도 배열 처리를 안해도 된다는 JQuery의 장점!!
+
+		조상 탐색
+			- parent() 부모 요소
+			- parents() 조상 요소들
+			- parents("선택자") 조상 요소들 중에서 선택자와 일치하는 요소
+			- parentsUntil("선택자") 조상 요소들 중에서 선택자와 일치하는 조상 요소 사이의 조상 요소들 
+				(일치하는 요소는 선택하지 않음.)
+
+		자손 탐색
+			- children() 자식 요소들
+			- children("선택자") 자식 요소들 중에서 선택자와 일치하는 자식 요소들
+			- find("선택자") 자손 요소들 중에서 선택자와 일치하는 자손 요소들
+
+		형제 탐색
+			- siblings() 모든 형제 요소들(본인 제외)
+			- siblings("선택자") 선택자와 일치하는 형제 요소들
+
+			- next() 다음 형제 요소
+			- nextAll() 다음 형제 요소들
+			- nextAll("선택자") 선택자와 일치하는 다음 형제 요소들
+			- nextUntil("선택자") 요소와 선택자 사이의 다음 모든 형제 요소들
+
+			- prev() 이전 형제 요소들
+			- prevAll("선택자") 선택자와 일치하는 이전 형제 요소들
+			- prevUntil("선택자") 요소와 선택자 사이 이전 모든 형제 요소들
+
+		필터: 요소가 여러 개인 경우 필터를 통해서 요소들을 선택할 수 있다.
+			- first() 첫 번째 요소
+			- last() 마지막 요소
+			- eq(idx) idx번째 요소 (0부터 시작)
+
+			- filter("선택자") 선택자와 일치하는 요소들
+			- not("선택자") 선택자와 일치하지 않는 요소들
+		*/
+
+		// 자손 탐색 ==========================================================
+		$(".menu-list")
+			.find(".menu-link")
+			.css("background-color", "yellow") // 노란색 배경
+		$(".menu-list")
+			.children()
+			.css("background", "gray") // 회색 배경
+
+		// 조상 탐색 ============================================================
+		$(".menu-list")
+			.parent()
+			.css("border", "1px solid black") // 검정 테두리
+		$(".menu-list")
+			.parents()
+			.css("background", "green") // 배경색 녹색
+		$(".menu-list")
+			.parentsUntil("html")
+			.css("border", "5px solid red") // 빨강 테두리
+
+		// 필터 ===============================================================
+		$(".menu-item")
+			.eq(1)
+			.children() // a태그 자체 색이 있어서 이게 없으면 색이 변하지 않는다...?
+			.css("color", "red") // 글자 색을 빨간색으로
+		$(".menu-item")
+			.eq(2)
+			.prev()
+			.css("font-size", "30px") // 글자 크기가 커짐
+		$(".menu-item")
+			.eq(2)
+			.prevAll()
+			.children()
+			.css("text-decoration", "none") // 밑줄 없애기
+		$(".menu-item") // ???????????????????
+			.eq(2)
+			.prevUntil(".first")
+			.css("font-weight", "bold") // 글자 두께 커짐
+		$(".menu-item")
+			.not(".first")
+			.css("border", "3px solid blue") // 파란 테두리
+
+
+		
+	</script>
+</body>
+</html>

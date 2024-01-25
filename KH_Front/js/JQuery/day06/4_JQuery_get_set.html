@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>get/set 예제</title>
+	<!-- 외부 파일에서 jquery 내용을 불러와서 자동완성으로 이용하기 -->
+	<script src="../../../static/jquery.js"></script>
+</head>
+<body>
+	<div class="box">
+		<input type="text" id="id"><br>
+		<input type="radio" name="fruit" value="apple" id="apple" checked> 사과
+		<input type="radio" name="fruit" id="banana" value="banana"> 바나나
+		<br>
+		<button class="btn-banana">바나나</button>
+		<button class="btn-apple">사과</button>
+	</div>
+	
+	<script>
+		/*
+		요소 가져오기(get)
+			$("선택자").text(): 요소 안의 문자열을 가져옴
+			$("선택자").html(): 요소 안의 html 코드를 가져옴
+			$("선택자").val(): 요소 안의 value값을 가져옴(input, select 등)
+			$("선택자").attr("속성명"): 요소의 속성 값을 가져옴
+				- HTML 속성을 가져옴. 초기에 HTML 코드에 정의된 속성 값을 가져옴
+				- boolean값에 대해 true/undefined로 리턴함
+			$("선택자").prop("속성명"): property. 요소의 속성 값을 가져옴
+				- DOM 요소의 속성 값을 가져옴
+				- boolean값에 대해 true/false로 리턴함.
+		*/
+		console.log($("#apple").attr("checked")) // checked 반환
+		console.log($("#apple").prop("checked")) // true 반환
+		console.log($(".box").text()) // box안에 있는 text 반환
+		console.log($(".box").html()) // innerHTML와 똑같은 역할
+		$("#id").change(function(){
+			alert($(this).val())
+		})
+
+		/*
+		요소 설정하기(set)
+			$("선택자").text(문자열1): 요소 안의 문자열을 문자열1로 수정
+			$("선택자").html(문자열1): 요소 안의 html 코드를 문자열1로 수정
+			$("선택자").val(문자열1): 요소 안의 value값을 문자열1로 수정
+			$("선택자").attr("속성명", 값): 요소의 속성 값을 문자열1로 수정
+			$("선택자").prop("속성명"): property. 요소의 속성 값을 문자열1로 수정
+
+		*/
+		
+		$(".btn-banana").click(function(){
+			$("#banana").prop("checked", true)
+		})
+		$(".btn-apple").click(function(){
+			$("#apple").prop("checked", true)
+		})
+	</script>
+</body>
+</html>

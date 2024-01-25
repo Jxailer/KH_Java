@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JQuery 기본</title>
+	<!-- 
+		Jquery 이용하기: <script src="//code.jquery.com/jquery-3.7.1.js">
+	 -->
+	<script src="//code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+	
+	 <div class="container">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box" id="box3">3</div>
+	 </div>
+
+	<script>
+		/*
+			JQuery의...
+
+			- 요소 선택: $("선택자")
+			- 이벤트 등록: 
+			1. $("선택자").이벤트명(function(){
+
+			})
+			2. $("선택자").on("이벤트명", function(){
+
+			})
+			// 선택자 1 안에 있는 선택자 2들에게 이벤트 등록
+			3. $("선택자1").on("이벤트명", "선택자2", function(){
+
+			})
+
+			
+		*/ 
+		let container = $(".container");
+		console.log(container)
+
+		// let boxes = $(".box").click(function(){
+		// 	alert("안녕하세요")
+		// })
+
+		// 아래 코드를 이용하면 나중에 요소가 추가되더라도 동일하게 이벤트를 적용할 수 있음.
+		$(document).on("click", ".box", function(){
+			alert("안녕하세요")
+		})
+	</script>
+		
+	<div class="box" id="box3">4</div>
+</body>
+</html>

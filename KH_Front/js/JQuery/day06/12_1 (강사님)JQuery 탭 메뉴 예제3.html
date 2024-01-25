@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>(강사님)탭 메뉴 예제 1</title>
+	<script src="../../../static/jquery.js"></script>
+	<style>
+		.tab-group{display: flex; list-style: none;}
+		.tab{border: 1px solid black; width: 30%;}
+		.tab.select{
+			background-color: gainsboro;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="tab-group">
+			<li class="tab" data-target=".box:nth-of-type(1)>
+				<a href="" class="tab-link">메뉴1</a>
+			</li>
+			<li class="tab" data-target=".box:nth-of-type(2)>
+				<a href="" class="tab-link">메뉴1</a>
+			</li>
+			<li class="tab" data-target=".box:nth-of-type(3)">
+				<a href="" class="tab-link">메뉴1</a>
+			</li>
+			
+		</ul>
+
+	</div>
+	<div class="box-group">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+
+	</div>
+	
+	<script>
+		$(".tab").click(function(){
+			$(".tab").removeClass("select")
+			$(this).addClass("select")
+			$(".box").hide()
+			let target = $(this).attr("data-target")
+			$(target).show()
+		})
+		// 이벤트로 호출함
+		$('.tab').first().click() 
+
+	</script>
+</body>
+</html>

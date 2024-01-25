@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전체선택 예제</title>
+	<script src="../../../static/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="" id="all"> 전체선택 <br>
+	<input type="checkbox" class="checkbox"> 1<br>
+	<input type="checkbox" class="checkbox"> 2<br>
+	<input type="checkbox" class="checkbox"> 3<br>
+
+	<script>
+		// $("#all").click(function(){
+		// 		$(".checkbox").prop("checked", true)
+		// 	})
+
+		// 강사님 코드
+		$("#all").click(function(){
+			// 체크가 되어있는지 여부를 가져옴
+			let checked = $(this).prop("checked") 
+			// all의 체크 여부와 checkbox의 체크 여부를 일치시킴
+			$(".checkbox").prop("checked", checked)
+		})
+
+		// 전체 checkbox가 true이면 all도 true로 바꿔주는 코드
+		$(".checkbox").change(function(){
+			let checked = $(this).prop("checked")
+			let allchecked = $("#all").prop("checked")
+			
+			if(checked){ // 체크를 한 경우
+				// 선택된 체크박스의 개수
+				let checkedCount = $(".checkbox:checked").length
+				// 전체 체크박스의 개수
+				let count = $(".checkbox").length
+				if(count == checkedCount){
+					$("#all").prop("checked", true)
+				}
+				return
+			}
+			// checkbox중 하나라도 false이면 all도 false로 바꿔주는 코드
+			$("#all").prop("checked", false)
+		})
+
+		
+	</script>
+</body>
+</html>
