@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 추가하기 예제2 (속성)</title>
+</head>
+<body>
+    <button id="btn">이미지 추가</button>
+    <div class="box"></div>
+    <script>
+
+        let btn = document.getElementById('btn')
+        btn.onclick = function(){
+            let box = document.getElementsByClassName('box')[0]
+            let img = createElement("img",  null, ImgAttr)
+
+            let hr = createElement("hr") // 요소를 생성하는 데 있어 태그명만 지정함
+            let h1 = createElement(("h1", "안녕하세요")) // h1태그를 생성하고 innerText로 '안녕하세요'를 지정함
+            box.append(img)
+            box.append(hr)
+            box.append(h1)
+        }
+        
+
+        let ImgAttr = {
+            src : "https://img.freepik.com/premium-photo/picture-of-a-cute-puppy-world-animal-day_944128-5890.jpg?w=1480",
+			alt : "강아지",
+			width : 100
+        }
+        // 요소를 생성하는 함수
+        /*
+        tagname: 태그명 입력
+        text: innerText
+        attributes: 객체로 특성값 지정하기. key는 특성명이 되고, key에 따른 value는 특성값으로 지정됨.
+        */
+        function createElement(tagName, text, attributes){
+            let element = document.createElement(tagName)
+            if(text){ // text가 비어있지(null, NaN, undefined)않을 경우
+                let textNode = document.createTextNode(text)
+                element.append(textNode)
+            }
+            for(key in attributes){ // attributes 객체에 저장되어 있는 변수들을 요소의 속성값으로 지정하는 반복문
+                let attr = document.createAttribute(key) // key값을 속성명으로 지정함
+                attr.value = attributes[key] // key값과 짝지어진 value를 속성값으로 지정함.
+                element.setAttributeNode(attr) // attr에 저장된 속성명과 속성값을 생성한 요소에 연결(입력)시킴
+            }
+            return element // 만들어진 요소를 반환함.
+        }
+    </script>
+</body>
+</html>

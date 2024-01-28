@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 복제 예제</title>
+</head>
+<body>
+    <button id="btn">복사하기</button>
+    <div id="box">
+        <ul class="menu-list" style="background-color: yellow; min-height: 10px" >
+            <li class="menu-item">
+                <a href="#" class="menu-link">메뉴 1</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">메뉴 2</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">메뉴 3</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let btn = document.getElementById('btn')
+        let box = document.getElementById('box')
+        btn.onclick = function(){
+            let ul = document.getElementsByClassName("menu-list")[0]
+            // ul에 등록되어있는 node를 복사해옴
+            let copyUl1 = ul.cloneNode(true) 
+             // ul에 등록되어있는 node를 복사하지 않음. element의 태그명만 복사해옴.
+            let copyUl2 = ul.cloneNode(false)
+            box.append(copyUl1)
+            box.append(copyUl2)
+        }
+    </script>
+</body>
+</html>

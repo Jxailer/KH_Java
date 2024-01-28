@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롤링 예제 2</title>
+    <style>
+        .container{width: 300px; border: 5px solid black; overflow: hidden;}
+        .content-box{width: 200%; background-color: red;}
+
+        .box{float: left; height: 50px; width: 50%;
+        transition: margin-left 1s;}
+        .content-box::after{
+			clear: both; content: ''; display: block;
+		}
+		.box1{background-color: gray;}
+		.box2{ background-color: yellow;}
+
+        .left{animation: moveLeft 1s forwards}
+        /* .right{animation: moveRight 1s forwards;} */
+
+        @keyframes moveLeft {
+            from{
+                margin-left: 0;
+            }
+            to{
+                margin-left: -300px;
+            }
+        }
+        /* @keyframes moveRight {
+            from{
+                margin-left: -300px;
+            }
+            to{
+                margin-left:  0;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <div class="box box1">1</div>
+            <div class="box box2">2</div>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button id="prevBtn"><</button>
+        <button id="nextBtn">></button>
+    </div>
+    <script>
+        let intervalTime = 1500 // 애니메이션 시간보다 커야 함
+        const contentBox = document.getElementsByClassName("content-box")[0]
+        let firstBox
+        //롤링시작
+		let id = animationRun();	
+
+        //마우스를 호버했을 때
+        contentBox.onmouseenter = function(){
+            clearInterval(id)
+        }
+        //마우스를 호버 해제했을 때
+		contentBox.onmouseleave = function(){
+			id = animationRun();
+		}
+
+        // ===========================================================================================
+
+        function animationRun(){
+			return setInterval(function(){
+				firstBox = document.querySelector(".box:first-of-type");
+				firstBox.classList.add("left");
+                // 애니메이션이 끝날 때 마다 첫번째 요소를 뒤로 이동시킴
+				firstBox.addEventListener("animationend", animationEnd);
+			}, intervalTime);
+		}
+
+		function animationEnd(){
+			firstBox.classList.remove("left");
+			contentBox.append(firstBox);
+		}
+
+		function isAnimationRunning(element){
+			let style = window.getComputedStyle(element);
+			return style.animationPlayState == "running";
+		}
+
+    </script>
+</body>
+</html>
