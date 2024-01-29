@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>게시글 조회하기</title>
+</head>
+<body>
+	<script>
+		/*
+		json: Javascript Object Notation
+		- 자바스크립트에서 네트워크를 목적으로 사용하는 데이터 포맷
+		- 자바스크립트의 객체와 유사함
+			1. json에서는 속성명에 반드시 ""를 붙여야함.
+			2. value로 배열, 객체 설정 가능.
+
+		{
+			"name" : "홍길동"
+		}	
+		
+		- JSON.stringfy(객체): 객체를 JSON 형태의 문자열로 반환함
+		- JSON.parse(문자열): JSON 형태의 문자열을 객체로 반환
+
+		*/
+
+
+		// JS의 객체 만들기
+		/*
+			1. js에서는 속성명에 "", '' 또는 생략이 가능함.
+			2. value로 배열, 객체 설정 가능
+		*/
+		let obj = {
+			name: "kate",
+			"address" : "서울시",
+			'age' : 21,
+			score : [
+				{
+					title: "국어",
+					point: 100
+				},
+				{
+					title: "영어",
+					point: 60
+				}
+			]
+		}
+
+		let jsonObj = JSON.stringify(obj)
+
+
+		console.log(obj)
+		console.log(jsonObj) // key에 ""가 추가되어 출력됨.
+
+		// promise: 비동기로 작업할 때 사용함.
+		fetch("htps://my-json-server.typicode.com/st3824/repo/board")
+		.then(res=>res.text())
+		.then(data=>JSON.parse(data))
+		.then(data=>console/log(data))
+	</script>
+</body>
+</html>

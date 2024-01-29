@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>게시글 관리 예제</title>
+	<style>
+		.container{margin: 0 auto; width: 500px;}
+		.container .input{width: 100%; height: 20px; border-radius: 5px;}
+		.container textarea.input{height: 300px;}
+		.box~.box{margin-top: 20px;}
+		#submit{
+			border: 1px solid salmon; width: 100%; 
+			padding: 5px; margin: 30px 0; background-color: white;
+			cursor: pointer;
+		}
+		[class^=error]{color: red;}
+		
+	</style>
+</head>
+<body>
+	<form class="container">
+		<h1>게시글 등록</h1>
+		<div class="title-box box">
+			제목:<br>
+			<input type="text" name="title" id="title" class="input" placeholder="제목을 입력하세요.">
+			<label for="" class="error-title"></label>
+		</div>
+		<div class="writer-box box">
+			작성자:<br>
+			<input type="text" name="writer" id="writer" class="input"  placeholder="작성자를 입력하세요.">
+			<label for="" class="error-writer"></label>
+		</div>
+		<div class="article-box box">
+			내용:<br>
+			<!-- 
+				텍스트 위쪽부터 채우게 하는 거 어떻게 하는거지?... 
+				=> textarea 사용하기 
+			-->
+			<textarea name="article" id="article" class="input" rows="15" placeholder="내용을 입력하세요."></textarea>
+			<label for="" class="error-article"></label>
+		</div>
+		<button id="submit">등록</button>
+	</form>
+	<script>
+		/*
+		제목, 작성자 필요
+
+		제목: 제목은 최소 한 글자 이상, 최대 50자 입니다. / 한글 영문 숫자, .!? 기호만 가능
+		작성자: 필수항목 여부와 특수문자(안됨) 체크
+		내용: 필수항목입니다
+		*/ 
+		let title = document.querySelector("[name=title]")
+		let writer = document.querySelector("[name=writer]")
+		let article = document.querySelector("[name=article]")
+		let form = document.querySelector("form")
+
+		let titleError = document.querySelector(".error-title")
+		let writerError = document.querySelector(".error-writer")
+		let articleError = document.querySelector(".error-article")
+		
+		form.onsubmit = function(){
+			// 서버에 값을 전송해도 되는지 여부
+			let checked = true;
+
+			// 제목의 정규표현식을 지정함
+			// - /정규표현식/ : '//'로 정규표현식의 자료형을 표현함
+			// - ^ : 정규 표현식의 시작을 의미
+			// - $ : 정규 표현식의 끝을 의미
+			// - * : 글자수 0개 이상
+			// - + : 
+			let titleRegex = /^[a-zA-Z0-9ㄱ-힣?!,\.]{0,50}$/
+			let writerRegex = /^[a-zA-Z0-9]*$/
+			// 내용은 정규표현식이 따로 없음.
+
+			let titleValue = title.value
+			let writerValue = writer.value
+			let articleValue = article.value
+
+			// 에러박스 내용 초기화
+			titleError.innerText = ""
+			writerError.innerText = ""
+			articleError.innerText = ""
+
+			// 필수항목 처리
+			// title의 입력값이 0이 아닐 경우
+			if(!titleValue.trim().length){ // trim(): 시작과 끝의 공백을 지우는 메서드
+				titleError.innerText = "필수항목입니다."
+				checked = false;
+			}
+			if(!writerValue.trim().length){ // trim(): 시작과 끝의 공백을 지우는 메서드
+				writerError.innerText = "필수항목입니다."
+				checked = false;
+			}
+			if(!articleValue.trim().length){ // trim(): 시작과 끝의 공백을 지우는 메서드
+				articleError.innerText = "필수항목입니다."
+				checked = false;
+			}
+
+			// 유효성 검사
+			// test(): 정규표현식을 만족하는 지 시험해보는 메서드
+			if(!titleRegex.test(titleValue.trim())){
+				titleError.innerText = "제목은 영문, 한글, 숫자, 특수기호(.,!?)만 사용 가능하며, 최대 50자까지 작성할 수 있습니다."
+				checked = false;
+			}
+			if(!writerRegex.test(writerValue.trim())){
+				writerError.innerText = "작성자는 영어로만 입력할 수 있습니다. (특수기호 사용 불가)"
+				checked = false;
+			}
+
+			return checked;
+		}
+
+	</script>
+</body>
+</html>
