@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>유효성 검사 예제</title>
+	<script src="../../static/jquery.js"></script>
+</head>
+<body>
+	<form action="">
+		<h1>나이를 입력하세요.</h1>
+		<input type="text" name="age" id="">
+		<button type="submit">확인</button>
+	</form>
+	
+	<script>
+		// 확인버튼을 눌렀을 때 나이에 올바른 값이 들어갔는 지확인하는 코드
+		$("button").click(function(){
+			let regex = /^[0-9]{1,2}$/
+			// let regex = /^\d+$/
+			// /^[a-zA-Z0-9ㄱ-힣?!,\.]{0,50}$/
+			let age = $("input").val()
+			if(!regex.test(age)){
+				alert(`${age}는 올바르지 않은 나이입니다.`)
+				return
+			}
+			alert(`${age}는 올바른 나이입니다.`)
+		})
+	</script>
+</body>
+</html>
