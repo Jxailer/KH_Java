@@ -21,6 +21,9 @@
 		input 태그를 이용하여 오늘의 할일을 입력받고,
 		추가 버튼을 클릭하면 오늘의 할일 화면에 추가되도록
 		코드를 작성하세요
+
+		day01 19번 예제 참고(동일 예제)
+		js day04 4번 예제(요소 추가 예제)
 		*/
 		let number = 1
 		function add(){
@@ -28,9 +31,11 @@
 			let list = document.getElementById('to-do-list')
 			text = toDo.value
 			list.innerHTML += "<li>"+number+". "+text+"</li>"
-			number++
-			toDo.value = ''
-			list.focus()
+
+			// 추가 후,
+			number++			// 할 일 idx 증가
+			toDo.value = ''		// input창 비우기
+			list.focus()		// 자동으로 input창이 활성화 되도록 하기
 		}
 
 	</script>

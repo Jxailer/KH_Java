@@ -6,7 +6,7 @@
     <title>window 메서드</title>
 </head>
 <body>
-    <button id="btn">중지</button>
+    <button id="btn">중지</button><br>
     <script>
         // 3000밀리초(3초) 뒤에 함수가 실행됨
         /*
@@ -15,9 +15,12 @@
         }, 3000)
         */
        let count = 0;
+       let body = document.querySelector("body")
+
        let id = setInterval(function(){
-        console.log(++count)
+        body.innerHTML  += ++count+" "
        }, 1000)
+
        let btn = document.getElementById('btn')
        btn.onclick = function(){
         clearInterval(id)

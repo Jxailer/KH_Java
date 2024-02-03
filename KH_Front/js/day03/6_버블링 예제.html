@@ -20,8 +20,8 @@
 	</div>	
 	<script>
 		/*
-		버블링
-		-요소에 이벤트가 발생하면, 요소의 부모 요소에게도 이벤트가 퍼지는 것
+		버블링: 요소에 이벤트가 발생하면, 요소의 부모 요소에게도 이벤트가 퍼지는 것
+			- 자식요소는 부모요소의 범위 안에 있기 때문에?
 		*/
 		let container = document.getElementsByClassName("container")[0]
 		let box = document.getElementsByClassName("box")[0]
@@ -32,6 +32,7 @@
 		addClick(container, "컨테이너 박스입니다.")
 		addClick(box, "박스입니다.")
 		addClick(ul, "메뉴 리스트입니다.")
+
 		for(let i = 0; i<liList.length; i++){
 			let item = liList[i]
 			addClick(item, "메뉴 아이템 입니다.")

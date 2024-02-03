@@ -42,7 +42,7 @@
 		/*
 		여러 개의 이미지가 있고, 이미지를 클릭하면 이미지가 크게 보이는 예제
 		*/
-		document.querySelectorAll('img-box').forEach(element=>{
+		document.querySelectorAll('.img-box').forEach(element=>{
 			element.onclick = function(){
 				let src = this.getElementsByTagName('img')[0].src
 				let showImg = document.querySelector('.show img')

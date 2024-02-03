@@ -9,6 +9,9 @@
     <button class="btn btn-add">버튼 추가하기</button>
     <div id="box"></div>
     <script>
+        /*
+        js day02 14번 예제 (할일 추가(요소 추가)예제)에 비슷한 기능이 있음!
+        */
         let btnAdd = document.getElementsByClassName("btn-add")[0]
         let count = 0
         btnAdd.onclick = function(){
@@ -18,8 +21,7 @@
             let button = document.createElement("button");
 
             // 텍스트 노드 생성(텍스트가 필요한 노드에만. input, img 등은 필요 없음.)
-            // 버튼 1, 버튼2, ... 버튼n
-            let text = document.createTextNode(`버튼${++count}`)
+            let text = document.createTextNode(`버튼${++count}`) // 버튼 1, 버튼2, ... 버튼n
 
             // 요소에 텍스트 노드 추가(연결)
             // <button>버튼n</button>
@@ -29,8 +31,8 @@
             let base = document.getElementById("box")
 
             // base.appendchild(button)
-            // JQuery 요소 추가삭제 예제 참고
-            base.prepend(button)
+            // JQuery day6 6_요소 추가삭제 예제 참고
+            base.prepend(button) // append도 가능함!
         }
     </script>
 </body>
