@@ -31,10 +31,11 @@
             
             /* 한 열의 너비를 200px 씩, 3열을 배치함 */
             /* grid-template-columns: 200px 200px 200px; */
+            grid-template-columns: repeat(3, 200px);
 
             /* 요소들을 최소 200, 최대 1 프레임의 비율을 갖도록 알아서 배치함.
                 - auto-fit=반복 횟수 */
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
             
             /* grid-template-columns: repeat(3, 200px); */
             grid-template-rows: repeat(3, 200px);

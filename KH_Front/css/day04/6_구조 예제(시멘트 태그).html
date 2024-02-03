@@ -7,15 +7,22 @@
     <style>
         header{background: gray; height: 50px;}
         /* 시멘트 태그들은 block 태그이기 때문에 float을 이용해 양옆에 배치함 */
-        aside{background: red; height: 500px; width: 30%; float:left}
+        aside{background: red; height: 500px; width: 15%; float:left}
         section{background: yellow; height: 500px; width: 70%; float: right;}
         footer{background: blue; height: 200px;}
         main::after{clear: both; content: ''; display: block;}
     </style>
 </head>
 <body>
+    <!-- 
+        aside 태그: content와 관련성이 적은 요소들을 주변에 배치할 때 씀. 사이드바 구성할때 자주 쓰임
+        section 태그: 페이지의 전반적인 요소들을 배치할 때 씀. 요소들을 테마별로 grouping함. 각각의 section들은 무엇을 위한 영역인 지 구분되어야함.
+
+     -->
     <header>헤더</header>
     <main>
+        
+        <aside>어사이드</aside>
         <section>섹션</section>
         <aside>어사이드</aside>
     </main>

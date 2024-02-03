@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크박스 예제</title>
+    <style>
+        [name=gender]{ display: none;}
+        [name=gender]+label{ padding-left: 24px; height: 24px; line-height: 24px; position: relative;}
+        [name=gender]+label::before{
+            width: 20px; height: 20px; position: absolute;top: 2px; left: 2px; content: '';
+            background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fdafanew.com%2Fanimal%2F%3Fidx%3D14462179%26bmode%3Dview&psig=AOvVaw0L_DGPS51Jv-p5-NfpDauF&ust=1707041794999000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPD4yb34joQDFQAAAAAdAAAAABAE);
+            background-size: 20px 20px;
+        }
+        [name=gender]:checked+label::before{
+            background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fnamu.wiki%2Fw%2F%25EA%25B0%2595%25EC%2595%2584%25EC%25A7%2580&psig=AOvVaw2EjIgXhdfA2xzhQwO_cAwA&ust=1707041777683000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKD8sbX4joQDFQAAAAAdAAAAABAE);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="radio" value="male" id="male" name="gender">
+        <label for="male">남성</label>
+    </div>
+    <div class="box">
+        <input type="radio" value="female" id="female" name="gender">
+        <label for="female">여성</label>
+    </div>
+</body>
+</html>

@@ -7,7 +7,6 @@
     <style>
         .container{margin-bottom: 20px;}
 
-        /* span 태그, background-color를 이용하기 */
         .container>*{
             /* 엔터에 의한 공백을 없애기 위함.*/
             float: left; 
@@ -16,6 +15,8 @@
         } 
         .container::after{
             clear: both; content: ''; display: block;}
+        
+        /* span 태그, background-color를 이용하기 */
         .bar1{display: inline-block; width: 1px; height: 14px; background-color: gray;
         margin: 3px 10px 0; /* 조금 위로 올라가있는 bar의 높이를 맞추기 위함. */
         }

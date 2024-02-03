@@ -17,7 +17,12 @@
         [class^=box]{width: 100px; height: 100px; border: 1px solid black;}
         .box1{margin-left: 50px;}
         .box2{padding-left: 50px;}
-        .box3{margin: 0 auto;} /* 위아래 마진은 0, 좌우 마진은 자동으로 절반으로 나누어 가운데 정렬함.*/
+        /* 
+        위아래 마진은 0, 좌우 마진은 자동으로 절반으로 나누어 가운데 정렬함.
+        - 이 방법을 사용하려면, 부모 요소의 가로/세로 길이가 정해져있어야함!
+        */
+        .box3{margin: 0 auto;} 
+        
 
         .inner-box{
             /* 부모 컨텐츠의 크기에 padding과 border값이 포함된 상태이므로
