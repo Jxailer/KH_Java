@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON과 fetch 예제</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>유저 아이디</th>
+                <th>제목</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+        
+
+    <script>
+
+        /*
+        JSON 파일의 형식:
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        }
+        */
+
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(function(res){
+                return res.text();
+            })
+            .then(function(text){
+                let arr = JSON.parse(text) //  현재 받아온 text는 JSON 배열을 이용하고 있기 때문에, JSON 문자열을 객체로 변환
+                insertTable(arr)
+            })
+
+        function insertTable(arr){
+            if(!arr){
+                return;
+            }
+            let tbody = document.querySelector("table tbody")
+            for(user of arr){
+                // tr태드 생성 <tr></tr>
+                let tr = createElement("tr")
+                
+                /*
+                // td태그 생성 후 tr태그에 추가 <td>아이디(JSON에서 가져온 id)</td>
+                let td1 = createElement("td", user["id"])
+                // td태그 생성 후 tr태그에 추가 <td>userId</td>
+                let td2 = createElement("td", user["userId"])
+                // td태그 생성 후 tr태그에 추가 <td>title</td>
+                let td3 = createElement("td", user["title"])
+                // td태그 생성 후 tr태그에 추가 <td>body</td>
+                let td4 = createElement("td", user["title"])
+                */
+
+                for(let key in user){
+                    let td = createElement("td", user[key])
+                    tr.append(td)
+                }
+                // 이미 있는 tbody 태그에 tr태그를 앞에 추가함
+                tbody.prepend(tr)
+
+            }
+        }
+
+        // 태그를 생성하는 함수
+        /* 
+        @Param  {String}    tagName     태그명
+        @Param  {String}    text        innerText
+        @Param  {obj}       attr        태그에 지정할 속성을 객체로 받음. 비어있을 경우 속성값을 지정하지 않고 바로 요소를 반환함.
+        */ 
+        function createElement(tagName, text, attr){
+            let element = document.createElement(tagName)
+            if(text){
+                let textNode = document.createTextNode(text)
+                element.append(textNode)
+            }
+            if(!attr){
+                return element;
+            }
+            for(key in attr){
+                let attrNode = document.createAttribute(key)
+                attrNode.value = attr[key]
+                element.append(attrNode)
+            }
+            return element;
+        }
+
+    </script>
+
+</body>
+</html>
