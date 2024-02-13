@@ -11,7 +11,6 @@ create database if not exists TEST;
 # drop database if exists TEST;
 drop schema if exists TEST;
  
- USE TEST;
  
 # 테이블 추가삭제 ======================================================
  -- 테이블 삭제(있으면)
