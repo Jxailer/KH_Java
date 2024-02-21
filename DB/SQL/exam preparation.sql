@@ -1,6 +1,7 @@
 # 사용자 추가하기
 -- 아이디와 비밀번호 모두 abc
 create user 'abc'@'localhost' identified by 'abc';
+create user 'sample'@'localhost';
 
 select * from mysql.user; -- 추가된 계정  확인
 
@@ -12,8 +13,9 @@ select * from mysql.user; -- 추가된 계정  확인
 
 # 사용자에게 권한 부여하기(root)
 grant all privileges on *.* to 'abc'@'localhost';
+grant create on *.* to 'sample'@'localhost';
 -- 부여 후 재접속을 해야 실행됨(abc 사용자일 때).
-select * from mysql.user; -- 추가된 계정 확인
+select USER, `CREATE_PRIV` from mysql.user; -- 추가된 계정 확인
 
 
 # ========================================================
@@ -22,6 +24,7 @@ select * from mysql.user; -- 추가된 계정 확인
 grant all privileges on Board.* to 'abc'@'localhost';
 # 각 DB별 사용자 계정 권한을 조회하는 쿼리
 -- 
+SELECT * FROM EMPLOYEE WHERE BONUS = NULL AND MANAGER_ID !=NULL;
 select * from mysql.db;
 # abc 계정에 계정 생성 권한만을 부여
 -- grant create user on *.* to 'abc'@'localhost';
