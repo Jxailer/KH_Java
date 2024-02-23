@@ -47,6 +47,9 @@ SELECT * FROM(
 	SELECT row_number() OVER(ORDER BY pr_price DESC) as '순위', product.* FROM product
     ) as PRODUCT_TMP WHERE 순위 <=3;
 
+SELECT row_number() OVER(ORDER BY pr_price DESC) as '순위', product.* FROM product ORDER BY pr_price DESC;
+
+
 # 각 카테고리 별 제품 가격 평균을 조회
 SELECT pr_ca_num, FLOOR(AVG(pr_price)) FROM product GROUP BY pr_ca_num;
 

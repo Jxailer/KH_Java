@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.app.dao.BoardDAO">
+	<!-- 게시글이 조회될 때 게시판 번호도 같이 조회되어 출력되도록함. -->
+	<!-- 
+	resultMap은 클래스의 맴버 이름과 테이블의 속성 이름이 다른 경우 Mapping하기 위해 사용. 
+	-->
+	<resultMap type="kr.kh.app.model.vo.BoardVO" id="BoardMap">
+		<!-- property는 클래스 멤버변수 이름, column은 테이블 속성 이름 -->
+		<id property="bo_num" column="bo_num"/>
+		<result property="bo_co_num" column="bo_co_num"/>
+		<result property="bo_me_id" column="bo_me_id"/>
+		<result property="bo_title" column="bo_title"/>
+		<result property="bo_content" column="bo_content"/>
+		<result property="bo_view" column="bo_view"/>
+		<result property="bo_report_count" column="bo_report_count"/>
+		
+		<!-- 
+		property: BoardVO의 멤버변수 이름과 동일해야함.
+		column: 위의 검색 결과에서 활용할 속성값의 이름
+		select: selectCommunity라는 메서드를 실행시키도록함.
+		 -->
+		<collection property="community" column="bo_co_num" select="selectCommunity" ofType="kr.kh.app.model.vo.CommunityVO"/>
+	</resultMap>
+	<insert id="insertBoard">
+		INSERT INTO BOARD(bo_title, bo_content, bo_co_num, bo_me_id)
+		VALUES(#{board.bo_title},#{board.bo_content},#{board.bo_co_num},#{board.bo_me_id})
+	</insert>
+	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
+		select * from Community;
+	</select>
+	<select id="selectBoardList" resultMap="BoardMap">
+		select * from Board order by bo_num desc;
+	</select>
+	<select id="selectCommunity" resultType="kr.kh.app.model.vo.CommunityVO">
+		select * from community where co_num = #{bo_co_num}
+	</select>
+</mapper>

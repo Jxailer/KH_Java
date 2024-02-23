@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>게시글 등록</title>
 <!-- 부트스트랩5 css/js -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -28,53 +31,43 @@
         <li class="nav-item">
           <a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
         </li>
-       
-       <!-- 게시글 조회 목록 -->
        </c:if>
+       
        <li class="nav-item">
        	<a class="nav-link" href="<c:url value = "/board/list"/>"/>게시글</a>
        </li>
-       
       </ul>
     </div>
   </div>
 </nav>
 
 <div class="container">
-	<h1>메인 페이지입니다.</h1>
-	<c:forEach begin="1" end="4" var="i">
-	${i },
-	</c:forEach>
+	<!-- 카테고리 목록 -->
+	<form action="<c:url  value="/board/insert"/>" method="post">
+		<div class="mb-3 mt-3">
+		<label for="community" class="form-label">게시판: </label>
+		<select class = "form-control" id="community" name="community">
+			<c:forEach items="${list}" var="community">
+				<option value="${community.co_num}">${community.co_name}</option>
+			</c:forEach>
+		</select>
+		</div>
+		
+		<!-- 게시글 작성 -->
+		<div class="mb-3 mt-3">
+			<label class="title" for="title">제목</label>
+			<input type = "text" name="title" class="form-control" id="title">
+		</div>
+		<div class="mb-3 mt-3">
+			<label class="writer" for="writer">작성자</label>
+			<input type = "text" name="writer" class="form-control" id="writer" value="${user.me_id}">
+		</div>
+		<div class="mb-3 mt-3">
+			<label class="content" for="content">내용</label>
+			<textarea type = "text" name="content" class="form-control" id="content"></textarea>
+		</div>
+		<button class="btn btn-outline-warning col-12">글 등록</button>
+	</form>
 </div>
-
-
-<!-- =========================================================== -->
-
-
-<!-- 
-jstl c태그 사용해보기
-(노트 정리 참고)
- -->
-<hr>
-
-<c:set var="name" value="홍길동"/>
-
-<input type="text" value="${id }">
-
-<c:if test = '${name == "홍길동" }'>홍길동입니다.</c:if>
-
-<c:choose>
-	<c:when test ='${name eq "홍길동" }'>홍길동입니다.</c:when>
-	<c:otherwise>홍길동이 아닙니다.</c:otherwise>
-</c:choose>
-
-<!-- 1부터 5까지 출력하는 예제 -->
-<c:forEach begin="1" end="5" var="i"> ${i} </c:forEach>
-
-<!-- 서버에서 보낸 리스트를 반복문을 이용하여 활용-->
- <c:forEach items="${list}" var="board"> ${board} </c:forEach>
-
-<c:forTokens items="a/b/c/d" delims="/" var = "ch">${ch  }</c:forTokens>
-
 </body>
 </html>
