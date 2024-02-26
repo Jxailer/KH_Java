@@ -38,10 +38,12 @@ public class MemberServiceImp implements MemberService {
 			memberVO.getMe_email() == null) {
 			return false;
 		}
-		//정규표현식 체크 : to do
 		
+		// 각 항목 유효성 검사
+		
+		//아이디가 중복되면 예외가 발생
 		try {
-			//아이디가 중복되면 예외가 발생
+			
 			return memberDao.insertMember(memberVO);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -61,6 +63,7 @@ public class MemberServiceImp implements MemberService {
 			return null;
 		}
 		//비번이 같은지 확인
+		// 비번은 회원가입 시 암호화가 되어 관리되기 때문에 DB에소 직접 비교할 수 없다.
 		if(user.getMe_pw().equals(loginDTO.getPw())) {
 			return user;
 		}

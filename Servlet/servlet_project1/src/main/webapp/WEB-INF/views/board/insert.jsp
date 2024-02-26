@@ -14,32 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<c:url  value="/"/>">Logo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-      
-      <!-- 로그인 상태가 아니라면 회원가입과 로그인 메뉴를 보이게 함. -->
-       <c:if test="${user == null }">
-       	 <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath() %>/signup">회원가입</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
-        </li>
-       </c:if>
-       
-       <li class="nav-item">
-       	<a class="nav-link" href="<c:url value = "/board/list"/>"/>게시글</a>
-       </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <div class="container">
 	<!-- 카테고리 목록 -->

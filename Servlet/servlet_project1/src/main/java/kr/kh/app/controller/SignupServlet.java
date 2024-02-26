@@ -31,12 +31,17 @@ public class SignupServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		if(memberService.signup(new MemberVO(id, pw, email))) {
 			//회원가입에 성공하면 메인 페이지로 이동
-			response.sendRedirect(request.getContextPath()+"/");
-		}
+//			response.sendRedirect(request.getContextPath()+"/");
+			request.setAttribute("msg", "회원 가입에 성공했습니다.");
+			request.setAttribute("url", "");
+				}
 		else {
 			//실패하면 회원가입 페이지 유지
-			doGet(request, response);
+//			doGet(request, response);
+			request.setAttribute("msg", "회원 가입에 실패했습니다.");
+			request.setAttribute("url", "signup");
 		}
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);	
 	}
 
 }
