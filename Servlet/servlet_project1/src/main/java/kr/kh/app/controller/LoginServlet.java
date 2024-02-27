@@ -35,13 +35,13 @@ public class LoginServlet extends HttpServlet {
 			// 세션에 회원 정보를 저장하여 로그인을 유지함
 			HttpSession session = request.getSession(); // request에 있느 ㄴ세션을 가져옴
 			session.setAttribute("user", user); // 세선에 user라는 이름으로 회원 정보를 저장함
-			response.sendRedirect(request.getContextPath()+"/");
+//			response.sendRedirect(request.getContextPath()+"/");
 			
 		}else {
 			request.setAttribute("msg", "로그인에 실패했습니다.");
 			request.setAttribute("url", "login");
 		}
-		request.getRequestDispatcher("/WEB-INF/views/message");
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }

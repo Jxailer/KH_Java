@@ -8,17 +8,19 @@
 </head>
 <body>
 	<script type="text/javascript">
-		let msg = '${msg}' // 서버에서 보낸 msg 값을 변수에 저장
+		// 서버에서 보낸 msg 값을 변수에 저장
 		// 그냥 저장하면 문자열이 아니게됨.
+		let msg = '${msg}' 
 		if(msg !=''){
 			alert(msg);
 		}
 		let redirectURL = '${url}'; // 서버에서 보낸 url을 변수에 저장
-		if(url != ''){
-			location.href='<c:url value="/${url}"/>'
+		if(redirectURL != ''){
+			location.href='<c:url value="/${url}"/>';
 		}else{
-			location.href='<c:url value="/"/>'
+			location.href='<c:url value="/"/>';
 		}
+		
 	</script>
 </body>
 </html>

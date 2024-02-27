@@ -22,7 +22,7 @@
 		<div class="mb-3 mt-3">
 		<label for="community" class="form-label">게시판: </label>
 		<select class = "form-control" id="community" name="community">
-			<c:forEach items="${list}" var="community">
+			<c:forEach items="${communityList}" var="community">
 				<option value="${community.co_num}">${community.co_name}</option>
 			</c:forEach>
 		</select>
