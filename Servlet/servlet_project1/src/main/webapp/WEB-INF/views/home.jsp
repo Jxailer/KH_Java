@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<!-- 
+c태그 라이브러리 추가
+!!! 추가하지 않으면 오류도 안뜨고 화면은 실행돼서 시간낭비 할 수 있음!!! 
+-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -39,7 +39,7 @@
 		</div>
 		<div class="mb-3 mt-3">
 			<label class="content" for="content">내용</label>
-			<textarea type = "text" name="content" class="form-control" id="content"></textarea>
+			<textarea rows="10" type = "text" name="content" class="form-control" id="content"></textarea>
 		</div>
 		<button class="btn btn-outline-warning col-12">글 등록</button>
 	</form>

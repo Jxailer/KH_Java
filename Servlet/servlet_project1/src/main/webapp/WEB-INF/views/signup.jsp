@@ -9,6 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+	<!-- 헤더 파일을 분리해서 코드 중복 최소화하기 -->
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<h1>회원가입 페이지입니다.</h1>
 	<!-- id, pw, pw2, email을 입력 받아 서버로 전송하는 코드(post방식) -->

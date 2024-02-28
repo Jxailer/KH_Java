@@ -18,4 +18,8 @@ public interface BoardDAO {
 
 	int getTotalCount(@Param("cri")Criteria cri);
 
+	BoardVO getBoard(@Param("num")int num);
+
+	boolean updateView(@Param("num")int num);
+
 }

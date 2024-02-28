@@ -11,32 +11,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<c:url  value="/"/>">Logo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-       <c:if test="${user == null }">
-       	 <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath() %>/signup">회원가입</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%=request.getContextPath() %>/login">로그인</a>
-        </li>
-       
-       <!-- 게시글 조회 목록 -->
-       </c:if>
-       <li class="nav-item">
-       	<a class="nav-link" href="<c:url value = "/board/list"/>"/>게시글</a>
-       </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
+<!-- 헤더 파일을 분리해서 코드 중복 최소화하기 -->
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
 	<h1>게시글 목록입니다.</h1>
 	<!-- 검색창 -->
@@ -73,10 +49,20 @@
 					<td>${board.bo_num}</td>
 					<td>${board.community.co_name}</td>
 					<td>
-						<a href="">${board.bo_title}</a>
+						<!-- 게시글 제목을 누르면, 해당 게시글의 상세 페이지로 이동되도록 함. -->
+						<c:url var="url" value="/board/detail">
+							<c:param name="number" value="${board.bo_num}"/>
+						</c:url>
+						<a href="${url}">${board.bo_title}</a>
 					</td>
 					<td>
-						<a href="">${board.bo_me_id}</a>
+						<!-- 작성자 아이디를 누르면, 해당 아이디로 검색이 되도록 함 -->
+						<c:url var="page" value="/board/list">
+							<c:param name="type" value="writer"/>
+							<c:param name="search" value="${board.bo_me_id}"/>
+							<c:param name="page" value="1"/>
+						</c:url>
+						<a href="${page}">${board.bo_me_id}</a>
 					</td>
 					<td>${board.bo_view}</td>
 				</tr> 
