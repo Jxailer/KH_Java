@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
+import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.pagination.Criteria;
 
 public class BoardServiceImp implements BoardService {
@@ -86,6 +87,45 @@ public class BoardServiceImp implements BoardService {
 		return boardDAO.updateView(num);
 		
 	}
+
+	@Override
+	public boolean deleteBoard(int num, MemberVO user) {
+		if(user == null) {
+			System.out.println("null user");
+			return false;
+		}
+		// 다오에게 게시글 번호를 주면서 게시글을 가져오라고 시킴
+		BoardVO board = boardDAO.getBoard(num);
+		// 게시글이 없거나, 게시글 작성자와 회원 아이디가 다르면 false 반환
+		if(board == null || !board.getBo_me_id().equals(user.getMe_id())) {
+			System.out.println("diff user");
+			return false;
+		}else {
+			// 같으면 게시글 삭제 후 삭제 여부를 반환.
+			return boardDAO.deleteBoard(num);
+		}
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board, MemberVO user) {
+		if(user == null || user.getMe_id() == null) {
+			return false;
+		}
+		if( board == null || 
+			!checkString(board.getBo_title()) || 
+			!checkString(board.getBo_content())) {
+			return false;
+		}
+		//게시글 번호를 이용하여 게시글을 가져옴
+		BoardVO dbBoard = boardDAO.getBoard(board.getBo_num());
+		//게시글 작성자와 회원 아이디를 비교하여 다르면 false 반환
+		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		//같으면 게시글 수정
+		return boardDAO.updateBoard(board);
+	}
+	
 
 
 }

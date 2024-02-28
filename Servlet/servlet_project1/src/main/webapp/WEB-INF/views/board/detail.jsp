@@ -37,6 +37,11 @@
 			</div>
 		</div>
 		<a href="<c:url value="/board/list"/>" class="btn btn-outline-dark">목록으로</a>
+		<!-- 현재 로그인 한 사용자와 id와 board의 작성자 id가 같을 경우에만 삭제를 보이게 함 -->
+		<c:if test="${board.bo_me_id == user.me_id}">
+			<a href="<c:url value="/board/delete?num=${board.bo_num}"/>" class="btn btn-outline-danger">삭제</a>
+			<a href="<c:url value="/board/update?num=${board.bo_num}"/>" class="btn btn-outline-danger">수정</a>
+		</c:if>
 	</div>
 </body>
 </html>
