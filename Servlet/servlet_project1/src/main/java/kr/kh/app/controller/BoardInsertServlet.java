@@ -26,6 +26,9 @@ public class BoardInsertServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * MemberFilter 추가로 불필요한 코드가 됨.
+		
 		// 로그인 한 회원의 정보를 가져옴. 
 		// (session에서 user 정보를 가져옴/LoginServlet에서 setAttribute의 키값을 user로 설정했기 때문에.)
 		HttpSession session = request.getSession();
@@ -39,12 +42,14 @@ public class BoardInsertServlet extends HttpServlet {
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
-		}else {
-			// 게시판 전체를 새로 가져옴
-			ArrayList<CommunityVO> list = boardService.getCommunityList();
-			request.setAttribute("communityList", list);
-			request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
 		}
+		*/
+		
+		// 게시판 전체를 새로 가져옴
+		ArrayList<CommunityVO> list = boardService.getCommunityList();
+		request.setAttribute("communityList", list);
+		request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
+		
 		
 	}
 
@@ -56,12 +61,19 @@ public class BoardInsertServlet extends HttpServlet {
 		// 로그인이 풀리면 게시글을 작성할 수 없게 해야하기 때문에
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		
+		/*
+		 * MemberFilter 추가로 불필요한 코드가 됨.
+		 * 
 		if(user == null) {
 			System.out.println("login required2");
 			request.setAttribute("msg", "로그인이 필요한 서비스 입니다.");
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
+		*/
+
 		int co_num = Integer.parseInt(request.getParameter("community"));
 		String writer = user.getMe_id();
 		BoardVO board = new BoardVO(co_num, title, content, writer);
