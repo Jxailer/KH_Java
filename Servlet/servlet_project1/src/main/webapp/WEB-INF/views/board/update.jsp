@@ -19,9 +19,14 @@
 					<label for="community" class="form-label">게시판: </label>
 					<select class = "form-control" id="community" name="community" value="${board.community.co_name }">
 						<c:forEach items="${communityList}" var="community">
-							<option value="${community.co_num}">${community.co_name}</option>
+							<option 
+								value="${community.co_num}"
+								<c:if test="${board.bo_co_num == community.co_num}">selected</c:if>>
+									${community.co_name}
+							</option>
 						</c:forEach>
 					</select>
+					
 				</div>
 				
 				<!-- 게시글 작성 -->

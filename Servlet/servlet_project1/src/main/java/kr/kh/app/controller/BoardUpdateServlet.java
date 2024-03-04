@@ -77,10 +77,12 @@ public class BoardUpdateServlet extends HttpServlet {
 		//로그인한 회원 정보를 가져옴 : 세션에 있는 회원 정보를 가져옴
 				MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 				
-				//화면에서 전송한 제목, 내용, 번호, 게시판을 가져옴
+				// 화면에서 전송한(form 태그 안에서 작성된) 제목, 내용, 번호, 게시판을 가져옴
 				int num, community;
 				try {
+					// name이 num인 input의 값
 					num = Integer.parseInt(request.getParameter("num"));
+					// name이 community인 input의 값
 					community = Integer.parseInt(request.getParameter("community"));
 				}catch(Exception e) {
 					num = 0;

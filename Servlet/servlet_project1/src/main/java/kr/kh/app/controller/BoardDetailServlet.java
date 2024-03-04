@@ -28,6 +28,15 @@ public class BoardDetailServlet extends HttpServlet {
 		int num;
 		
 		try {
+			// list.jsp에서 각 게시글의 title a태그에 설정한 url에서, param 명이 number인 것의 값을 가져옴.
+			/* 
+			 	[list.jsp]의 코드
+				
+				<c:url var="url" value="/board/detail">
+					<c:param name="number" value="${board.bo_num}"/>
+				</c:url>
+			*/
+			// 단, request.getParameter는 문자열로 값을 가져옴.
 			num = Integer.parseInt(request.getParameter("number"));
 		}catch(Exception e) {
 			num = 0;
