@@ -17,8 +17,9 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <div class="container">
-	<!-- 카테고리 목록 -->
-	<form action="<c:url  value="/board/insert"/>" method="post">
+	<!-- 게시글 내용을 전송하기 위한 form태그. enctype="multipart/form-data"를 설정해서 첨부파일 업로드를 가능하게함. -->
+	<form action="<c:url  value="/board/insert"/>" method="post" enctype="multipart/form-data">
+		<!-- 게시판 목록 -->
 		<div class="mb-3 mt-3">
 		<label for="community" class="form-label">게시판: </label>
 		<select class = "form-control" id="community" name="community">
@@ -40,6 +41,10 @@
 		<div class="mb-3 mt-3">
 			<label class="content" for="content">내용</label>
 			<textarea rows="10" type = "text" name="content" class="form-control" id="content"></textarea>
+		</div>
+		<div class="mb-3 mt-3">
+			<label class="content" for="file">첨부파일:</label>
+			<input type = "file" name="file" class="form-control" id="file">
 		</div>
 		<button class="btn btn-outline-warning col-12">글 등록</button>
 	</form>

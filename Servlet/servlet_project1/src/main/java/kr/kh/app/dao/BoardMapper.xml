@@ -27,10 +27,22 @@
 		 -->
 		<collection property="community" column="bo_co_num" select="selectCommunity" ofType="kr.kh.app.model.vo.CommunityVO"/>
 	</resultMap>
-	<insert id="insertBoard">
+	
+	
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+		<!-- 
+		useGeneratedKeys="true" 
+		keyProperty="board.bo_num" 
+		게시글이 DB에 추가됐을 때 생성된 기본 키를 가져와서 board 객체에 저장함.
+		-->
 		INSERT INTO BOARD(bo_title, bo_content, bo_co_num, bo_me_id)
 		VALUES(#{board.bo_title},#{board.bo_content},#{board.bo_co_num},#{board.bo_me_id})
 	</insert>
+	<insert id="insertFile">
+		insert into file(fi_bo_num, fi_ori_name, fi_name) values(#{file.fi_bo_num}, #{file.fi_ori_name}, #{file.fi_name})
+	</insert>
+	
+	
 	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
 		select * from Community;
 	</select>
@@ -61,7 +73,6 @@
 		ORDER BY bo_num DESC
 		LIMIT ${cri.pageStart}, #{cri.perPageNum}
 	</select>
-	
 	<select id = "getTotalCount" resultType="int">
 		select count(*) from board
 		<if test='cri.type == "all" '>
@@ -86,16 +97,14 @@
 	<select id="getBoard" resultMap="BoardMap">
 		select * from board where bo_num = #{num}
 	</select>
+	
+	
 	<update id="updateView">
 		UPDATE board 
 			SET bo_view = bo_view + 1 
 			WHERE bo_num = #{num}
 	</update>
-	<delete id="deleteBoard">
-		DELETE FROM board WHERE bo_num = #{num}
-	</delete>
-
-	<update id="updateBoard">
+		<update id="updateBoard">
 		update board set
 			bo_title = #{board.bo_title},
 			bo_content = #{board.bo_content},
@@ -103,4 +112,11 @@
 		where
 			bo_num = #{board.bo_num}
 	</update>
+	
+	
+	<delete id="deleteBoard">
+		DELETE FROM board WHERE bo_num = #{num}
+	</delete>
+
+
 </mapper>
