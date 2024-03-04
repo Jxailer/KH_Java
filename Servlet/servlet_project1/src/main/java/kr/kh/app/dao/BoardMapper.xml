@@ -98,6 +98,10 @@
 		select * from board where bo_num = #{num}
 	</select>
 	
+	<select id="selectFileByBo_num" resultType="kr.kh.app.model.vo.FileVO">
+		SELECT * FROM file WHERE fi_bo_num = #{num}
+	</select>
+	
 	
 	<update id="updateView">
 		UPDATE board 
