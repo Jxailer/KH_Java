@@ -29,6 +29,10 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file")FileVO file);
 
-	FileVO selectFileByBo_num(@Param("num")int num);
+	ArrayList<FileVO> selectFileByBo_num(@Param("num")int num);
+
+	void deldeteFile(@Param("num")int num);
+
+	FileVO selectFileByfi_num(@Param("fi_num")int fi_num);
 
 }

@@ -79,7 +79,7 @@ public class BoardInsertServlet extends HttpServlet {
 		String writer = user.getMe_id();
 		
 		// 첨부파일을 가져옴
-		Part filePart = request.getPart("file");
+		ArrayList<Part> partList = (ArrayList<Part>)request.getParts();
 		
 		// 게시글 작성 화면에서 장시간 가만히 있으면, 세션이 만료되어 로그인이 풀림
 		// 로그인이 풀리면 게시글을 작성할 수 없게 해야하기 때문에, 현재 Session의 로그인 정보를 확인함.
@@ -98,7 +98,7 @@ public class BoardInsertServlet extends HttpServlet {
 		BoardVO board = new BoardVO(co_num, title, content, writer);
 		
 		// 서비스에게 게시글을 주면서 등록하라고 시킴
-		if(boardService.insertBoard(board, filePart)) {
+		if(boardService.insertBoard(board, partList)) {
 			request.setAttribute("msg", "게시글을 등록했습니다.");
 //			response.sendRedirect(request.getContextPath()+"/board/list");
 //			System.out.println("게시글 등록 완료");

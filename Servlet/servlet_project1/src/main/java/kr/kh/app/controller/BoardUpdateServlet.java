@@ -4,18 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
+import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 
 @WebServlet("/board/update")
+//첨부파일 관련 annotation(파일을 읽어오게함)
+@MultipartConfig(
+		maxFileSize = 1024 * 1024 * 10, // 1024b * 1024kb * 10 = 10MB
+		maxRequestSize = 1024 * 1024 * 10 * 3, // 10Mb를 최대 3개 추가할 수 있음.
+		fileSizeThreshold = 1024 * 1024 // 1Mb : 파일 업로드 시 메모리에 저장되는 임시 파일의 크기
+)
 public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private BoardService boardService = new BoardServiceImp();
@@ -56,7 +65,10 @@ public class BoardUpdateServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
-
+		
+		// 게시글의 첨부파일을 가져와서 화면에 전송함.
+		ArrayList<FileVO> fileList = boardService.getFile(num);
+		request.setAttribute("fileList", fileList);
 		
 		// 3. 화면에 게시글을 전송
 		request.setAttribute("board", board);
@@ -92,8 +104,26 @@ public class BoardUpdateServlet extends HttpServlet {
 				String content = request.getParameter("content");
 				//게시글 객체로 생성
 				BoardVO board = new BoardVO(num, title, content, community);
+				
+				// 새로 추가된 첨부파일 정보를 가져옴
+				ArrayList<Part> fileList = (ArrayList<Part>)request.getParts();
+				
+				// 삭제할 첨부파일 정보를 가져옴
+				String numsStr [] = request.getParameterValues("fi_num");
+				
+				ArrayList<Integer> nums = new ArrayList<Integer>();
+				if(numsStr != null) {
+					for(String numStr : numsStr) {
+						try {
+							int fi_num = Integer.parseInt(numStr);
+							nums.add(fi_num);
+						}catch (Exception e) {
+						}
+					}
+				}
+				
 				//서비스에게 게시글과 회원정보를 주면서 게시글 수정하라고 요청
-				boolean res = boardService.updateBoard(board, user);
+				boolean res = boardService.updateBoard(board, user, nums, fileList);
 				//성공하면 성공했다고 알리고 게시글 상세로 이동
 				if(res) {
 					request.setAttribute("msg", "게시글을 수정했습니다.");	

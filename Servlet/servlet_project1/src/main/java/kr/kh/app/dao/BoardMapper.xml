@@ -102,6 +102,10 @@
 		SELECT * FROM file WHERE fi_bo_num = #{num}
 	</select>
 	
+	<select id="selectFileByfi_num" resultType="kr.kh.app.model.vo.FileVO">
+		SELECT * FROM file WHERE fi_num = #{fi_num}
+	</select>
+	
 	
 	<update id="updateView">
 		UPDATE board 
@@ -120,6 +124,9 @@
 	
 	<delete id="deleteBoard">
 		DELETE FROM board WHERE bo_num = #{num}
+	</delete>
+	<delete id="deldeteFile">
+		DELETE FROM file WHERE fi_num = #{num}
 	</delete>
 
 
