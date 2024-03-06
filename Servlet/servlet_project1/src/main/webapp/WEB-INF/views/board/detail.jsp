@@ -33,6 +33,10 @@
 						<label class="writer" for="view">조회수</label>
 						<input type = "text" name="view" class="form-control" id="view" readonly value="${board.bo_view}">
 					</div>
+					<div class="mb-3 mt-3 clearfix">
+						<button type="button" id="btnUp" data-state="1" class="btn btn-outline-danger col-5 float-start" >추천</button>
+						<button type="button" id="btnDown" data-state="-1" class="btn btn-outline-danger col-5 float-end">비추천</button>
+					</div>
 					<div class="mb-3 mt-3">
 						<label class="content" for="content">내용</label>
 						<div class="form-control">${board.bo_content}</div>
@@ -58,5 +62,46 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	<script type="text/javascript">
+		let btnUp = document.getElementById("btnUp")
+		let btnDown = document.getElementById("btnDown")
+		
+		btnUp.onclick = recommend;
+		btnDown.onclick = recommend;
+		
+		function recommend(){
+			// 로그인을 안했다면
+			if('${user.me_id}' == ''){
+				if(confirm("로그인이 필요한 서비스입니다. 로그인으로 이동하시겠습니까?")){
+					location.href = "<c:url value='/login'/>"
+				}else{
+					// return;
+				}
+			}
+			// 게시글 번호를 가져옴
+			let boNum = '${board.bo_num}'
+			// data-state의 값을 가져옴. (추천은 1, 비추천은 -1)
+			let state = this.getAttribute("data-state")
+			
+			// 비동기 통신
+			fetch(`<c:url value="/recommend"/>?boNum=\${boNum}&state=\${state}`)
+				.then(response => response.text())
+				.then(data => {
+					let str = state == 1 ? '추천' : '비추천';
+					switch(data){
+						case "1": alert('게시글을 추천했습니다'); break;
+						case "-1": alert('게시글을 비추천했습니다.'); break;
+						case "0": alert(`게시글 \${str}을 취소했습니다.`); break;
+						default: alert(data);
+					
+					}	
+			
+				})
+				.catch(error => console.error(error))
+			
+			
+		
+		}
+	</script>
 </body>
 </html>

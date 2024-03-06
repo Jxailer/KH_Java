@@ -41,6 +41,9 @@
 	<insert id="insertFile">
 		insert into file(fi_bo_num, fi_ori_name, fi_name) values(#{file.fi_bo_num}, #{file.fi_ori_name}, #{file.fi_name})
 	</insert>
+	<insert id="inserRecommend">
+		INSERT INTO recommend(re_me_id, re_bo_num, re_state) VALUES(#{re.re_me_id}, #{re.re_bo_num}, #{re.re_state})
+	</insert>
 	
 	
 	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
@@ -105,6 +108,9 @@
 	<select id="selectFileByfi_num" resultType="kr.kh.app.model.vo.FileVO">
 		SELECT * FROM file WHERE fi_num = #{fi_num}
 	</select>
+	<select id="selectRecommend" resultType="kr.kh.app.model.vo.RecommendVO">
+		SELECT * FROM recommend WHERE re_me_id = #{me_id} AND re_bo_num = #{bo_num}
+	</select>
 	
 	
 	<update id="updateView">
@@ -112,13 +118,19 @@
 			SET bo_view = bo_view + 1 
 			WHERE bo_num = #{num}
 	</update>
-		<update id="updateBoard">
+	<update id="updateBoard">
 		update board set
 			bo_title = #{board.bo_title},
 			bo_content = #{board.bo_content},
 			bo_co_num = #{board.bo_co_num}
 		where
 			bo_num = #{board.bo_num}
+	</update>
+	<update id="updateRecommend">
+		UPDATE recommend SET
+			re_state = #{re.re_state}
+		WHERE
+			re_num = #{re.re_num}
 	</update>
 	
 	
