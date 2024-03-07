@@ -88,10 +88,22 @@
 				.then(response => response.text())
 				.then(data => {
 					let str = state == 1 ? '추천' : '비추천';
+					// 버튼에 색이 들어있으면 지움
+					initRecommendBtn(btnUp);
+					initRecommendBtn(btnDown);
+					
 					switch(data){
-						case "1": alert('게시글을 추천했습니다'); break;
-						case "-1": alert('게시글을 비추천했습니다.'); break;
-						case "0": alert(`게시글 \${str}을 취소했습니다.`); break;
+						case "1": 
+							alert('게시글을 추천했습니다'); 
+							selectRecommendBtn(btnUp);
+							break;
+						case "-1": 
+							alert('게시글을 비추천했습니다.');
+							selectRecommendBtn(btnDown); 
+							break;
+						case "0": 
+							alert(`게시글 \${str}을 취소했습니다.`); 
+							break;
 						default: alert(data);
 					
 					}	
@@ -102,6 +114,26 @@
 			
 		
 		}
+		// 추천/비추천 버튼을 초기상태로 돌리는 함수 (class에서 btn-outline-danger 추가)
+		function initRecommendBtn(btn){
+			btn.classList.remove('btn-danger');
+			btn.classList.add('btn-outline-danger')
+			
+		}
+		
+		// 추천/비추천 버튼을 선택했을 때 색상을 띄우는 함수 (class에서 btn-outline-danger 삭제)
+		function selectRecommendBtn(btn){
+			btn.classList.remove('btn-outline-danger')
+			btn.classList.add('btn-danger');
+		}
+		
+		<c:if test="${recommend != null}">
+			if(${recommend.re_state} == 1){
+				selectRecommendBtn(btnUp);
+			}else if(${recommend.re_state} == -1){
+				selectRecommendBtn(btnDown);
+			}
+		</c:if>
 	</script>
 </body>
 </html>

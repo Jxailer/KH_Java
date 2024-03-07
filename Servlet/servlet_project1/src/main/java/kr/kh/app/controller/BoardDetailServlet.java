@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.FileVO;
+import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.RecommendVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 
@@ -56,6 +58,13 @@ public class BoardDetailServlet extends HttpServlet {
 		
 		// 5. 첨부파일을 화면에 전송
 		request.setAttribute("fileList", fileList);
+		
+		// 6. 회원의 추천 상태를 가져옴
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		RecommendVO recommend = boardService.getRecommend(user, num);
+		
+		// 7. 회원의 추천상태를 화면에 전송
+		request.setAttribute("recommend", recommend);
 		
 		// 화면을 송출함.
 		request.getRequestDispatcher("/WEB-INF/views/board/detail.jsp").forward(request, response);
