@@ -14,10 +14,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.RecommendVO;
+import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
 import kr.kh.app.utils.FileUploadUtils;
 
@@ -233,6 +235,54 @@ public class BoardServiceImp implements BoardService {
 			return null;
 		}
 		return boardDAO.selectRecommend(user.getMe_id(), num);
+	}
+
+	@Override
+	public boolean insertComment(CommentVO comment) {
+		
+		if(comment == null || !checkString(comment.getCm_content())) {
+			return false;
+		}
+		
+		return boardDAO.insertComment(comment);
+		
+	}
+
+	@Override
+	public ArrayList<CommentVO> getCommentList(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria(1, 2);
+		}
+		return boardDAO.selectCommentList(cri);
+	}
+
+	@Override
+	public int getTotalCountComment(CommentCriteria cri) {
+		if(cri == null) {
+			return 0;
+		}
+		return boardDAO.getTotalCountComment(cri);
+	}
+
+	@Override
+	public boolean deleteComment(int num, MemberVO user) {
+		if(user == null) {
+			System.out.println("null user");
+			return false;
+		}
+		// 댓글 번호와 일치하는 댓글을 가져옴
+		CommentVO comment = boardDAO.selectComment(num);
+		
+		// 댓글 작성자가 현재 로그인 한 회원인지 확인하여 아니면 false 리턴
+		if(comment == null || !comment.getCm_me_id().equals(user.getMe_id())) {
+			System.out.println("null comment or not writer");
+			System.out.println(comment);
+			System.out.println(comment.getCm_me_id());
+			System.out.println(user.getMe_id());
+			return false;
+		}
+		// 맞으면 삭제를 요청함
+		return boardDAO.deleteComment(num);
 	}
 
 

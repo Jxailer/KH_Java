@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.RecommendVO;
+import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
 
 public interface BoardDAO {
@@ -41,5 +43,15 @@ public interface BoardDAO {
 	void inserRecommend(@Param("re")RecommendVO recommend);
 
 	void updateRecommend(@Param("re")RecommendVO recommend);
+
+	boolean insertComment(@Param("cm")CommentVO comment);
+
+	ArrayList<CommentVO> selectCommentList(@Param("cri")Criteria cri);
+
+	int getTotalCountComment(@Param("cri")CommentCriteria cri);
+
+	CommentVO selectComment(@Param("num")int num);
+
+	boolean deleteComment(@Param("num")int num);
 
 }

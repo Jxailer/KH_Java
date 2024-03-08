@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -56,12 +57,28 @@
 					<a href="<c:url value="/board/delete?num=${board.bo_num}"/>" class="btn btn-outline-danger">삭제</a>
 					<a href="<c:url value="/board/update?num=${board.bo_num}"/>" class="btn btn-outline-danger">수정</a>
 				</c:if>
+				<!-- 댓글 조회, 작성 -->
+				
+				<div class="mt-3 mb-3 comment-box">
+				<h3>댓글</h3>
+					<div class="comment-list"></div>
+					<div class="comment-pagination">
+					  <ul class="pagination justify-content-center"></ul>
+					</div>
+					<div class="comment-input-box">
+						<div class="input-group">
+							<textarea class="form-control comment-content"></textarea>
+							<button type="button"  class="btn-comment-insert btn btn-outline-success">등록</button>
+						</div>
+					</div>
+				</div>
 			</c:when>
 			<c:otherwise>
 				<h1>등록되지 않은 게시글 이거나 삭제된 게시글 입니다.</h1>
 			</c:otherwise>
 		</c:choose>
 	</div>
+	<!-- 추천기능 구현 -->
 	<script type="text/javascript">
 		let btnUp = document.getElementById("btnUp")
 		let btnDown = document.getElementById("btnDown")
@@ -74,8 +91,9 @@
 			if('${user.me_id}' == ''){
 				if(confirm("로그인이 필요한 서비스입니다. 로그인으로 이동하시겠습니까?")){
 					location.href = "<c:url value='/login'/>"
+					return
 				}else{
-					// return;
+					return;
 				}
 			}
 			// 게시글 번호를 가져옴
@@ -134,6 +152,160 @@
 				selectRecommendBtn(btnDown);
 			}
 		</c:if>
+	</script>
+	<!-- 댓글 등록 기능 구현 -->
+	<script type="text/javascript">
+		$(".btn-comment-insert").click(function(){
+			// 로그인 체크
+			if('${user.me_id}' == ''){
+				// 확인을 누르면 로그인 페이지로
+				if(confirm("로그인이 필요한 서비스입니다. 로그인으로 이동하겠습니까?")){
+					location.href = "<c:url value='/login'/>"
+				}
+				//취소 누르면 현재 페이지에서 댓글 작성 동작을 안함
+				else{
+					return;
+				}
+			}
+			let content = $(".comment-content").val();
+			let num = '${board.bo_num}';
+			
+			$.ajax({
+				url : '<c:url value="/comment/insert"/>',
+				method : "post",
+				data : {
+					content, num
+				},
+				success : function(data){
+					if(data == "ok"){
+						alert("댓글을 등록했습니다.")
+						cri.page = 1;
+						getCommentList(cri)
+						$(".comment-content").val("") // 입력창 비우기
+					}else{
+						alert("댓글을 등록하지 못했습니다.")
+					}
+				},
+				error : function(a, b, c){
+					
+				}
+			})
+		})
+	</script>
+	<!-- 댓글 조회 기능 구현 -->
+	<script type="text/javascript">
+		let cri = {
+			page : 1,
+			boNum : '${board.bo_num}'
+		}
+		function getCommentList(cri){
+			$.ajax({
+				url : '<c:url value="/comment/list"/>',
+				method : "post",
+				data : cri,
+				success : function(data){
+					// Servlet에서 jobj.put("list")를 해왔기 때문에 아래 형태로 불러올 수 있음.
+					console.log(data.list)
+					let str = '';
+					for(comment of data.list){
+						let btns ='';
+						
+						if('${user.me_id}' == comment.cm_me_id){
+							// 수정 삭제 버튼
+							btns += 
+								`
+									<button class="btn btn-outline-warning btn-comment-update">수정</button>
+									<button class="btn btn-outline-danger btn-comment-delete" data-num="\${comment.cm_num}">삭제</button>
+								`
+						}
+						console.log(btns)
+						str +=
+							`
+							<div class="input-group mb-3">
+								<div class="col-3">\${comment.cm_me_id}</div>
+								<div class="col-9">\${comment.cm_content}</div>
+								\${btns}
+							</div>
+							`
+					}
+					$(".comment-list").html(str)
+					// JSON.parse(문자열) : json 형태의 문자열을 객체로 변환함.
+					// JSON.stringify(객체) : 객체를 json 형태의 문자열로 변환함.
+					let pm = JSON.parse(data.pm)
+					let pmStr = "";
+					console.log(pm)
+					
+					// 이전 버튼 활성화 여부에 따라 버튼 추가
+					if(pm.prev){
+						pmStr += 
+							`
+							<li class="page-item">
+								<a class="page-link" href="javascript:void(0);" data-page="\${pm.startPage-1}">이전</a>
+							</li>
+							`
+					}
+					// 숫자 페이지
+					for(i = pm.startPage; i<=pm.endPage; i++){
+						let active = pm.cri.page == i ? "active" : "";
+						pmStr +=
+							`
+							<li class="page-item \${active}">
+								<a class="page-link" href="javascript:void(0);" data-page="\${i}">\${i}</a>
+							</li>
+							`
+					}
+					// 다음 버튼 활성화 여부에 따라 버튼 추가
+					if(pm.next){
+						pmStr += 
+							`
+							<li class="page-item">
+								<a class="page-link" href="javascript:void(0);" data-page="\${pm.endPage+1}">다음</a>
+							</li>
+							`
+					}
+					console.log(pmStr)
+					$(".comment-pagination>ul").html(pmStr)
+					
+				},
+				error : function(a, b, c){
+					
+				}
+			})
+		}
+		
+		// comment-pagination의 자식인 page-link를 클릭하면,
+		$(document).on("click", ".comment-pagination .page-link", function(){
+			// 페이지만 바꿔서 데이터 조회를 다시 함.
+			cri.page = $(this).data("page");
+			getCommentList(cri)
+		})
+		 getCommentList(cri)
+	</script>
+	<!-- 댓글 삭제 기능 구현 -->
+	<script type="text/javascript">
+		// $("선택자").click(fuction(){}) // 이벤트를 등록할 때, 해당 요소가 있으면 그 요소에 이벤트를 등록함
+		$(document).on("click", ".btn-comment-delete", function(){ // document 객체에 이벤트를 등록하기 때문에, 요소가 나중에 추가되어도 동작함.
+			let num = $(this).data("num")
+			$.ajax({
+				url : '<c:url value="/comment/delete"/>',
+				method : "post",
+				data : {
+					num
+				},
+				success : function(data){
+					if(data == 'ok'){
+						alert("댓글을 삭제했습니다.")
+						getCommentList(cri)
+					}else{
+						alert("댓글을 삭제하지 못했습니다.")
+					}
+				},
+				error : function(a, b, c){
+					
+				}
+			})
+		})
+		
 	</script>
 </body>
 </html>

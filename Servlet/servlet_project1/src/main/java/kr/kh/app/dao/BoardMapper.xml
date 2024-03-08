@@ -44,6 +44,9 @@
 	<insert id="inserRecommend">
 		INSERT INTO recommend(re_me_id, re_bo_num, re_state) VALUES(#{re.re_me_id}, #{re.re_bo_num}, #{re.re_state})
 	</insert>
+	<insert id="insertComment">
+		INSERT INTO comment(cm_content, cm_me_id, cm_bo_num) VALUES(#{cm.cm_content}, #{cm.cm_me_id}, #{cm.cm_bo_num})
+	</insert>
 	
 	
 	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
@@ -111,7 +114,19 @@
 	<select id="selectRecommend" resultType="kr.kh.app.model.vo.RecommendVO">
 		SELECT * FROM recommend WHERE re_me_id = #{me_id} AND re_bo_num = #{bo_num}
 	</select>
-	
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		SELECT * FROM comment 
+		WHERE cm_bo_num = #{cri.boNum}
+		ORDER BY cm_num DESC
+		LIMIT #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="getTotalCountComment" resultType="int">
+		SELECT count(*) FROM comment 
+		WHERE cm_bo_num = #{cri.boNum}
+	</select>
+	<select id="selectComment">
+		SELECT * FROM comment WHERE cm_num = #{num}
+	</select>
 	
 	<update id="updateView">
 		UPDATE board 
@@ -139,6 +154,9 @@
 	</delete>
 	<delete id="deldeteFile">
 		DELETE FROM file WHERE fi_num = #{num}
+	</delete>
+	<delete id="deleteComment">
+		DELETE FROM comment WHERE cm_num = #{num}
 	</delete>
 
 
