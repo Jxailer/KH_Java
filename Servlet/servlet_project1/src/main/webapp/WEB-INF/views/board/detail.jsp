@@ -214,16 +214,18 @@
 							// 수정 삭제 버튼
 							btns += 
 								`
-									<button class="btn btn-outline-warning btn-comment-update">수정</button>
+								<div class="btn-comment-group">
+									<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.cm_num}">수정</button>
 									<button class="btn btn-outline-danger btn-comment-delete" data-num="\${comment.cm_num}">삭제</button>
+								</div>
 								`
 						}
-						console.log(btns)
+						
 						str +=
 							`
-							<div class="input-group mb-3">
+							<div class="input-group mb-3 box-comment">
 								<div class="col-3">\${comment.cm_me_id}</div>
-								<div class="col-9">\${comment.cm_content}</div>
+								<div class="col-6 cm-content">\${comment.cm_content}</div>
 								\${btns}
 							</div>
 							`
@@ -307,5 +309,70 @@
 		})
 		
 	</script>
+	<!-- 댓글 수정 기능 구현 -->
+	<script type="text/javascript">
+		$(document).on("click", ".btn-comment-update", function(){
+			initComment()
+			// 현재 댓글을 보여주는 창이 textarea태그로 변경되어야 함.
+			// 기존 댓글창을 감춤
+			$(this).parents(".box-comment").find(".cm-content").hide()
+			let comment = $(this).parents(".box-comment").find(".cm-content").text()
+			let textarea =
+				`
+					<textarea class="form-control com-input">\${comment}</textarea>
+				`
+			$(this).parents(".box-comment").find(".cm-content").after(textarea);
+				
+			// 수정, 삭제 버튼 대신 수정 완료 버튼으로 변경해야함.
+			$(this).parent().hide();
+			let num = $(this).data("num")
+			let btn =
+				`
+				<button class="btn btn-outline-success btn-complete" data-num="\${num}">수정완료</button>
+				`
+			$(this).parent().after(btn)
+		})
+		
+		// 수정 완료 버튼 클릭 이벤트
+		$(document).on("click", ".btn-complete", function(){
+			// 수정하기 위해 필요한 정보를 가져옴: 수정된 내용, 댓글 번호
+			let num = $(this).data("num");
+			let content = $(".com-input").val()
+			
+			$.ajax({
+				url : '<c:url value="/comment/update"/>',
+				method : "post",
+				data : {
+					// 객체의 변수의 이름과 해당하는 값을 쓸 때, 변수명만 써도 값이 자동으로 들어감.
+					num, content 
+				},
+				success : function(data){
+					if(data == 'ok'){
+						alert("댓글을 수정했습니다.")
+						getCommentList(cri)
+					}else{
+						alert("댓글을 수정하지 못했습니다.")
+					}
+				},
+				error : function(xhr, status, error){
+					
+				}
+			}) //ajax end
+		})
+		
+		// 한 가지 댓글만 수정창을 띄울 수 있도록 하는 함수
+		function initComment(){
+			// 감추었던 기존 댓글 내용을 보여줌
+			$(".cm-content").show()
+			// 감추었던 수정/삭제 버튼을 보여줌
+			$(".btn-comment-group").show()
+			// 추가했던 댓글 textarea 태그를 삭제함
+			$(".com-input").remove()
+			// 추가했던 수정 완료 버튼을 삭제함
+			$(".btn-complete").remove()
+			
+		}
+	</script>
+
 </body>
 </html>

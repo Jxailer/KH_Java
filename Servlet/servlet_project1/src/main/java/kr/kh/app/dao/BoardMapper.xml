@@ -147,6 +147,12 @@
 		WHERE
 			re_num = #{re.re_num}
 	</update>
+	<update id="updateComment">
+		UPDATE comment SET
+			cm_content = #{cm.cm_content}
+		WHERE
+			cm_num = #{cm.cm_num}
+	</update>
 	
 	
 	<delete id="deleteBoard">
