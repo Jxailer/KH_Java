@@ -20,6 +20,9 @@ public class HomeController {
 	public String home(Model model, String id) {
 		MemberVO member = memberService.getMember(id);
 		System.out.println(member);
+
+		// model.addAttribute("화면에서 사용할 이름", "보낼 데이터");
+		model.addAttribute("name", "홍길동");
 		return "home";
 	}
 	

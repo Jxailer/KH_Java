@@ -24,7 +24,10 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource" />
+	    <!-- mapper 경로 자동 지정 -->
 	    <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+	    <!-- mybatis 경로 지정 -->
+	    <property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml"></property>
 	</bean>
 	<mybatis-spring:scan base-package="kr.kh.spring2.dao"/>
 	  
