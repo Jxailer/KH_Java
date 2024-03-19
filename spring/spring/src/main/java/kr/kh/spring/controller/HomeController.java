@@ -1,5 +1,8 @@
 package kr.kh.spring.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.spring.model.dto.LoginDTO;
 import kr.kh.spring.model.vo.MemberVO;
@@ -73,4 +78,15 @@ public class HomeController {
 		return "message";
 	}
 	
+	@ResponseBody
+	@GetMapping("/id/check/dup")	//또는 @PostMapping("경로")
+	//리턴타입 꼭 Object일 필요는 없음. List로 보내고 싶으면 List로 수정해도 상관없음 
+	public Map<String, Object> idCheckDup(@RequestParam("id") String id){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		boolean res = memberService.idCheck(id);
+		
+		map.put("result", res);
+		return map;
+	}
 }
