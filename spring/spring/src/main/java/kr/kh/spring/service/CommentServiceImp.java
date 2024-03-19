@@ -15,7 +15,13 @@ public class CommentServiceImp implements CommentService {
 	
 	@Autowired
 	CommentDAO commentDao;
-
+	
+	public boolean checkString(String str) {
+		if(str == null || str.length() == 0)
+			return false;
+		return true;
+	}
+	
 	@Override
 	public ArrayList<CommentVO> getCommentList(Criteria cri) {
 		if(cri == null) {
@@ -43,11 +49,24 @@ public class CommentServiceImp implements CommentService {
 		comment.setCm_me_id(user.getMe_id());
 		return commentDao.insertComment(comment);
 	}
-	
-	public boolean checkString(String str) {
-		if(str == null || str.length() == 0)
+
+	@Override
+	public boolean deleteComment(CommentVO comment, MemberVO user) {
+		if(comment == null) {
+			System.out.println("null comment");
 			return false;
-		return true;
+		}
+		if(user == null)
+			return false;
+		
+		// 작성자인지 확인함
+		CommentVO dbComment = commentDao.selectComment(comment.getCm_num());
+		if(dbComment == null || !dbComment.getCm_me_id().equals(user.getMe_id())) {
+			System.out.println("no comment or not writer");
+			return false;
+		}
+		
+		return commentDao.deleteComment(comment.getCm_num());
 	}
 	
 }
