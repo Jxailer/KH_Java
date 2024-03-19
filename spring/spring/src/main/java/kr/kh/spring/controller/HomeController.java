@@ -53,6 +53,7 @@ public class HomeController {
 
 		return "/member/login";
 	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model, LoginDTO loginDto) {
 		MemberVO user = memberService.login(loginDto);
