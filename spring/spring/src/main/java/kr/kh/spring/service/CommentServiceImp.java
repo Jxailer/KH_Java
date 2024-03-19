@@ -68,5 +68,21 @@ public class CommentServiceImp implements CommentService {
 		
 		return commentDao.deleteComment(comment.getCm_num());
 	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if(comment == null || !checkString(comment.getCm_content()))
+			return false;
+		if(user == null)
+			return false;
+		// 작성자인지 확인함
+		CommentVO dbComment = commentDao.selectComment(comment.getCm_num());
+		if(dbComment == null || !dbComment.getCm_me_id().equals(user.getMe_id())) {
+			System.out.println("no comment or not writer");
+			return false;
+		}
+		
+		return commentDao.updateComment(comment);
+	}
 	
 }
