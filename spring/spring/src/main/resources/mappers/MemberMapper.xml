@@ -17,4 +17,9 @@
   	UPDATE member SET me_pw = #{pw}
   		WHERE me_id = #{id}
   </update>
+  <update id="updateMember">
+  	UPDATE member
+  		SET me_pw = #{me.me_pw}, me_email = #{me.me_email}
+  			WHERE me_id = #{me.me_id}
+  </update>
 </mapper>
