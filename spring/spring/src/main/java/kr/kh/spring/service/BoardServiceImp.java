@@ -14,6 +14,7 @@ import kr.kh.spring.model.vo.BoardVO;
 import kr.kh.spring.model.vo.CommunityVO;
 import kr.kh.spring.model.vo.FileVO;
 import kr.kh.spring.model.vo.MemberVO;
+import kr.kh.spring.model.vo.RecommendVO;
 import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.utils.UploadFileUtils;
 
@@ -190,6 +191,42 @@ public class BoardServiceImp implements BoardService {
 			deleteFile(fileVo);
 		}
 		return true;
+	}
+
+	@Override
+	public int recommend(RecommendVO recommend, MemberVO user) {
+		if(recommend == null)
+			return -2;	// 실패
+		if(user == null)
+			return -2;
+		recommend.setRe_me_id(user.getMe_id());
+		
+		// 기존 추천 정보가 있는지 확인함
+		RecommendVO dbRecommend = boardDao.selectRecommend(recommend);
+		
+		// 없으면 추가함
+		if(dbRecommend == null) {
+			boardDao.insertRecommend(recommend);
+		}
+		// 있으면 수정함
+		else {
+			if(recommend.getRe_state() == dbRecommend.getRe_state()) {
+				// 취소
+				recommend.setRe_state(0);
+			}
+			boardDao.updateRecommend(recommend);
+		}
+		return recommend.getRe_state();
+		
+	}
+
+	@Override
+	public int getUserRecommend(int num, MemberVO user) {
+		if(user == null)
+			return -2;
+		
+		RecommendVO recommend = boardDao.selectRecommend(new RecommendVO(num, user.getMe_id()));
+ 		return recommend == null ? -2 : recommend.getRe_state();
 	}
 
 	
