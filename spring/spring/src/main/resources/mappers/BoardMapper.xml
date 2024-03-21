@@ -112,4 +112,9 @@
 			SET re_state = #{re.re_state}
 		WHERE re_me_id = #{re.re_me_id} AND re_bo_num = #{re.re_bo_num}
 	</update>
+	<update id="updateMemberCookie">
+		UPDATE member
+			SET me_cookie = #{user.me_cookie}, me_cookie_limit = #{user.me_cookie_limit}
+			WHERE me_id = #{user.me_id}
+	</update>
 </mapper>

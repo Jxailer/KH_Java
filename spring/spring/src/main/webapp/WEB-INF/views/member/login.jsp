@@ -17,6 +17,11 @@
 		<input type="password" class="form-control" id="pw" name="pw">
 	</div>
 	<button class="btn btn-outline-success col-12">로그인</button>
+	<div class="form-check">
+		<label class="form-check-label">
+			<input type="checkbox" class="form-check-input" value="true" name="autoLogin"> 자동 로그인
+		</label>
+	</div>
 </form>
 </body>
 </html>

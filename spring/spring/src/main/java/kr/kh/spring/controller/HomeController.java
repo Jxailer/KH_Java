@@ -60,6 +60,7 @@ public class HomeController {
 		MemberVO user = memberService.login(loginDto);
 
 		if(user != null) {
+			user.setAutoLogin(loginDto.isAutoLogin());	// 자동 로그인 체크 여부 전달
 			model.addAttribute("user", user);
 			model.addAttribute("msg", "로그인 했습니다");
 			model.addAttribute("url", "/");
@@ -72,8 +73,15 @@ public class HomeController {
 	
 	@GetMapping(value="/logout")
 	public String logout(Model model, HttpSession session) {
+		// DB에서 쿠키 정보를 삭제함
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		user.setMe_cookie(null);
+		user.setMe_cookie_limit(null);
+		memberService.updateMemberCookie(user);
+		
 		// 로그아웃 => 세션에서 회원 정보를 제거함.
 		session.removeAttribute("user");
+		
 		
 		model.addAttribute("msg", "로그아웃 했습니다.");
 		model.addAttribute("url", "/");

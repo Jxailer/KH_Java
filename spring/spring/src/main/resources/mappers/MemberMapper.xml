@@ -22,4 +22,16 @@
   		SET me_pw = #{me.me_pw}, me_email = #{me.me_email}
   			WHERE me_id = #{me.me_id}
   </update>
+  <update id="updateMemberCookie">
+  	update member set 
+  		me_cookie = #{user.me_cookie},
+  		me_cookie_limit = #{user.me_cookie_limit}
+  	where
+  		me_id = #{user.me_id}
+  </update>
+  <select id="selectMemberByCookie" resultType="MemberVO">
+  	<![CDATA[
+  	SELECT * FROM member WHERE me_cookie = #{id} AND me_cookie_limit >= NOW()
+  	]]>
+  </select>
 </mapper>
