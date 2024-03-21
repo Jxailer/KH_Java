@@ -65,6 +65,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				memberService.updateMemberCookie(user);
 				
 			}
+			
+			// 되돌아갈 url이 있으면 해당 url로 돌아감
+			String url = (String)request.getSession().getAttribute("prevUrl");
+			if(url != null) {
+				response.sendRedirect(url);
+				request.getSession().removeAttribute("prevUrl");
+			}
 		}
 	} 
 }
