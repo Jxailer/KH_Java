@@ -5,11 +5,15 @@
   컴포넌트는 return을 통해 작성해야함.
   () 안은 하나의 최상위 태그로 이루어져야 함.
 */
+
+let count = 0;
 function App() {
   return (
     // 클래스 이름은 className을 통해 변경함
     <div className="App">
-      <h1 >안녕하세요.</h1>
+      <h1 onClick={()=>{
+        alert(++count)
+      }}>안녕하세요.</h1>
       <h2>안녕</h2>
     </div>
   );
