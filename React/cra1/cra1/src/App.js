@@ -4,17 +4,24 @@
   
   컴포넌트는 return을 통해 작성해야함.
   () 안은 하나의 최상위 태그로 이루어져야 함.
+
+  컴포넌트에서 선언한 변수는 재랜더링이 되기 전 까지는 값이 변경되지 않음
+  (span 태그 내부에 있는 {count})
 */
 
 let count = 0;
 function App() {
   return (
+
     // 클래스 이름은 className을 통해 변경함
     <div className="App">
-      <h1 onClick={()=>{
+      <button onClick={()=>{
+       alert(--count)
+      }}>-</button>
+      <span style={{"padding":"0 10px"}}>{count}</span>
+      <button onClick={()=>{
         alert(++count)
-      }}>안녕하세요.</h1>
-      <h2>안녕</h2>
+      }}>+</button>
     </div>
   );
 }
