@@ -3,20 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- JSX 이용하기 -->
-	<!-- 1. CDN 코드 추가-->
 	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-	<!-- 2. babel 추가-->
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 	<title>JSX</title>
 </head>
 <body>
-	<!-- 3. 샘플코드 추가 -->
-
 	<div id="root"></div>
-	<script type="text/babel"> 
+	<script type="text/babel">
 	
+	let count = 0
+	const root = ReactDOM.createRoot(document.getElementById('root'))
 	// JSX의 특징: 
 	// = script 타입이 다름.
     // = 요소를 함수로 만듦
@@ -25,23 +22,33 @@
 			return (<태그명 이벤트명={함수}>텍스트</태그명>);
 		};
 	*/
-	const root = document.getElementById("root");	
 	
-	// = 컴포넌트의 이름(함수의 이름)의 첫글자는 대문자로 시작함.
-	// = 속성값을 중괄호로 씀
-    function Btn(){
-			return (
-				<button 
-					onClick={()=>alert("hi")}
-				>Clcik me</button>
-			);
-		};
-    ReactDOM.render(<Btn />, root);
+	function App(){
+		function countUp(){
+			alert(++count)
+		}
+		function countDown(){
+			alert(--count)
+		}
 
-	function Span(){
-			return (<span id={"test"}>Hi span</span>);
-		};
-	ReactDOM.render(<Span/>, root); 
+		/*
+		변수 값은 {변수명}을 통해 가져와서 화면에 출력할 수 있다.
+		변수 값이 바뀌어도 {변수명}의 내용물은 바뀌지 않는다.
+		*/
+
+		return (
+			<div>
+				<button onclick={countDown}>-</button>
+				<span style={{"padding": "0 10px"}}>{count}</span>
+				<button onclick={countUp}>+</button>
+			</div>
+		)
+	}
+
+
+	root.render(
+		<App />
+	);
 </script>
 </body>
 </html>
