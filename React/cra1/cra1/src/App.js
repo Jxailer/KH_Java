@@ -11,17 +11,19 @@
 
 let count = 0;
 function App() {
+  function countUp(){
+    alert(++count)
+  }
+  function countDown(){
+
+  }
   return (
 
     // 클래스 이름은 className을 통해 변경함
     <div className="App">
-      <button onClick={()=>{
-       alert(--count)
-      }}>-</button>
+      <button onClick={countDown}>-</button>
       <span style={{"padding":"0 10px"}}>{count}</span>
-      <button onClick={()=>{
-        alert(++count)
-      }}>+</button>
+      <button onClick={countUp}>+</button>
     </div>
   );
 }
