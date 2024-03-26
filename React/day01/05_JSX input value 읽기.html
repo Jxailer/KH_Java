@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>JSX</title>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+	const root = ReactDOM.createRoot(document.getElementById('root'))
+	function App(){
+		let [str, setStr] = React.useState("")
+
+		function inputOnChange(event){ // 매개변수 event : 함수의 event 객체
+			
+			// input태그에 입력된 값을 가져와서 콘솔에 출력함
+			let value = event.target.value; // 이벤트가 발생한 객체의 value를 읽어옴
+			setStr(value)
+
+		}
+		
+		return (
+			<div>
+				<input type="text" onChange={inputOnChange}/>
+				<h1>{str}</h1>
+			</div>
+		)
+	}
+
+	root.render(<App />);
+</script>
+</body>
+</html>
