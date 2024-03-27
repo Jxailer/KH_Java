@@ -29,14 +29,21 @@
 
 
 	function App(){
-		/* React.useState
-		//
-		// 0번지에는 변수값을, 
+
+		/*	React.useState
+		let arr = React.useState(0)
+		let count = arr[0]
+		let serCount = arr[1]
+		*/
+
+		let [count, setCount] = React.useState(0)
+
+		/* 
+		// 0번지에는 변수명을, 
 		// 1번지에는 0번지에 있는 변수값을 변경할 수 있는 Setter가 저장됨.
 		// () 안의 값은 기본값
 		*/
-		let [count, setCount] = React.useState(0)
-
+		
 		function countUp(){
 			setCount(count+1)
 		}

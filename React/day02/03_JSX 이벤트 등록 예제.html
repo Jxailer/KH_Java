@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+		
+		// 버튼을 클릭하면 알림창의 숫자가 1씩 증가하도록 작성하세요.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  숫자가 1씩 증가하도록 코드를 작성하세요.
+		
+		let count = 0
+		function App(){
+				return (
+					
+					<div>
+						<button onClick={
+							function(){
+								alert(++count)
+							}
+						}>버튼</button>
+					</div>
+					// 아래에서 정의한 H1 컴포넌트를 호출함
+				);
+
+			};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>

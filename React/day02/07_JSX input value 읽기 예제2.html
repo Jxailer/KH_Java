@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+		
+		// 좋아하는 과일을 입력한 후 버튼을 누르면 h1 태그에 과일이 출력되도록함.
+		// 강사님 예제랑 비교하기
+
+		function App(){
+			let [select, selectSet] = React.useState('선택하세요')
+			
+			function onBtnClick(){
+				let input = document.getElementById('input')
+				selectSet(input.value)
+			}
+
+			return (
+				<div>
+					<input id="input"/><button onClick={onBtnClick}>클릭</button>
+					<h1>{select}</h1>
+				</div>
+			);
+
+		};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>

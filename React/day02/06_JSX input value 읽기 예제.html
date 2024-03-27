@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+		
+		// select 태그로 좋아하는 과일을 선택하도록 구성한 후, h1태그로 선택한 값을 출력
+		// 과일 목록: 사과, 바나나, 딸기
+		function App(){
+			let [select, selectSet] = React.useState('선택하세요')
+			
+			function onSelectChange(e){
+				let res = e.target.value;
+				selectSet(res)
+			}
+
+			return (
+				<div>
+					<select onChange={onSelectChange}>
+						<option value="">과일을 선택하세요.</option>
+						<option>사과</option>
+						<option>바나나</option>
+						<option>딸기</option>
+					</select>
+					<h1>{select}</h1>
+				</div>
+			);
+
+		};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- JSX 이용하기(임포트 순서 중요) -->
+	<!-- 1. React CDN 코드 추가-->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<!-- 2. babel 추가-->
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<style>
+		nav{
+			height: 50px; background-color: antiquewhite;
+		}
+		.body{
+			min-height: 400px; background-color: skyblue;
+		}
+		footer{
+			height: 100px; background-color: gray;
+		}
+
+	</style>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		// 아래 두 코드 모두 사용 가능함
+		// const root = document.getElementById("root");
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+
+		// App 컴포넌트(태그처럼 사용)
+		function App(){
+				return (
+					// 컴포넌트 안에는 하나의 최상위 요소만 있어야함.
+					<div>
+						<Nav/>
+						<Body/>
+						<H1/> 
+						<Footer/>
+					</div>
+					// 아래에서 정의한 H1 컴포넌트를 호출함
+				);
+
+			};
+
+		function H1(){
+			return (<h1>리액트 테스트입니다.</h1>)
+		}
+
+		function Nav(){
+			return (<nav>Nav</nav>)
+		}
+
+		function Body(){
+			return (<div className="body">Body</div>)
+		}
+
+		function Footer(){
+			return (<footer>Footer</footer>)
+		}
+
+		// 아래 두 코드 모두 사용 가능함
+		//	ReactDOM.render(<Btn />, root);
+		root.render(<App/>)
+	</script>
+</body>
+</html>
