@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+		
+		// 분 창이 활성화 되면 분을 입력했을 때 시간으로 변환을 하고,
+		// 시간 창이 활성화 되면 시간을 입력했을 때 분으로 변환을 하는 코드
+
+		function App(){
+			let[flag, setFlag] = React.useState(true);
+			let[hour, setHour] = React.useState(0);
+			let[min, setMin] = React.useState(0);
+
+			function onHourChange(e){
+				setHour(e.target.value)
+				setMin(hour * 60)
+			}
+
+			function onMinChange(e){
+				setMin(e.target.value)
+				setHour(Math.floor(min / 60))
+				
+			}
+
+			function onBtnClick(){
+				setFlag(!flag)
+			}	
+
+			return (
+				<div>
+					<input 
+						type="text" 
+						onChange={onHourChange} 
+						value={!flag ? min / 60 : hour} 
+						disabled={flag}
+					/>시간
+					<button onClick={onBtnClick}>토글</button>
+					<br/>
+					<input 
+					type="text" 
+					onChange={onMinChange} 
+					value={flag ? hour * 60 : min} 
+					disabled={!flag}
+					/>분
+				</div>
+			);
+
+		};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>

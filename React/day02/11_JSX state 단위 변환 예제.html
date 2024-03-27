@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="root"></div>
+
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+		
+		// 분일 입력하면 시간으로 단위를 변환하는 코드
+		// Math.floor(값) : 소수점 버림
+
+		function App(){
+			let[input, setInput] = React.useState(0);
+			let[hour, setHour] = React.useState(0);
+			let[min, setMin] = React.useState(0);
+
+			function onInputChange(e){
+				setInput(e.target.value)
+			}
+
+			function onBtnClick(){
+				setHour(Math.floor(input / 60))
+				setMin(input % 60)
+			}
+			
+			return (
+				<div>
+					<input type="text" onChange={onInputChange}/>
+					<button onClick={onBtnClick}>변환</button>
+					<br/>
+					<input type="text" readOnly value={hour}/>시간
+					<input type="text" readOnly value={min}/>분
+				</div>
+			);
+
+		};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>
