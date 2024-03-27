@@ -16,15 +16,17 @@
 		
 		// 취미를 입력받고 버튼을 누르면 ul에 입력한 취미가 추가되도록 하기
 		// 강사님 예제랑 비교하기 (11번)
+		// 태그를 불러오는 것보다 state를 이용하는게 좀 더 안정적임! (오류 발생했었음,,,)
 
 		function App(){
 			let [arr, setArr] = React.useState([])
 			
 			function onBtnClick(){
 				let input = document.getElementById('input')
-				console.log(input.value)
-				setArr(prevArr=>[...prevArr, input.value])
-				// input창 비우는 방법 ?? 
+				// data 변수를 직접 선언하지 않고 input.value를 직접 사용했다가 오류가 발생했었음.
+				let data = input.value
+				setArr(prevArr=>[...prevArr, data])
+				input.value=''
 			}
 			return (
 				<div>
