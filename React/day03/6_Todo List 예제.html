@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To-do 만들기</title>
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		const root = ReactDOM.createRoot(document.getElementById("root"));
+
+		/* 
+		입력창과 버튼을 추가하고, 입력창에 오늘의 할 일을 입력받아 버튼을 클릭하면
+		오늘의 할 일이 추가되는 코드를 작성하세요.
+		1. 입력창과 버튼을 추가함
+		2. 입력창에 내용을 입력할 때 값을 저장하는 state와 코드를 작성
+		3. 버튼을 클릭하면 2번에서 저장된 값을 읽어와서 다른 state에 추가
+		4. 3번에서 추가한 state를 이용하여 화면에 오늘의 할 일을 출력
+		*/
+		function App(){
+			let [input, setInput] = React.useState()
+			let [todoList, setTodo] = React.useState([])
+
+			function onBtnClick(){
+				setTodo([input, ...todoList])
+				setInput("")
+			}
+
+			function mapList(item, idx){
+				return <li key={idx}>{item}<button onClick={()=>onDelete(idx)}>삭제</button></li>
+			}
+
+			function onDelete(idx){
+				let tmpList = [...todoList]
+				tmpList.splice(idx, 1)
+				setTodo(tmpList)
+			}
+			
+			return (
+				<div>
+					<input type="text" onChange={(e)=>setInput(e.target.value)} value={input}/>
+					<button onClick={onBtnClick}>추가</button>
+					<h1>오늘의 할일</h1>
+					<ul>
+						// map의 매개변수로 함수를 집어넣을 수도 있음.
+						{todoList.map(mapList)}
+					</ul>
+
+				</div>
+				
+			);
+		};
+
+		root.render(<App/>)
+	</script>
+</body>
+</html>
