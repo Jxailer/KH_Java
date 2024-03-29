@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Router</title>
+	<!-- 1. CDN 코드 복사하기 (버전이 중요하므로 아래 코드들 그대로 사용할 것.)-->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+	<script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+	
+	<!-- 1-1. npm을 이용한 react-router-dom 설치(CRA 프로젝트 이용시)
+		
+		npm install react-router-dom 
+	
+	-->
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		/* 
+			라우팅이란?
+
+			- 사용자가 요청한 URL에 따라 URL에 맞는 페이지를 보여주는 것
+			- SPA(Single Page Application)을 구현할 때 사용
+		*/
+
+		const Link = ReactRouterDOM.Link,
+		Route = ReactRouterDOM.Route,
+		HashRouter = ReactRouterDOM.HashRouter
+
+		function App(){
+
+			return (
+				<HashRouter>
+					<ul>
+						<li><Link to="/">TO HOME</Link></li>
+						<li><Link to="/a">TO A</Link></li>
+						<li><Link to="/b">TO B</Link></li>
+					</ul>
+
+					<Route path="/" exact component={Home} /> // exact를 추가해야 정확히 '/'로 인식함.
+					<Route path="/a" component={A} />
+					<Route path="/b" component={B} />
+				</HashRouter>
+			)
+							
+		};
+
+		function Home(){
+			return (
+				<h1>HOME</h1>
+			)
+		}
+
+		function A(){
+			return (
+				<h1>A</h1>
+			)
+		}
+		// const A = props => <h1>A</h1>
+
+		function B(){
+			return (
+				<h1>B</h1>
+			)
+		}
+		// const B = props => <h1>B</h1>
+
+		ReactDOM.render(<App />, document.querySelector('#root')); // router 렌더
+	</script>
+</body>
+</html>
