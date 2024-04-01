@@ -1,5 +1,6 @@
 package kr.kh.spring2.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,15 @@ public class AjaxController {
 		System.out.println("age: "+age);
 		map.put("result", "성공");
 		return map;
+	}
+	
+	@GetMapping("/object/object")
+	public ArrayList<String> objectObject(@RequestParam("name")String name) {
+		System.out.println(name);
+		ArrayList<String> list = new ArrayList();
+		list.add("hi");
+		list.add("test");
+		return list;
 	}
 	
 }

@@ -33,7 +33,13 @@
 		 <input placeholder="나이" name="age">
 		 <button type="submit" class="btn3">전송</button>
 	 </form>
-<!-- 예제 script -->
+	 
+	 <button type="button" class="btn4">object - object</button>
+	 <br>
+	 
+	 
+	 
+<!-- 예제 script(btn3) -->
 <script type="text/javascript">
 	$("form").submit(function (){
 		// form에 있는 입력 태그들을 하나의 문자열로 만듦. 'name명=값&' 형태로.
@@ -166,6 +172,25 @@
 	})
 </script>
 
+<!-- btn4 script -->
+<script type="text/javascript">
+	let obj = {name : "홍길동"}
+	$(".btn4").click(function(){
+		$.ajax({
+			async : true, //비동기 : true(비동기), false(동기)
+			url : '<c:url value="/ajax/object/object"/>', 
+			type : 'get', 
+			data : obj,
+			success : function (data){
+				console.log(data);
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
+		
+			}
+		});
+	})
+
+</script>
 
 </body>
 </html>
