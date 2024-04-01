@@ -28,20 +28,17 @@
 		- 화면에서는 서버에서 보낸 데이터를 alert으로 출력
 	 -->
 	 <br><br>
-	 <input placeholder="이름" name="name">
-	 <input placeholder="나이" name="age">
-	 <button class="btn3">전송</button>
-	 
+	 <form action="">
+		 <input placeholder="이름" name="name">
+		 <input placeholder="나이" name="age">
+		 <button type="submit" class="btn3">전송</button>
+	 </form>
 <!-- 예제 script -->
 <script type="text/javascript">
-	$(".btn3").click(function (){
-		let name = $("[name=name]").val()
-		let age = $("[name=age]").val()
-		obj = {
-			name,
-			age 
-		}
-		console.log(obj)
+	$("form").submit(function (){
+		// form에 있는 입력 태그들을 하나의 문자열로 만듦. 'name명=값&' 형태로.
+		let obj = $(this).serialize();
+		
 		$.ajax({
 			async : true, //비동기 : true(비동기), false(동기)
 			url : '<c:url value="/ajax/test"/>', 
