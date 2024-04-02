@@ -26,7 +26,7 @@ public class HomeController {
 		int count = memberService.getMemberCount();
 		log.info("등록된 회원 수 : ."+count);
 		
-		return "home";
+		return "/main/home";
 	}
 	
 }
