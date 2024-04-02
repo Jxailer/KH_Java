@@ -33,7 +33,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("/signup")
-	public String signUp() {
+	public String signUp(Model model) {
+		// 타일링에서 사이트 제목 변경
+		model.addAttribute("title", "회원가입");
 		
 		return "/member/signup";
 	
@@ -54,4 +56,12 @@ public class HomeController {
 			return "message";
 					
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "/member/login";
+	
+	}
+
+	
 }
