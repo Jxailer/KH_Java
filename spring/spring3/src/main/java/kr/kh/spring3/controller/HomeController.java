@@ -2,6 +2,8 @@ package kr.kh.spring3.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,6 +82,21 @@ public class HomeController {
 		return "message";
 	
 	}
+	
+	@GetMapping("/logout")
+	public String logout(Model model, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		// 로그아웃 => 세션에서 회원 정보를 제거함.
+		session.removeAttribute("user");
+		
+		model.addAttribute("url", "/");
+		model.addAttribute("msg", "로그아웃 했습니다.");
+		
+		return "message";
+	
+	}
+	
 	
 
 }
