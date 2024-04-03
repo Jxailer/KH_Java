@@ -6,6 +6,6 @@
 <mapper namespace="kr.kh.spring3.dao.BoardDAO">
 
 	<select id="selectBoardList" resultType="kr.kh.spring3.model.vo.BoardVO">
-		SELECT * FROM board ORDER BY bo_num DESC
+		SELECT * FROM board ORDER BY bo_num DESC LIMIT #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 </mapper>
