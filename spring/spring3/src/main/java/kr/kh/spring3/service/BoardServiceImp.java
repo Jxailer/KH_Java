@@ -21,6 +21,11 @@ public class BoardServiceImp implements BoardService {
 			cri = new Criteria();
 		return boardDao.selectBoardList(cri);
 	}
+
+	@Override
+	public int getBoardTotalCount() {
+		return boardDao.getBoardtotalCount();
+	}
 	
 		
 	

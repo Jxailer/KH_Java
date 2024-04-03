@@ -11,5 +11,6 @@ public interface BoardDAO {
 
 	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
 
+	int getBoardtotalCount();
 	
 }
