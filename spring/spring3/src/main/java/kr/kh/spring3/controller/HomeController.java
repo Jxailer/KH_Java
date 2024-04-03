@@ -26,9 +26,6 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		log.info("안녕하세요. 스프링 메인입니다."); // 어디에서 로그가 찍히는 지를 알려줌
 		
-		int count = memberService.getMemberCount();
-		log.info("등록된 회원 수 : ."+count);
-		
 		return "/main/home";
 	}
 	
@@ -58,10 +55,31 @@ public class HomeController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(Model model) {
+		model.addAttribute("title", "로그인");
+
 		return "/member/login";
 	
 	}
-
 	
+	@PostMapping("/login")
+	public String loginPost(Model model, MemberVO member) {
+		MemberVO user = memberService.login(member);
+		
+		// intercepter에서 null인지를 확인하기 때문에 공통적으로 설정해도 됨.
+		model.addAttribute("user", user);	// 변수명에 맞춰 키캆을 설정.
+		
+		if(user != null) {
+			model.addAttribute("url", "/");
+			model.addAttribute("msg", "로그인 했습니다.");
+		}else {
+			model.addAttribute("url", "/login");
+			model.addAttribute("msg", "로그인에 실패했습니다.");
+		}
+		
+		return "message";
+	
+	}
+	
+
 }

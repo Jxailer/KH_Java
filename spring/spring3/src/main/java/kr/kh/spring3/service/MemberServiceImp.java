@@ -51,5 +51,27 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 	}
+
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null)
+			return null;
+		
+		// 아이디에 해당하는 유저가 있는지 확인
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		
+		// 회원가입이 되어있지 않은 아이디라면
+		if(user == null)
+			return null;
+		
+		// 비밀번호 확인
+		boolean res = encoder.matches(member.getMe_pw(), user.getMe_pw());
+		
+		if(res)
+			return user;
+		else
+			return null;
+		
+	}
 	
 }
