@@ -22,7 +22,7 @@
     <tbody>
     	<c:forEach items="${list}" var="board" varStatus="vs">
     		<tr>
-		        <td>${list.size() - vs.index}</td>
+		        <td>${pm.totalCount - pm.cri.pageStart}</td>
 		        <td>
 		        	<a href="#">
 				        ${board.bo_title }
