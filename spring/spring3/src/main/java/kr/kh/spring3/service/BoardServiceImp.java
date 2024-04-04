@@ -23,8 +23,8 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public int getBoardTotalCount() {
-		return boardDao.getBoardtotalCount();
+	public int getBoardTotalCount(Criteria cri) {
+		return boardDao.getBoardtotalCount(cri);
 	}
 	
 		

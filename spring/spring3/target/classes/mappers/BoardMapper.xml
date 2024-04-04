@@ -6,10 +6,38 @@
 <mapper namespace="kr.kh.spring3.dao.BoardDAO">
 
 	<select id="selectBoardList" resultType="kr.kh.spring3.model.vo.BoardVO">
-		SELECT * FROM board ORDER BY bo_num DESC LIMIT #{cri.pageStart}, #{cri.perPageNum}
+		SELECT * FROM board 
+			<if test='cri.type == "all"'>
+				WHERE bo_title LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_content LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_me_id LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			<if test='cri.type == "title"'>
+				WHERE bo_title LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_content LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			<if test='cri.type == "writer"'>
+				WHERE bo_me_id LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			ORDER BY bo_num DESC 
+			LIMIT #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
 	<select id="getBoardtotalCount" resultType="int">
-		SELECT COUNT(*) FROM board;
+		SELECT COUNT(*) FROM board 
+			<if test='cri.type == "all"'>
+				WHERE bo_title LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_content LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_me_id LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			<if test='cri.type == "title"'>
+				WHERE bo_title LIKE CONCAT('%', #{cri.search}, '%')
+					OR bo_content LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			<if test='cri.type == "writer"'>
+				WHERE bo_me_id LIKE CONCAT('%', #{cri.search}, '%')
+			</if>
+			ORDER BY bo_num DESC 
+			LIMIT #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 </mapper>

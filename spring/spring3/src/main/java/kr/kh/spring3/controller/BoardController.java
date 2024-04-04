@@ -22,10 +22,10 @@ public class BoardController {
 	
 	@GetMapping("/board/list")
 	public String signUp(Model model, Criteria cri) {
-		ArrayList<BoardVO> list = boardService.getList(cri);
-		int totalCount = boardService.getBoardTotalCount();
-		
 		model.addAttribute("title", "게시글 목록");
+		
+		ArrayList<BoardVO> list = boardService.getList(cri);
+		int totalCount = boardService.getBoardTotalCount(cri);
 		
 		Pagemaker pm = new Pagemaker(3, cri, totalCount);
 		model.addAttribute("pm", pm);

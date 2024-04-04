@@ -10,6 +10,17 @@
 <body>
 	<div class="container">
   <h1>게시판</h1>
+  <form action="<c:url value="/board/list"/>" method="get"> 
+  	<div class="input-group mb-3">
+    	<select class="form-control" name="type">
+    		<option value="all">전체</option>
+    		<option value="title">제목+내용</option>
+    		<option value="writer">작성자</option>
+    	</select>
+	    <input type="text" class="form-control" name="search">
+	    <button class="btn btn-outline-success">검색</button>
+    </div>
+  </form>
   <table class="table table-striped">
     <thead>
       <tr>
