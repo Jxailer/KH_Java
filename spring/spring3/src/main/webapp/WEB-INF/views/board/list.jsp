@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <h1>게시판</h1>
-  <form action="<c:url value="/board/list"/>" method="get"> 
+  <form action="<c:url value="/board/list"/>" method="get" id="searchForm"> 
   	<!-- 게시글 검색창 -->
   	<div class="input-group mb-3">
     	<select class="form-control" name="type">
@@ -94,5 +94,12 @@
   </ul>
   
 </div>
+
+<!-- 게시글 정렬 순서 변경 시 자동으로 정렬되도록 함 -->
+<script type="text/javascript">
+$("[name=order]").change(function(){
+	$("#searchForm").submit()
+})
+</script>
 </body>
 </html>
