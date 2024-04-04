@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+<div class="container">
   <h1>게시판</h1>
   <form action="<c:url value="/board/list"/>" method="get"> 
+  	<!-- 게시글 검색창 -->
   	<div class="input-group mb-3">
     	<select class="form-control" name="type">
     		<option value="all" <c:if test="${pm.cri.type == 'all'}">selected</c:if>>전체</option>
@@ -20,11 +21,15 @@
 	    <input type="text" class="form-control" name="search" value="${pm.cri.search }">
 	    <button class="btn btn-outline-success">검색</button>
     </div>
+    
+    <!-- 게시글 정렬 순서 -->
     <select class="form-control col-4 offset-8 mb-4" name="order">
     	<option value="bo_num" <c:if test="${pm.cri.order == 'bo_num'}">selected</c:if>>최신순</option>
     	<option value="bo_view" <c:if test="${pm.cri.order == 'bo_view'}">selected</c:if>>조회수순</option>
     </select>
   </form>
+  
+  <!-- 게시글 조회 목록 -->
   <table class="table table-striped">
     <thead>
       <tr>
@@ -50,6 +55,7 @@
     </tbody>
   </table>
   
+  <!-- pagination -->
   <ul class="pagination justify-content-center">
   	  <c:if test="${pm.prev }">
 		  <li class="page-item">
