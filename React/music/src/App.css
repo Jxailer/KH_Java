@@ -1,0 +1,6 @@
+.menu-list{display: flex; align-items: center; list-style: none;}
+.menu-list li{width: 50%; text-align: center;}
+
+.container{text-align: center;}
+.container table{margin: 0 auto;}
+.container table td{width: 100px;}
