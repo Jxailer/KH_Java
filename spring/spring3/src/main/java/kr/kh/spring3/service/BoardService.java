@@ -12,4 +12,6 @@ public interface BoardService {
 
 	int getBoardTotalCount(Criteria cri);
 
+	boolean insertBoard(BoardVO board, MemberVO user);
+
 }

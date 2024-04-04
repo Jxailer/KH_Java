@@ -55,6 +55,9 @@
     </tbody>
   </table>
   
+  <!-- 게시글 등록 버튼 -->
+  <a class="btn btn-outline-success" href="<c:url value="/board/insert"/>">글 쓰기</a>
+  
   <!-- pagination -->
   <ul class="pagination justify-content-center">
   	  <c:if test="${pm.prev }">
