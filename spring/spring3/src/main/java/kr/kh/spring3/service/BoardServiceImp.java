@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.spring3.dao.BoardDAO;
 import kr.kh.spring3.model.vo.BoardVO;
+import kr.kh.spring3.model.vo.CommunityVO;
 import kr.kh.spring3.model.vo.MemberVO;
 import kr.kh.spring3.pagination.Criteria;
 
@@ -41,6 +42,11 @@ public class BoardServiceImp implements BoardService {
 		board.setBo_me_id(user.getMe_id());
 		
 		return boardDao.insertBoard(board);
+	}
+
+	@Override
+	public ArrayList<CommunityVO> getCommunityList() {
+		return boardDao.selectCommunityList();
 	}
 	
 		

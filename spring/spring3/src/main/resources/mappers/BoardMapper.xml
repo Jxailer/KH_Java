@@ -39,8 +39,12 @@
 			</if>
 	</select>
 	
+	<select id="selectCommunityList" resultType="kr.kh.spring3.model.vo.CommunityVO">
+		SELECT * FROM community
+	</select>
+	
 	<insert id="insertBoard">
 		INSERT INTO board(bo_title, bo_content, bo_me_id, bo_co_num)
-			VALUES(#{board.bo_title}, #{board.bo_content}, #{board.bo_me_id}, 1)
+			VALUES(#{board.bo_title}, #{board.bo_content}, #{board.bo_me_id}, #{board.bo_co_num})
 	</insert>
 </mapper>

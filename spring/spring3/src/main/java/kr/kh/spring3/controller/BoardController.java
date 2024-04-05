@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.kh.spring3.model.vo.BoardVO;
+import kr.kh.spring3.model.vo.CommunityVO;
 import kr.kh.spring3.model.vo.MemberVO;
 import kr.kh.spring3.pagination.Criteria;
 import kr.kh.spring3.pagination.Pagemaker;
@@ -44,6 +45,9 @@ public class BoardController {
 	@GetMapping("/board/insert")
 	public String boardInsert(Model model) {
 		model.addAttribute("title", "게시글 작성");
+		
+		ArrayList<CommunityVO> list = boardService.getCommunityList();
+		model.addAttribute("list", list);
 		
 		return "/board/insert";
 	}
