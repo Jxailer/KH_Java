@@ -43,8 +43,13 @@
 		SELECT * FROM community
 	</select>
 	
-	<insert id="insertBoard">
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
 		INSERT INTO board(bo_title, bo_content, bo_me_id, bo_co_num)
 			VALUES(#{board.bo_title}, #{board.bo_content}, #{board.bo_me_id}, #{board.bo_co_num})
+	</insert>
+	
+	<insert id="insertFile">
+		INSERT INFO file(fi_bo_num, fi_name, fi_ori_name)
+			VALUES(#{file.fi_bo_num}, #{file.fi_name}, #{file.fi_ori_name})
 	</insert>
 </mapper>
